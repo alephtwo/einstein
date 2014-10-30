@@ -1,0 +1,24 @@
+<%= form_for @client do |f| %>
+
+  <div class="row text-center">
+    <div class="small-12 medium-8 medium-centered columns">
+
+      <% if @client.errors.any? %>
+        <div class="alert-box warning text-center">
+          <h5><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h5>
+          <ul>
+            <% @client.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name %>
+
+      <%= f.submit class: "button expand" %>
+    </div>
+  </div>
+
+<% end %>

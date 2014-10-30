@@ -21,8 +21,16 @@
           <tr>
             <td><%= client.id %></td>
             <td><%= client.last_name %></td>
-            <td></td>
-            <td></td>            
+            <td>
+              <%= link_to edit_client_path client do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to client, method: :delete, data: { confirm: "Continuing will delete client ##{client.id}. Do you wish to proceed?" } do %>
+                <i class="fa fa-trash"></i>&emsp;Delete
+              <% end %>
+            </td>            
           </tr>
         <% end %>
       </tbody>

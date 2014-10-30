@@ -1,0 +1,32 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h1>All Clients</h1>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+
+    <table>
+      <thead>
+        <tr>
+          <th width="125">Client ID</th>
+          <th>Last Name</th>
+          <th width="125">Edit</th>
+          <th width="125">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do | client | %>
+          <tr>
+            <td><%= client.id %></td>
+            <td><%= client.last_name %></td>
+            <td></td>
+            <td></td>            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -11,19 +11,31 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <li class="has-dropdown">
-        <%= link_to "http://google.com" do %>
+        <%= link_to clients_path do %>
           <i class="fa fa-group"></i>&emsp;Clients
         <% end %>
         <ul class="dropdown">
           <li>
-            <%= link_to "http://google.com" do %>
+            <%= link_to new_client_path do %>
               <i class="fa fa-plus"></i>&emsp;New Client
             <% end %>
           </li>
         </ul>
       </li>
+      <li class="has-dropdown">
+        <%= link_to behaviors_path do %>
+          <i class="fa fa-medkit"></i>&emsp;Behaviors
+        <% end %>
+        <ul class="dropdown">
+          <li>
+            <%= link_to new_behavior_path do %>
+              <i class="fa fa-plus"></i>&emsp;New Behavior
+            <% end %>
+          </li>
+        </ul>
+      </li>
       <li>
-        <%= link_to "http://google.com" do %>
+        <%= link_to behavior_reports_path do %>
           <i class="fa fa-book"></i>&emsp;Behavior Reports
         <% end %>
       </li>

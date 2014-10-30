@@ -1,0 +1,2 @@
+class BehaviorsController < ApplicationController
+end

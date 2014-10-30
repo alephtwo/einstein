@@ -11,22 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028015144) do
+ActiveRecord::Schema.define(version: 20141030174329) do
 
   create_table "behavior_reports", force: true do |t|
-    t.integer  "client_id"
-    t.text     "encrypted_short_description", null: false
-    t.text     "encrypted_long_description"
+    t.integer  "behavior_id"
     t.integer  "occurrences"
-    t.datetime "date_observed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "behaviors", force: true do |t|
+    t.integer  "client_id"
+    t.string   "encrypted_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "clients", force: true do |t|
+    t.string   "encrypted_last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employees", force: true do |t|
     t.string   "encrypted_first_name"
     t.string   "encrypted_middle_name"
     t.string   "encrypted_last_name"
+    t.string   "encrypted_username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

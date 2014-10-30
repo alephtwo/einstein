@@ -3,7 +3,7 @@ class CreateBehaviorReports < ActiveRecord::Migration
     create_table :behavior_reports do |t|
 
       t.belongs_to :behavior
-      t.integer :occurrences
+      t.integer :occurrences, null: false
 
       t.timestamps
     end

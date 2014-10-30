@@ -15,20 +15,20 @@ ActiveRecord::Schema.define(version: 20141030174329) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
-    t.integer  "occurrences"
+    t.integer  "occurrences", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "behaviors", force: true do |t|
     t.integer  "client_id"
-    t.string   "encrypted_description"
+    t.string   "encrypted_description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "clients", force: true do |t|
-    t.string   "encrypted_last_name"
+    t.string   "encrypted_last_name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141030174329) do
     t.string   "encrypted_first_name"
     t.string   "encrypted_middle_name"
     t.string   "encrypted_last_name"
-    t.string   "encrypted_username"
+    t.string   "encrypted_username",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

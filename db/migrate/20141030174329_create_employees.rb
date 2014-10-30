@@ -6,7 +6,7 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :encrypted_middle_name
       t.string :encrypted_last_name
 
-      t.string :encrypted_username
+      t.string :encrypted_username, null: false
 
       t.timestamps
     end

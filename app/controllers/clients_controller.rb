@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     if @client.save
       flash[:success] = "Client created successfully."
-      redirect_to clients_path
+      redirect_to @client
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to clients_path, notice: "Client ##{@client.id} was successfully updated."
+      redirect_to @client, notice: "Client ##{@client.id} was successfully updated."
     else
       render :edit
     end

@@ -12,16 +12,30 @@
     <table>
       <thead>
         <tr>
-          <th width="150">Behavior ID</th>
           <th>Behavior</th>
+          <th width="125">Edit</th>
+          <th width="125">Delete</th>
         </tr>
       </thead>
         <% @client.behaviors.each do | behavior | %>
           <tr>
-            <td><%= behavior.id %></td>
             <td><%= behavior.description %></td>
+            <td>
+              <%= link_to edit_behavior_path behavior do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to behavior, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
+                <i class="fa fa-trash"></i>&emsp;Delete
+              <% end %>            
+            </td>
           </tr>
         <% end %>
     </table>
+
+    <%= link_to new_behavior_path, class: "button expand" do %>
+      <i class="fa fa-plus"></i>&emsp;Add Behavior
+    <% end %>
   </div>
 </div>

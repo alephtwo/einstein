@@ -20,7 +20,11 @@
         <% @behaviors.each do | behavior | %>
           <tr>
             <td><%= behavior.client.id %></td>
-            <td><%= behavior.client.last_name %></td>
+            <td>
+              <%= link_to behavior.client do %>
+                <%= behavior.client.last_name %>
+              <% end %>
+            </td>
             <td><%= behavior.description %></td>
             <td>
               <%= link_to edit_behavior_path behavior do %>

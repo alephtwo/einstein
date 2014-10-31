@@ -4,7 +4,7 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
 
-    <%= f.label "Client" %>
+    <%= f.label :client_id, "Client" %>
     <%= f.collection_select :client_id, Client.all, :id, :last_name %>
 
     <%= f.submit class: "button expand" %>

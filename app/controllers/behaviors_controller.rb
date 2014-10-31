@@ -17,7 +17,7 @@ class BehaviorsController < ApplicationController
     @behavior = Behavior.new(behavior_params)
     if @behavior.save
       flash[:success] = "Behavior created successfully."
-      redirect_to behaviors_path
+      redirect_to @behavior.client
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class BehaviorsController < ApplicationController
 
   def update
     if @behavior.update(behavior_params)
-      redirect_to behaviors_path, notice: "Behavior was successfully updated."
+      redirect_to @behavior.client, notice: "Behavior was successfully updated."
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class BehaviorsController < ApplicationController
 
   def destroy
     @behavior.destroy
-    redirect_to behaviors_path
+    redirect_to @behavior.client
   end
 
   private

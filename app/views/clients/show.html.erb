@@ -34,8 +34,23 @@
         <% end %>
     </table>
 
-    <%= link_to new_behavior_path, class: "button expand" do %>
+    <a href="#" data-reveal-id="new-behavior" class="button expand">
       <i class="fa fa-plus"></i>&emsp;Add Behavior
-    <% end %>
+    </a>
   </div>
+</div>
+
+<div class="reveal-modal" id="new-behavior" data-reveal>
+  <div class="row text-center">
+    <div class="small-12 medium-6 medium-centered columns">
+      <h1>Add a Behavior</h1>
+      <%= form_for Behavior.new do | f | %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.hidden_field :client_id, :value => @client.id %>
+        <%= f.submit class: "button expand" %>
+      <% end %>
+    </div>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
 </div>

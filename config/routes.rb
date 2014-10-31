@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :employees
   resources :clients
-  resources :behaviors, except: [:show]
+  resources :behaviors, except: [:show, :new]
   resources :behavior_reports
 
 end

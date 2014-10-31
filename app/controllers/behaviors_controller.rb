@@ -3,14 +3,10 @@ class BehaviorsController < ApplicationController
   before_action :set_behavior, only: [:show, :edit, :update, :destroy]
 
   def index
-    @behaviors = Behavior.all
+    @behaviors = Behavior.order(client_id: :asc)
   end
 
   def show
-  end
-
-  def new
-    @behavior = Behavior.new
   end
 
   def create

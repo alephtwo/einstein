@@ -1,0 +1,30 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h1>Behaviors</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th width="100">ID</th>
+          <th>Description</th>
+          <th width="100">Client ID</th>
+          <th>Client Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @behaviors.each do | behavior | %>
+          <tr>
+            <td><%= behavior.id %></td>
+            <td><%= behavior.description %></td>
+            <td><%= behavior.client.id %></td>
+            <td><%= behavior.client.last_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

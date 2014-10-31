@@ -35,6 +35,9 @@ class ClientsController < ApplicationController
   end
 
   def destroy
+    @client.behaviors.each do | behavior | 
+      behavior.destroy
+    end
     @client.destroy
       redirect_to clients_path, notice: "Client ##{@client.id} was successfully deleted."
   end

@@ -20,7 +20,11 @@
         <% @clients.each do | client | %>
           <tr>
             <td><%= client.id %></td>
-            <td><%= client.last_name %></td>
+            <td>
+              <%= link_to client do %>
+                <%= client.last_name %>
+              <% end %>
+            </td>
             <td>
               <%= link_to edit_client_path client do %>
                 <i class="fa fa-edit"></i>&emsp;Edit

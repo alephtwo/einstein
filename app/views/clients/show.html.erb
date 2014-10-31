@@ -1,0 +1,27 @@
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h1><%= @client.last_name %></h1>
+    <h4>Client ID: <%= @client.id %></h4>
+    <hr />
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h3>Assigned Behaviors</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="150">Behavior ID</th>
+          <th>Behavior</th>
+        </tr>
+      </thead>
+        <% @client.behaviors.each do | behavior | %>
+          <tr>
+            <td><%= behavior.id %></td>
+            <td><%= behavior.description %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</div>

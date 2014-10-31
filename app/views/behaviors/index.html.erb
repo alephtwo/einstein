@@ -1,6 +1,6 @@
 <div class="row text-center">
   <div class="small-12 columns">
-    <h1>Behaviors</h1>
+    <h1>All Behaviors</h1>
   </div>
 </div>
 
@@ -9,19 +9,29 @@
     <table>
       <thead>
         <tr>
-          <th width="100">ID</th>
-          <th>Description</th>
           <th width="100">Client ID</th>
-          <th>Client Last Name</th>
+          <th width="200">Client Last Name</th>
+          <th>Description</th>
+          <th width="125">Edit</th>
+          <th width="125">Delete</th>
         </tr>
       </thead>
       <tbody>
         <% @behaviors.each do | behavior | %>
           <tr>
-            <td><%= behavior.id %></td>
-            <td><%= behavior.description %></td>
             <td><%= behavior.client.id %></td>
             <td><%= behavior.client.last_name %></td>
+            <td><%= behavior.description %></td>
+            <td>
+              <%= link_to edit_behavior_path behavior do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to behavior, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
+                <i class="fa fa-trash"></i>&emsp;Delete
+              <% end %>            
+            </td>
           </tr>
         <% end %>
       </tbody>

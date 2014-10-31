@@ -1,0 +1,13 @@
+<%= form_for @behavior do | f | %>
+<div class="row text-center">
+  <div class="small-12 medium-8 small-centered columns">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+
+    <%= f.label "Client" %>
+    <%= f.collection_select :client_id, Client.all, :id, :last_name %>
+
+    <%= f.submit class: "button expand" %>
+  </div>
+</div>
+<% end %>

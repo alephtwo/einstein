@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'client_sessions#new'
+  root 'behavior_reports#new'
 
   resource :client_sessions, only: [:new, :create, :destroy]
 

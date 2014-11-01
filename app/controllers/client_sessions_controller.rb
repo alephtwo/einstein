@@ -1,5 +1,7 @@
 class ClientSessionsController < ApplicationController
 
+  before_action :check_sign_out, only: [:new]
+
   def new
   end
 
@@ -19,5 +21,12 @@ class ClientSessionsController < ApplicationController
     client_sign_out
     redirect_to root_url
   end
+
+  private
+    def check_sign_out
+      if client_signed_in?
+        client_sign_out
+      end
+    end
   
 end

@@ -17,6 +17,10 @@ class BehaviorReportsController < ApplicationController
     end
   end
 
+  def index
+    @behavior_reports = BehaviorReport.all
+  end
+
   private
 
     def check_client_login

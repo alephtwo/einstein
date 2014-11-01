@@ -21,7 +21,7 @@ class BehaviorReportsController < ApplicationController
 
     def check_client_login
       unless client_signed_in?
-        redirect_to new_client_sessions_path
+        redirect_to new_client_session_path
       end
     end
 

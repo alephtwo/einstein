@@ -10,7 +10,7 @@ class ClientSessionsController < ApplicationController
     if client && client.authenticate(params[:client_session][:password])
       flash[:success] = "Logged in successfully."
       client_sign_in client, params[:client_session][:remember] == '1'
-      redirect_to behaviors_path
+      redirect_to new_behavior_report_path
     else
       flash.now[:alert] = "Invalid id or password. Please try again."
       render "new"

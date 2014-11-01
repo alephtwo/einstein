@@ -1,0 +1,19 @@
+<%= form_for(:client_session, url: client_sessions_path) do |f| %>
+  <div class="row text-center">
+    <div class="small-12 medium-6 medium-centered columns">
+
+      <h1>Log In</h1>
+
+      <%= f.label :id, "ID Number" %>
+      <%= f.text_field :id, placeholder: "Identification Number" %>
+
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, placeholder: "Password" %>
+
+      <%= f.label :remember, "Remember me?" %>
+      <%= f.check_box :remember %>
+      
+      <%= f.submit "Log In", class: "button expand" %>
+    </div>
+  </div>
+<% end %>

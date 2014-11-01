@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'administration#index'
+  root 'client_sessions#new'
+
+  resource :client_sessions, only: [:new, :create, :destroy]
 
   resources :employees
   resources :clients

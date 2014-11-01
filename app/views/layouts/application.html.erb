@@ -28,5 +28,16 @@
         </div>
       </div>
     </div>
+
+    <% if Rails.env.development? %>
+      <div class="row">
+        <div class="small-12 columns">
+          <hr />
+          <div class="panel callout">
+            <%= debug(params) %>
+          </div>
+        </div>
+      </div>
+      <% end %>
   </body>
 </html>

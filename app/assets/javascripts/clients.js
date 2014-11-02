@@ -3,3 +3,11 @@ $(document).ready(function() {
 		"order": [[ 2, "desc" ]]
     } );
 } );
+
+$(document).ready(function() {
+    $('#behaviors').dataTable( {
+		"order": [[ 2, "desc" ]],
+		"paging": false, 
+		"info": false
+    } );
+} );

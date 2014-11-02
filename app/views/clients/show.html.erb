@@ -9,10 +9,12 @@
 <div class="row text-center">
   <div class="small-12 columns">
     <h3>Assigned Behaviors</h3>
-    <table>
+    <table id="behaviors">
       <thead>
         <tr>
           <th>Behavior</th>
+          <th>Times Reported</th>
+          <th>Occurrences</th>
           <th width="125">Edit</th>
           <th width="125">Delete</th>
         </tr>
@@ -20,6 +22,8 @@
         <% @client.behaviors.each do | behavior | %>
           <tr>
             <td><%= behavior.description %></td>
+            <td><%= behavior.report_count %></td>
+            <td><%= behavior.occurrence_count %></td>
             <td>
               <%= link_to edit_behavior_path behavior do %>
                 <i class="fa fa-edit"></i>&emsp;Edit

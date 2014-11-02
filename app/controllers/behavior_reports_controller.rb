@@ -1,6 +1,7 @@
 class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
+  before_action :set_report, only: [:edit, :update, :destroy]
 
   def new
     @behavior_report = BehaviorReport.new
@@ -17,12 +18,22 @@ class BehaviorReportsController < ApplicationController
     end
   end
 
+  def destroy
+    client = @behavior_report.behavior.client
+    @behavior_report.destroy
+    redirect_to client
+  end
+
   private
 
     def check_client_login
       unless client_signed_in?
         redirect_to new_client_session_path
       end
+    end
+
+    def set_report
+      @behavior_report = BehaviorReport.find(params[:id])
     end
 
     def behavior_report_params

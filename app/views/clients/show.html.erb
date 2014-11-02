@@ -50,15 +50,27 @@
       <thead>
         <tr>
           <th>Behavior</th>
-          <th width="125">Occurrences</th>
+          <th>Occurrences</th>
           <th>Reported On</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
-        <% @client.behavior_reports.each do | report | %>
+        <% @client.chronological_behavior_reports.each do | report | %>
           <tr>
             <td><%= report.behavior.description %></td>
             <td><%= report.occurrences %></td>
             <td><%= report.timestamp %></td>
+            <td>
+              <%= link_to edit_behavior_report_path report do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to report, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
+                <i class="fa fa-trash"></i>&emsp;Delete
+              <% end %> 
+            </td>
           </tr>
         <% end %>
     </table>

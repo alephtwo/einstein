@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :client_sessions, only: [:new, :create]
   resources :employees
   resources :clients
-  resources :behaviors, except: [:show, :new]
-  resources :behavior_reports
+  resources :behaviors, except: [:show, :new, :index]
+  resources :behavior_reports, except: [:show, :index]
 
 end

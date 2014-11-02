@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :employees
   resources :clients
   resources :behaviors, except: [:show, :new, :index]
-  resources :behavior_reports, except: [:show, :index]
+  resources :behavior_reports, except: [:show, :index, :edit, :update]
 
 end

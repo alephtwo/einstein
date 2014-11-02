@@ -11,3 +11,9 @@ $(document).ready(function() {
 		"info": false
     } );
 } );
+
+$(document).ready(function() {
+    $('#clients').dataTable( {
+		"paging": false 
+    } );
+} );

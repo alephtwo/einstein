@@ -10,9 +10,14 @@
       <%= f.label :password, "Password" %>
       <%= f.password_field :password, placeholder: "Password" %>
 
-      <%= f.label :remember, "Remember me?" %>
-      <%= f.check_box :remember %>
-      
+      <%= label_tag "Remember Me" %>
+      <div class="switch">
+        <%= f.check_box :remember %>
+        <%= f.label :remember, " " %>
+      </div>
+
+      <hr />
+
       <%= f.submit "Log In", class: "button expand" %>
     </div>
   </div>

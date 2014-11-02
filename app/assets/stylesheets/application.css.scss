@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require dataTables/jquery.dataTables.foundation
  */
+
+/* Override default foundation colors */
+$primary-color: #336699; /* Darker Blue */
+$secondary-color: #6441A5; /* Twitch Purple */
+$alert-color: #c33333; /* Brick Red */
+$success-color: #006400; /* Vibrant Green */
+$warning-color: #dd7500; /* Orange */
+$info-color: #e7e7e7; /* Lilac White */
 
 @import "foundation_and_overrides";

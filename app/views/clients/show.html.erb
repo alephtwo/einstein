@@ -46,16 +46,16 @@
 <div class="row text-center">
   <div class="small-12 columns">
     <h3>Behavior Reports</h3>
-    <table>
+    <table id="reports">
       <thead>
         <tr>
           <th>Behavior</th>
-          <th>Occurrences</th>
+          <th width="135">Occurrences</th>
           <th>Reported On</th>
           <th>Delete</th>
         </tr>
       </thead>
-        <% @client.chronological_behavior_reports.each do | report | %>
+        <% @client.behavior_reports.each do | report | %>
           <tr>
             <td><%= report.behavior.description %></td>
             <td><%= report.occurrences %></td>

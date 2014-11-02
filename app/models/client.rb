@@ -19,9 +19,9 @@ class Client < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def chronological_behavior_reports
-    (self.behavior_reports.sort_by &:created_at).reverse
-  end
+  # def chronological_behavior_reports
+  #   (self.behavior_reports.sort_by &:created_at).reverse
+  # end
 
   private
     def create_remember_token

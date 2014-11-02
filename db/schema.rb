@@ -37,13 +37,4 @@ ActiveRecord::Schema.define(version: 20141101040359) do
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
 
-  create_table "employees", force: true do |t|
-    t.string   "encrypted_first_name"
-    t.string   "encrypted_middle_name"
-    t.string   "encrypted_last_name"
-    t.string   "encrypted_username",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

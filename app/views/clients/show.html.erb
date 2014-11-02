@@ -37,6 +37,32 @@
     <a href="#" data-reveal-id="new-behavior" class="button expand">
       <i class="fa fa-plus"></i>&emsp;Add Behavior
     </a>
+
+    <hr />
+
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="small-12 columns">
+    <h3>Behavior Reports</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Behavior</th>
+          <th width="125">Occurrences</th>
+          <th>Reported On</th>
+        </tr>
+      </thead>
+        <% @client.behavior_reports.each do | report | %>
+          <tr>
+            <td><%= report.behavior.description %></td>
+            <td><%= report.occurrences %></td>
+            <td><%= report.created_at %></td>
+          </tr>
+        <% end %>
+    </table>
+
   </div>
 </div>
 

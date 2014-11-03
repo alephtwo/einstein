@@ -13,8 +13,11 @@
 
   <body>
     <div class="container">
-      <%= render 'layouts/navbar' %>
 
+      <% if user_signed_in? %>
+        <%= render 'layouts/navbar' %>
+      <% end %>
+      
       <div class="row">
         <div class="small-12 columns">
 

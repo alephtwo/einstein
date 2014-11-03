@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103020947) do
+ActiveRecord::Schema.define(version: 20141103044501) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141103020947) do
     t.datetime "updated_at"
     t.string   "password_digest",     null: false
     t.string   "remember_token"
+    t.integer  "user_id"
   end
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree

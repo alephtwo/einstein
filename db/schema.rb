@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103221935) do
+ActiveRecord::Schema.define(version: 20141103232831) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20141103221935) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin",               default: false
-    t.string   "username"
     t.string   "encrypted_first_name"
     t.string   "encrypted_middle_name"
     t.string   "encrypted_last_name"

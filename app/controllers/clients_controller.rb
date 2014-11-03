@@ -4,7 +4,11 @@ class ClientsController < ApplicationController
   before_filter :check_user
 
   def index
-    @clients = Client.all
+    if current_user.is_admin
+      @clients = Client.all
+    else 
+      @clients = current_user.clients
+    end
   end
 
   def show

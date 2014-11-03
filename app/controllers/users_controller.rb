@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   before_filter :check_user
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :check_admin
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_admin]
 
   def index
     @users = User.all
@@ -33,6 +34,16 @@ class UsersController < ApplicationController
   def destroy 
   end
 
+  def toggle_admin
+    @user.is_admin = !@user.is_admin
+    if @user.save
+      flash[:success] = "#{@user.email} is #{@user.is_admin ? "now" : "no longer"} an administrator."
+    else
+      flash[:alert] = "A problem occurred."
+    end
+    redirect_to users_path
+  end
+
   private
 
     def set_user
@@ -43,6 +54,13 @@ class UsersController < ApplicationController
       unless user_signed_in?
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
+      end
+    end
+
+    def check_admin
+      unless current_user.is_admin 
+        flash[:alert] = "You do not have access to that page." 
+        redirect_to clients_path
       end
     end
 

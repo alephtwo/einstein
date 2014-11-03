@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'behavior_reports#new'
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}
-  resources :users, except: [:show]
+  resources :users
+  match '/toggle_admin/:id', to: 'users#toggle_admin', via: 'get'
+
 
   match '/login', to: 'client_sessions#new', via: 'get' 
   match '/logout',  to: 'client_sessions#destroy', via: 'delete'

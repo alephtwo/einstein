@@ -1,7 +1,8 @@
 class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
-  before_action :set_report, only: [:edit, :update, :destroy]
+  before_filter :check_user, only: [:destroy]
+  before_action :set_report, only: [:destroy]
 
   def new
     @behavior_report = BehaviorReport.new
@@ -29,6 +30,13 @@ class BehaviorReportsController < ApplicationController
     def check_client_login
       unless client_signed_in?
         redirect_to login_path
+      end
+    end
+
+    def check_user
+      unless user_signed_in?
+        flash[:alert] = "You do not have access to that page."
+        redirect_to root_path
       end
     end
 

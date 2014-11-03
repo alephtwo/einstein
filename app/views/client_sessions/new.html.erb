@@ -1,24 +1,29 @@
+<% content_for :title, "Client Login" %>
+
 <%= form_for(:client_session, url: client_sessions_path) do |f| %>
   <div class="row text-center">
     <div class="small-12 medium-6 medium-centered columns">
+      <div class="panel">
 
-      <h1>Log In</h1>
+        <h1>Log In</h1>
+        <hr />
 
-      <%= f.label :id, "ID Number" %>
-      <%= f.text_field :id, placeholder: "Identification Number" %>
+        <%= f.label :id, "ID Number" %>
+        <%= f.text_field :id, placeholder: "Identification Number" %>
 
-      <%= f.label :password, "Password" %>
-      <%= f.password_field :password, placeholder: "Password" %>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password, placeholder: "Password" %>
 
-      <%= label_tag "Remember Me" %>
-      <div class="switch">
-        <%= f.check_box :remember %>
-        <%= f.label :remember, " " %>
+        <%= label_tag "Remember Me" %>
+        <div class="switch">
+          <%= f.check_box :remember %>
+          <%= f.label :remember, " " %>
+        </div>
+
+        <hr />
+
+        <%= f.submit "Log In", class: "button expand" %> 
       </div>
-
-      <hr />
-
-      <%= f.submit "Log In", class: "button expand" %>
     </div>
   </div>
 <% end %>

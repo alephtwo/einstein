@@ -1,3 +1,5 @@
+<% content_for :title, "View Client #{@client.id}" %>
+
 <div class="row text-center">
   <div class="small-12 columns">
     <h1><%= @client.last_name %></h1>
@@ -8,70 +10,78 @@
 
 <div class="row text-center">
   <div class="small-12 columns">
-    <h3>Assigned Behaviors</h3>
-    <table id="behaviors">
-      <thead>
-        <tr>
-          <th>Behavior</th>
-          <th>Times Reported</th>
-          <th>Occurrences</th>
-          <th width="125">Edit</th>
-          <th width="125">Delete</th>
-        </tr>
-      </thead>
-        <% @client.behaviors.each do | behavior | %>
+
+    <div class="panel">
+
+      <h3>Assigned Behaviors</h3>
+      <table id="behaviors">
+        <thead>
           <tr>
-            <td><%= behavior.description %></td>
-            <td><%= behavior.report_count %></td>
-            <td><%= behavior.occurrence_count %></td>
-            <td>
-              <%= link_to edit_behavior_path behavior do %>
-                <i class="fa fa-edit"></i>&emsp;Edit
-              <% end %>
-            </td>
-            <td>
-              <%= link_to behavior, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
-                <i class="fa fa-trash"></i>&emsp;Delete
-              <% end %>            
-            </td>
+            <th>Behavior</th>
+            <th>Times Reported</th>
+            <th>Occurrences</th>
+            <th width="125">Edit</th>
+            <th width="125">Delete</th>
           </tr>
-        <% end %>
-    </table>
+        </thead>
+          <% @client.behaviors.each do | behavior | %>
+            <tr>
+              <td><%= behavior.description %></td>
+              <td><%= behavior.report_count %></td>
+              <td><%= behavior.occurrence_count %></td>
+              <td>
+                <%= link_to edit_behavior_path behavior do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to behavior, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
+                  <i class="fa fa-trash"></i>&emsp;Delete
+                <% end %>            
+              </td>
+            </tr>
+          <% end %>
+      </table>
 
-    <a href="#" data-reveal-id="new-behavior" class="button">
-      <i class="fa fa-plus"></i>&emsp;Add Behavior
-    </a>
+      <a href="#" data-reveal-id="new-behavior" class="button">
+        <i class="fa fa-plus"></i>&emsp;Add Behavior
+      </a>
 
-    <hr />
+    </div>
 
   </div>
 </div>
 
 <div class="row text-center">
   <div class="small-12 columns">
-    <h3>Behavior Reports</h3>
-    <table id="reports">
-      <thead>
-        <tr>
-          <th>Behavior</th>
-          <th width="135">Occurrences</th>
-          <th>Reported On</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-        <% @client.behavior_reports.each do | report | %>
+
+    <div class="panel">
+
+      <h3>Behavior Reports</h3>
+      <table id="reports">
+        <thead>
           <tr>
-            <td><%= report.behavior.description %></td>
-            <td><%= report.occurrences %></td>
-            <td><%= report.timestamp %></td>
-            <td>
-              <%= link_to report, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
-                <i class="fa fa-trash"></i>&emsp;Delete
-              <% end %> 
-            </td>
+            <th>Behavior</th>
+            <th width="135">Occurrences</th>
+            <th>Reported On</th>
+            <th>Delete</th>
           </tr>
-        <% end %>
-    </table>
+        </thead>
+          <% @client.behavior_reports.each do | report | %>
+            <tr>
+              <td><%= report.behavior.description %></td>
+              <td><%= report.occurrences %></td>
+              <td><%= report.timestamp %></td>
+              <td>
+                <%= link_to report, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
+                  <i class="fa fa-trash"></i>&emsp;Delete
+                <% end %> 
+              </td>
+            </tr>
+          <% end %>
+      </table>
+
+    </div>
 
   </div>
 </div>

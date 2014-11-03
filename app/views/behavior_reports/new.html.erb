@@ -1,3 +1,5 @@
+<% content_for :title, "New Behavior Report" %>
+
 <div class="row text-center">
   <div class="small-12 columns">
     <h1>Submit Behavior Report</h1>
@@ -6,12 +8,12 @@
 
 <%= render 'form' %>
 
-
 <div class="row text-center">
   <div class="small-12 medium-8 medium-centered columns">
-    <hr />
-    <%= link_to logout_path, method: "delete", class: "button alert expand" do %>
-      <i class="fa fa-lock"></i>&emsp;Log Out
-    <% end %>
+    <div class="panel">
+      <%= link_to logout_path, method: "delete", class: "button alert expand" do %>
+        <i class="fa fa-lock"></i>&emsp;Log Out
+      <% end %>
+    </div>
   </div>
 </div>

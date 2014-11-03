@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'behavior_reports#new'
 
-  devise_for :users
+  devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}
   resources :users
 
   match '/login', to: 'client_sessions#new', via: 'get' 

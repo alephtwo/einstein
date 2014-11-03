@@ -6,7 +6,17 @@
   </div>
 </div>
 
-<%= render 'form' %>
+<% if current_client.behaviors.size > 0 %>
+  <%= render 'form' %>
+<% else %>
+  <div class="row text-center">
+    <div class="small-12 medium-8 medium-centered columns">
+      <div class="panel">
+        You do not have any assigned behaviors.
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <div class="row text-center">
   <div class="small-12 medium-8 medium-centered columns">

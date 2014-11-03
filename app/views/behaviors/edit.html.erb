@@ -6,4 +6,26 @@
   </div>
 </div>
 
-<%= render 'form' %>
+<%= form_for @behavior do | f | %>
+  <div class="row text-center">
+    <div class="small-12 medium-8 small-centered columns">
+      <div class="panel">
+        <% if @behavior.errors.any? %>
+          <div class="alert-box warning text-center">
+            <h5><%= pluralize(@behavior.errors.count, "error") %> prohibited this behavior from being saved:</h5>
+            <ul>
+              <% @behavior.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+
+        <%= f.submit class: "button expand" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -28,4 +28,5 @@ class ClientSessionsController < ApplicationController
         client_sign_out
       end
     end
+  
 end

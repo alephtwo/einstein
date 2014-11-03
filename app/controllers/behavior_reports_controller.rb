@@ -11,7 +11,7 @@ class BehaviorReportsController < ApplicationController
     @behavior_report = BehaviorReport.new(behavior_report_params)
     if @behavior_report.save
       flash[:success] = "Report submitted successfully."
-      redirect_to new_behavior_report_path
+      redirect_to submit_path
     else
       flash.now[:alert] = "Report could not be submitted."
       render 'new'
@@ -28,7 +28,7 @@ class BehaviorReportsController < ApplicationController
 
     def check_client_login
       unless client_signed_in?
-        redirect_to new_client_session_path
+        redirect_to login_path
       end
     end
 

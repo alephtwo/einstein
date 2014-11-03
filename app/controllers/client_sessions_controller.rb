@@ -1,6 +1,7 @@
 class ClientSessionsController < ApplicationController
 
   before_action :check_sign_out, only: [:new]
+  before_filter :check_user
 
   def new
   end
@@ -30,9 +31,9 @@ class ClientSessionsController < ApplicationController
     end
 
     def check_user
-      unless user_signed_in?
-        flash[:alert] = "You do not have access to that page."
-        redirect_to root_path
+      if user_signed_in?
+        flash[:alert] = "You have been signed out."
+        sign_out current_user
       end
     end
   

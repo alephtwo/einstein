@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'behavior_reports#new'
 
+  devise_for :users
+  resources :users
+
   match '/login', to: 'client_sessions#new', via: 'get' 
   match '/logout',  to: 'client_sessions#destroy', via: 'delete'
   resources :client_sessions, only: [:new, :create, :destroy]

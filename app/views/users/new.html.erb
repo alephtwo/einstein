@@ -1,0 +1,35 @@
+<div class="row text-center">
+  <div class="small-12 medium-8 medium-centered columns">
+
+    <h1>New User</h1>
+
+    <div class="panel">
+      <%= form_for @user do | f | %>
+        <%= f.label :username, "Username" %>
+        <%= f.text_field :username %>
+
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :first_name, "First Name" %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :middle_name, "Middle Name" %>
+        <%= f.text_field :middle_name %>
+
+        <%= f.label :last_name, "Last Name" %>
+        <%= f.text_field :last_name %>
+
+        <%= f.submit class: "button expand" %>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

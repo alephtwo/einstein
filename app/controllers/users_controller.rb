@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "User created successfully."
+      redirect_to users_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -37,6 +44,10 @@ class UsersController < ApplicationController
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
       end
+    end
+
+    def user_params
+      params.require(:user).permit(:username, :password, :password_confirmation, :email, :first_name, :middle_name, :last_name)
     end
 
 end

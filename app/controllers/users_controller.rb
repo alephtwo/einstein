@@ -29,9 +29,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      flash[:success] = "Successfully updated #{@user.email}."
+      redirect_to users_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy 
+    @user.destroy
+    redirect_to users_path
   end
 
   def toggle_admin

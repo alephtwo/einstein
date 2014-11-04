@@ -23,18 +23,20 @@
         </ul>
       </li>
 
-      <li class="has-dropdown">
-        <%= link_to users_path do %>
-          <i class="fa fa-group"></i>&emsp;Users
-        <% end %>
-        <ul class="dropdown">
-          <li>
-            <%= link_to new_user_path do %>
-              <i class="fa fa-plus"></i>&emsp;New User
-            <% end %>
-          </li>
-        </ul>
-      </li>
+      <% if current_user.is_admin %>
+        <li class="has-dropdown">
+          <%= link_to users_path do %>
+            <i class="fa fa-group"></i>&emsp;Users
+          <% end %>
+          <ul class="dropdown">
+            <li>
+              <%= link_to new_user_path do %>
+                <i class="fa fa-plus"></i>&emsp;New User
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
 
       <li>
         <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>

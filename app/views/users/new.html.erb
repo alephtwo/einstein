@@ -6,9 +6,20 @@
     <div class="panel">
       <%= form_for @user do | f | %>
 
+        <% if @user.errors.any? %>
+          <div class="alert-box warning text-center">
+            <h5><%= pluralize(@user.errors.count, "error") %> prohibited this user from being submitted:</h5>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <%= f.label :email %>
         <%= f.text_field :email %>
-      
+
         <%= f.label :password, "Password" %>
         <%= f.password_field :password %>
 

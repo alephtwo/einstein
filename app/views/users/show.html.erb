@@ -1,28 +1,24 @@
-<% content_for :title, "All Clients" %>
-
 <div class="row text-center">
   <div class="small-12 columns">
-    <h1><%= current_user.is_admin ? "All" : "My" %> Clients</h1>
+    <h1><%= @user.email %></h1>
   </div>
 </div>
 
 <div class="row text-center">
   <div class="small-12 columns">
+    <h1>Clients</h1>
     <div class="panel">
       <table id="clients">
         <thead>
           <tr>
             <th width="125">Client ID</th>
             <th>Last Name</th>
-            <% if current_user.is_admin %>
-              <th>Managed By</th>
-            <% end %>
             <th width="125">Edit</th>
             <th width="125">Delete</th>
           </tr>
         </thead>
         <tbody>
-          <% @clients.each do | client | %>
+          <% @user.clients.each do | client | %>
             <tr>
               <td><%= client.id %></td>
               <td>
@@ -30,11 +26,6 @@
                   <%= client.last_name %>
                 <% end %>
               </td>
-              <% if current_user.is_admin %>
-                <td>
-                  <%= client.user.email %>
-                </td>
-              <% end %>
               <td>
                 <%= link_to edit_client_path client do %>
                   <i class="fa fa-edit"></i>&emsp;Edit

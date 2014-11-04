@@ -17,17 +17,10 @@
       </li>
 
       <% if current_user.is_admin %>
-        <li class="has-dropdown">
+        <li>
           <%= link_to users_path do %>
             <i class="fa fa-group"></i>&emsp;Users
           <% end %>
-          <ul class="dropdown">
-            <li>
-              <%= link_to new_user_path do %>
-                <i class="fa fa-plus"></i>&emsp;New User
-              <% end %>
-            </li>
-          </ul>
         </li>
       <% end %>
 

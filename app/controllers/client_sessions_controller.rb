@@ -13,8 +13,8 @@ class ClientSessionsController < ApplicationController
       client_sign_in client, params[:client_session][:remember] == '1'
       redirect_to submit_path
     else
-      flash.now[:alert] = "Invalid id or password. Please try again."
-      render "new"
+      flash[:alert] = "Invalid id or password. Please try again."
+      redirect_to login_path
     end
   end
 

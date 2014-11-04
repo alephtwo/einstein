@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
 
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_filter :check_user
+  before_filter :check_access, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user.is_admin
@@ -56,6 +57,13 @@ class ClientsController < ApplicationController
       unless user_signed_in?
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
+      end
+    end
+
+    def check_access
+      unless (current_user.clients.include? @client) || (current_user.is_admin)
+        flash[:alert] = "You do not have access to that page."
+        redirect_to clients_path
       end
     end
 

@@ -16,6 +16,8 @@
  *= require dataTables/jquery.dataTables.foundation
  */
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
 /* Override default foundation colors */
 $primary-color: #336699; /* Darker Blue */
 $secondary-color: #6441A5; /* Twitch Purple */
@@ -23,5 +25,13 @@ $alert-color: #c33333; /* Brick Red */
 $success-color: #006400; /* Vibrant Green */
 $warning-color: #dd7500; /* Orange */
 $info-color: #e7e7e7; /* Lilac White */
+
+// Override fonts
+$body-font-family: "Roboto", Helvetica, Arial, sans-serif;
+$header-font-weight: bold;
+$panel-bg: #EFEFEF;
+// Override bg
+$body-bg: #FEFEFE;
+
 
 @import "foundation_and_overrides";

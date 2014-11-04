@@ -34,6 +34,15 @@
       </div>
     </div>
 
+    <% if user_signed_in? %>
+      <div class="row text-center">
+        <div class="small-12 columns">
+          <hr />
+          Signed in as <%= current_user.email %>
+        </div>
+      </div> 
+    <% end %>
+
     <% if Rails.env.development? %>
       <div class="row">
         <div class="small-12 columns">

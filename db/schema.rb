@@ -11,32 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104212649) do
+ActiveRecord::Schema.define(version: 20141103232831) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
-    t.integer  "occurrences",                 null: false
+    t.integer  "occurrences", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_deleted",  default: false
   end
 
   create_table "behaviors", force: true do |t|
     t.integer  "client_id"
-    t.string   "encrypted_description",                 null: false
+    t.string   "encrypted_description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_deleted",            default: false
   end
 
   create_table "clients", force: true do |t|
-    t.string   "encrypted_last_name",                 null: false
+    t.string   "encrypted_last_name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest",                     null: false
+    t.string   "password_digest",     null: false
     t.string   "remember_token"
     t.integer  "user_id"
-    t.boolean  "is_deleted",          default: false
   end
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree

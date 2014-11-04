@@ -14,7 +14,4 @@ class Behavior < ActiveRecord::Base
   def occurrence_count
     self.behavior_reports.collect { | x | x.occurrences }.sum
   end
-
-  scope :active, -> { where(:is_deleted => false) }
-  
 end

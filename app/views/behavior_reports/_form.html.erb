@@ -17,7 +17,7 @@
         <% end %>
 
         <%= f.label :behavior_id, "Behavior" %>
-        <%= f.collection_select :behavior_id, current_client.behaviors.active, :id, :description %>
+        <%= f.collection_select :behavior_id, current_client.behaviors, :id, :description %>
 
         <%= f.label :occurrences, "Number of Occurrences" %>
         <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1 %>

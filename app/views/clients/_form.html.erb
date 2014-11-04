@@ -30,6 +30,13 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :user_id, "Assigned To" %>
+            <%= f.collection_select :user_id, User.all, :id, :email %>
+          </div>
+        </div>
+
         <%= f.submit class: "button expand" %>
       
       </div>

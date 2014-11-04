@@ -32,7 +32,7 @@
               </td>
               <% if current_user.is_admin %>
                 <td>
-                  <%= client.user.email %>
+                  <%= link_to client.user.email, client.user %>
                 </td>
               <% end %>
               <td>
@@ -49,6 +49,10 @@
           <% end %>
         </tbody>
       </table>
+
+      <%= link_to new_client_path, class: "button" do %>
+        <i class="fa fa-plus"></i>&emsp;New Client
+      <% end %>
 
     </div>
 

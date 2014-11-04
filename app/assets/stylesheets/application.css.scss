@@ -29,9 +29,11 @@ $info-color: #e7e7e7; /* Lilac White */
 // Override fonts
 $body-font-family: "Roboto", Helvetica, Arial, sans-serif;
 $header-font-weight: bold;
-$panel-bg: #EFEFEF;
+$alert-font-size: 1.25rem;
+$alert-font-weight: bold;
+
 // Override bg
 $body-bg: #FEFEFE;
-
+$panel-bg: #EFEFEF;
 
 @import "foundation_and_overrides";

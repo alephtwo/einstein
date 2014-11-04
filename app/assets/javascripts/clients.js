@@ -14,6 +14,5 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#clients').dataTable( {
-		"paging": false 
     } );
 } );

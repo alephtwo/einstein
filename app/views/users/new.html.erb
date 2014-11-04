@@ -17,8 +17,12 @@
           </div>
         <% end %>
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+        </div>
 
         <div class="row">
           <div class="small-12 medium-6 columns">
@@ -32,16 +36,32 @@
           </div>
         </div>
 
-        <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :first_name, "First Name" %>
+            <%= f.text_field :first_name %>
+          </div>
+        </div>
 
-        <%= f.label :middle_name, "Middle Name (optional)" %>
-        <%= f.text_field :middle_name %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :middle_name, "Middle Name (optional)" %>
+            <%= f.text_field :middle_name %>
+          </div>
+        </div>
 
-        <%= f.label :last_name, "Last Name" %>
-        <%= f.text_field :last_name %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :last_name, "Last Name" %>
+            <%= f.text_field :last_name %>
+          </div>
+        </div>
 
-        <%= f.submit class: "button expand" %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.submit class: "button expand" %>
+          </div>
+        </div>
 
       <% end %>
     </div>

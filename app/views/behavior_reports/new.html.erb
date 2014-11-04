@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<% if current_client.behaviors.size > 0 %>
+<% if current_client.behaviors.active.size > 0 %>
   <%= render 'form' %>
 <% else %>
   <div class="row text-center">

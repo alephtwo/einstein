@@ -6,4 +6,6 @@ class BehaviorReport < ActiveRecord::Base
     self.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long)
   end
 
+  scope :active, -> { where(:is_deleted => false) }
+
 end

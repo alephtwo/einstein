@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :users
   match '/toggle_admin/:id', to: 'users#toggle_admin', via: 'get'
 
-
   match '/login', to: 'client_sessions#new', via: 'get' 
   match '/logout',  to: 'client_sessions#destroy', via: 'delete'
   resources :client_sessions, only: [:new, :create, :destroy]
@@ -19,8 +18,11 @@ Rails.application.routes.draw do
   resources :employees
   resources :clients
   resources :behaviors, only: [:create, :edit, :update, :destroy]
+  match '/deactivate_behavior/:id', to: 'behaviors#remove', via: 'get'
 
   match '/submit', to: 'behavior_reports#new', via: 'get'
   resources :behavior_reports, only: [:new, :create, :destroy]
+  match '/deactivate_report/:id', to: 'behavior_reports#remove', via: 'get'
+
 
 end

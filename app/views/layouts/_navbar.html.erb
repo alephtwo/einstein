@@ -39,6 +39,12 @@
       <% end %>
 
       <li>
+        <%= link_to edit_user_path current_user do %>
+          <i class="fa fa-gear"></i>&emsp;Edit Profile
+        <% end %>
+      </li>
+
+      <li>
         <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
           <i class="fa fa-lock"></i>&emsp;Log Out
         <% end %>

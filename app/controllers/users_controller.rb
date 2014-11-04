@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :check_user
-  before_filter :check_admin
   before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_admin]
+  before_filter :check_user
+  before_filter :check_admin, except: [:edit, :update]
+  before_filter :verify_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Successfully updated #{@user.email}."
-      redirect_to users_path
+      redirect_to clients_path
     else
       render 'edit'
     end
@@ -62,6 +63,13 @@ class UsersController < ApplicationController
       unless user_signed_in?
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
+      end
+    end
+
+    def verify_user
+      unless current_user.id == @user.id || current_user.is_admin
+        flash[:alert] = "You do not have access to that page."
+        redirect_to clients_path
       end
     end
 

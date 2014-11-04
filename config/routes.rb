@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
   root 'behavior_reports#new'
 
-  devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}
-  resources :users, except: [:edit, :update]
+  devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}, :skip => [:registrations] 
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+  
+  resources :users
   match '/toggle_admin/:id', to: 'users#toggle_admin', via: 'get'
 
 

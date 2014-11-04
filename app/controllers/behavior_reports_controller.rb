@@ -1,8 +1,8 @@
 class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
-  before_filter :check_user, only: [:destroy, :remove]
-  before_action :set_report, only: [:destroy, :remove]
+  before_filter :check_user, only: [:destroy]
+  before_action :set_report, only: [:destroy]
 
   def new
     @behavior_report = BehaviorReport.new
@@ -23,12 +23,6 @@ class BehaviorReportsController < ApplicationController
     client = @behavior_report.behavior.client
     @behavior_report.destroy
     redirect_to client
-  end
-
-  def remove 
-    @behavior_report.is_deleted = true; 
-    @behavior_report.save
-    redirect_to @behavior_report.behavior.client
   end
 
   private

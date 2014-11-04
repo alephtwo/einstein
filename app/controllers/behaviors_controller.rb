@@ -1,6 +1,6 @@
 class BehaviorsController < ApplicationController
 
-  before_action :set_behavior, only: [:edit, :update, :destroy, :remove]
+  before_action :set_behavior, only: [:edit, :update, :destroy]
   before_filter :check_user
 
   def create
@@ -26,12 +26,6 @@ class BehaviorsController < ApplicationController
 
   def destroy
     @behavior.destroy
-    redirect_to @behavior.client
-  end
-
-  def remove
-    @behavior.is_deleted = true
-    @behavior.save
     redirect_to @behavior.client
   end
 

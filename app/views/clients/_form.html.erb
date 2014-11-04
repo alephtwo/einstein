@@ -30,14 +30,12 @@
           </div>
         </div>
 
-        <% if user_signed_in? && current_user.is_admin %>
-          <div class="row">
-            <div class="small-12 columns">
-              <%= f.label :user_id, "Assigned To" %>
-              <%= f.collection_select :user_id, User.all, :id, :email %>
-            </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.label :user_id, "Assigned To" %>
+            <%= f.collection_select :user_id, User.all, :id, :email %>
           </div>
-        <% end %>
+        </div>
 
         <%= f.submit class: "button expand" %>
       

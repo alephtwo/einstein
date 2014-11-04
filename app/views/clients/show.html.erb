@@ -35,7 +35,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to controller: "behaviors", :action => "remove", :id => behavior, data: { confirm: "Do you wish to proceed?" } do %>
+                <%= link_to behavior, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
                   <i class="fa fa-trash"></i>&emsp;Delete
                 <% end %>            
               </td>
@@ -73,7 +73,7 @@
               <td><%= report.occurrences %></td>
               <td><%= report.timestamp %></td>
               <td>
-                <%= link_to controller: "behavior_reports", :action => "remove", :id => report, data: { confirm: "Do you wish to proceed?" } do %>
+                <%= link_to report, method: :delete, data: { confirm: "Do you wish to proceed?" } do %>
                   <i class="fa fa-trash"></i>&emsp;Delete
                 <% end %> 
               </td>

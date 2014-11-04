@@ -2,7 +2,7 @@
   <div class="small-12 medium-8 medium-centered columns">
 
     <h1>Edit User</h1>
-
+    <hr />
     <div class="panel">
       <%= form_for @user do | f | %>
 
@@ -17,8 +17,10 @@
           </div>
         <% end %>
 
-        <%= link_to edit_user_registration_path, class: "button" do %>
-          <i class="fa fa-key"></i>&emsp;Change Password
+        <% if user_signed_in? && @user == current_user %>
+          <%= link_to edit_user_registration_path, class: "button" do %>
+            <i class="fa fa-key"></i>&emsp;Change Password
+          <% end %>
         <% end %>
 
         <%= f.label :email %>

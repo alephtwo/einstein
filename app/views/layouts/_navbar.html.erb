@@ -22,6 +22,18 @@
             <i class="fa fa-group"></i>&emsp;Users
           <% end %>
         </li>
+
+        <li class="has-dropdown">
+          <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
+          <ul class="dropdown">
+            <li>
+              <%= link_to behavior_reports_path(format: "xls") do %>
+                <i class="fa fa-file-excel-o"></i>&emsp;Behavior Reports
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
       <% end %>
 
       <li>

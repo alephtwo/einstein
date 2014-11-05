@@ -67,6 +67,7 @@
             <th>Behavior</th>
             <th width="135">Occurrences</th>
             <th>Reported On</th>
+            <th width="100">Edit</th>
           </tr>
         </thead>
           <% @client.behavior_reports.each do | report | %>
@@ -74,6 +75,11 @@
               <td><%= report.behavior.description %></td>
               <td><%= report.occurrences %></td>
               <td><%= report.timestamp %></td>
+              <td>
+                <%= link_to edit_behavior_report_path report do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
             </tr>
           <% end %>
       </table>

@@ -9,8 +9,8 @@
       <% if params[:export] == "behaviors" %>
 
         <Row>
-          <Cell><Data ss:Type="String">ID</Data></Cell>
-          <Cell><Data ss:Type="String">Behavior</Data></Cell>
+          <Cell><Data ss:Type="String">Behavior ID</Data></Cell>
+          <Cell><Data ss:Type="String">Description</Data></Cell>
           <Cell><Data ss:Type="String">Times Reported</Data></Cell>
           <Cell><Data ss:Type="String">Occurrences</Data></Cell>
         </Row>
@@ -33,9 +33,9 @@
       
         <% @client.behavior_reports.each do | report | %>
           <Row>
-            <Cell><Data ss:Type="Number"><%= report.behavior.description %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.behavior.description %></Data></Cell>
             <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
-            <Cell><Data ss:Type="Number"><%= report.timestamp %></Data></Cell>
+            <Cell><Data ss:Type="String`"><%= report.timestamp %></Data></Cell>
           </Row>
         <% end %>
 

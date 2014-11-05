@@ -1,8 +1,8 @@
 class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
-  before_filter :check_user, only: [:destroy]
-  before_action :set_report, only: [:destroy]
+  before_filter :check_user, only: [:destroy, :edit, :update]
+  before_action :set_report, only: [:destroy, :edit, :update]
 
   def index
     @behavior_reports = BehaviorReport.all
@@ -23,6 +23,17 @@ class BehaviorReportsController < ApplicationController
     else
       flash.now[:alert] = "Report could not be submitted."
       render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @behavior_report.update(behavior_report_params)
+      redirect_to @behavior_report.behavior.client, notice: "Behavior report was successfully updated."
+    else
+      render :edit
     end
   end
 

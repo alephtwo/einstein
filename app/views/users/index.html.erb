@@ -30,9 +30,19 @@
             <td><%= user.clients.size %></td>
             <td>
               <% if user == current_user %>
-                Yes
+                <em>Yes</em>
               <% else %>
-                <%= link_to "#{user.is_admin ? 'Yes' : 'No'}", controller: "users", :action => "toggle_admin", :id => user %>
+                <% if user.is_admin %>
+                  <strong>Yes</strong>&emsp;
+                  <%= link_to controller: "users", :action => "toggle_admin", :id => user do %>
+                    [<i class="fa fa-minus-square"></i> Revoke]
+                  <% end %>
+                <% else %>
+                  <strong>No</strong>&emsp;
+                  <%= link_to controller: "users", :action => "toggle_admin", :id => user do %>
+                    [<i class="fa fa-plus-square"></i> Grant]
+                  <% end %>
+                <% end %>
               <% end %>
             </td>
           </tr>

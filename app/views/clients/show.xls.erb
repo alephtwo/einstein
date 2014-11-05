@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <% if params[:export] == "behaviors" %>
+
+        <Row>
+          <Cell><Data ss:Type="String">ID</Data></Cell>
+          <Cell><Data ss:Type="String">Behavior</Data></Cell>
+          <Cell><Data ss:Type="String">Times Reported</Data></Cell>
+          <Cell><Data ss:Type="String">Occurrences</Data></Cell>
+        </Row>
+        <% @client.behaviors.each do | behavior | %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= behavior.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= behavior.description %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= behavior.report_count %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= behavior.occurrence_count %></Data></Cell>
+          </Row>
+        <% end %>
+
+      <% elsif params[:export] == "reports" %>
+
+        <Row>
+          <Cell><Data ss:Type="String">Behavior</Data></Cell>
+          <Cell><Data ss:Type="String">Occurrences</Data></Cell>
+          <Cell><Data ss:Type="String">Reported On</Data></Cell>
+        </Row>
+      
+        <% @client.behavior_reports.each do | report | %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= report.behavior.description %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= report.timestamp %></Data></Cell>
+          </Row>
+        <% end %>
+
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

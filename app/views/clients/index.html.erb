@@ -19,7 +19,6 @@
               <th>Managed By</th>
             <% end %>
             <th width="125">Edit</th>
-            <th width="125">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -41,11 +40,6 @@
                   <i class="fa fa-edit"></i>&emsp;Edit
                 <% end %>
               </td>
-              <td>
-                <%= link_to client, method: :delete, data: { confirm: "Continuing will delete client ##{client.id}. Do you wish to proceed?" } do %>
-                  <i class="fa fa-trash"></i>&emsp;Delete
-                <% end %>
-              </td>            
             </tr>
           <% end %>
         </tbody>
@@ -53,10 +47,6 @@
 
       <%= link_to new_client_path, class: "button" do %>
         <i class="fa fa-plus"></i>&emsp;New Client
-      <% end %>
-
-      <%= link_to behavior_reports_path(format: "xls"), class: "button success" do %>
-        <i class="fa fa-file-excel-o"></i>&emsp;Export
       <% end %>
 
     </div>

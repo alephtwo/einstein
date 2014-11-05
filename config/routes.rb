@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :employees
   resources :clients
-  resources :behaviors, only: [:create, :edit, :update, :destroy]
+  resources :behaviors, only: [:create, :edit, :update, :destroy, :index]
 
   match '/submit', to: 'behavior_reports#new', via: 'get'
   resources :behavior_reports, only: [:new, :create, :destroy, :index]

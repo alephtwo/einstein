@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+        <Row>
+          <Cell><Data ss:Type="String">Client Name</Data></Cell>
+          <Cell><Data ss:Type="String">Client ID</Data></Cell>
+          <Cell><Data ss:Type="String">Behavior</Data></Cell>
+          <Cell><Data ss:Type="String">Occurrences</Data></Cell>
+          <Cell><Data ss:Type="String">Reported On</Data></Cell>
+        </Row>
+      
+        <% @behavior_reports.each do | report | %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= report.behavior.client.last_name %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= report.behavior.client.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.behavior.description %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.timestamp %></Data></Cell>
+          </Row>
+        <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

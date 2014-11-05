@@ -2,7 +2,7 @@
 
 <div class="row text-center">
   <div class="small-12 columns">
-    <h1><%= current_user.is_admin ? "All" : "My" %> Clients</h1>
+    <h1>Clients</h1>
     <hr />
   </div>
 </div>
@@ -15,9 +15,7 @@
           <tr>
             <th width="125">Client ID</th>
             <th>Last Name</th>
-            <% if current_user.is_admin %>
-              <th>Managed By</th>
-            <% end %>
+            <th>Managed By</th>
             <th width="125">Edit</th>
           </tr>
         </thead>
@@ -30,11 +28,9 @@
                   <%= client.last_name %>
                 <% end %>
               </td>
-              <% if current_user.is_admin %>
-                <td>
-                  <%= link_to client.user.email, client.user %>
-                </td>
-              <% end %>
+              <td>
+                <%= link_to client.user.email, client.user %>
+              </td>
               <td>
                 <%= link_to edit_client_path client do %>
                   <i class="fa fa-edit"></i>&emsp;Edit

@@ -16,35 +16,32 @@
         <% end %>
       </li>
 
-      <% if current_user.is_admin %>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fa fa-group"></i>&emsp;Users
-          <% end %>
-        </li>
+      <li>
+        <%= link_to users_path do %>
+          <i class="fa fa-group"></i>&emsp;Users
+        <% end %>
+      </li>
 
-        <li class="has-dropdown">
-          <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
-          <ul class="dropdown">
-            <li>
-              <%= link_to behavior_reports_path(format: "xls") do %>
-                <i class="fa fa-file-excel-o"></i>&emsp;Behavior Reports
-              <% end %>
-            </li>
-            <li>
-              <%= link_to behaviors_path(format: "xls") do %>
-                <i class="fa fa-file-excel-o"></i>&emsp;Behaviors
-              <% end %>
-            </li>            
-            <li>
-              <%= link_to clients_path(format: "xls") do %>
-                <i class="fa fa-file-excel-o"></i>&emsp;Clients
-              <% end %>
-            </li>
-          </ul>
-        </li>
-
-      <% end %>
+      <li class="has-dropdown">
+        <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
+        <ul class="dropdown">
+          <li>
+            <%= link_to behavior_reports_path(format: "xls") do %>
+              <i class="fa fa-file-excel-o"></i>&emsp;Behavior Reports
+            <% end %>
+          </li>
+          <li>
+            <%= link_to behaviors_path(format: "xls") do %>
+              <i class="fa fa-file-excel-o"></i>&emsp;Behaviors
+            <% end %>
+          </li>            
+          <li>
+            <%= link_to clients_path(format: "xls") do %>
+              <i class="fa fa-file-excel-o"></i>&emsp;Clients
+            <% end %>
+          </li>
+        </ul>
+      </li>
 
       <li>
         <%= link_to edit_user_path current_user do %>

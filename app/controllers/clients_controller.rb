@@ -2,19 +2,11 @@ class ClientsController < ApplicationController
 
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_filter :check_user
-  before_filter :check_admin, only: [:index]
-  before_filter :check_access, only: [:show, :edit, :update, :destroy]
 
   def index
     @clients = Client.all
     respond_to do | format |
-      format.html do 
-        if current_user.is_admin
-          @clients = Client.all
-        else 
-          @clients = current_user.clients
-        end
-      end
+      format.html { @clients = Client.all }
       format.xls { headers["Content-Disposition"] = "attachment; filename=\"clients_#{Time.now.to_i}.xls\""  }
     end
   end
@@ -68,20 +60,6 @@ class ClientsController < ApplicationController
       unless user_signed_in?
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
-      end
-    end
-
-    def check_admin
-      unless current_user.is_admin
-        flash[:alert] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
-
-    def check_access
-      unless (current_user.clients.include? @client) || (current_user.is_admin)
-        flash[:alert] = "You do not have access to that page."
-        redirect_to clients_path
       end
     end
 

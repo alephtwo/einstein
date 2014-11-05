@@ -2,7 +2,6 @@ class BehaviorsController < ApplicationController
 
   before_action :set_behavior, only: [:edit, :update, :destroy]
   before_filter :check_user
-  before_filter :check_admin, only: [:index]
 
   def index
     @behaviors = Behavior.all
@@ -45,13 +44,6 @@ class BehaviorsController < ApplicationController
 
     def check_user
       unless user_signed_in?
-        flash[:alert] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
-
-    def check_admin
-      unless current_user.is_admin
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
       end

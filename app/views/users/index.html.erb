@@ -14,7 +14,6 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th width="100">Clients</th>
-            <th width="150">Administrator?</th>
           </tr>
         </thead>
         <tbody>
@@ -28,23 +27,6 @@
             <td><%= user.first_name %></td>
             <td><%= user.last_name %></td>
             <td><%= user.clients.size %></td>
-            <td>
-              <% if user == current_user %>
-                <em>Yes</em>
-              <% else %>
-                <% if user.is_admin %>
-                  <strong>Yes</strong>&emsp;
-                  <%= link_to controller: "users", :action => "toggle_admin", :id => user do %>
-                    [<i class="fa fa-minus-square"></i> Revoke]
-                  <% end %>
-                <% else %>
-                  <strong>No</strong>&emsp;
-                  <%= link_to controller: "users", :action => "toggle_admin", :id => user do %>
-                    [<i class="fa fa-plus-square"></i> Grant]
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
           </tr>
         <% end %>
         </tbody>

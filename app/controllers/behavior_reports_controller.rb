@@ -2,7 +2,6 @@ class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
   before_filter :check_user, only: [:destroy]
-  before_filter :check_admin, only: [:index]
   before_action :set_report, only: [:destroy]
 
   def index
@@ -43,13 +42,6 @@ class BehaviorReportsController < ApplicationController
 
     def check_user
       unless user_signed_in?
-        flash[:alert] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
-
-    def check_admin
-      unless current_user.is_admin
         flash[:alert] = "You do not have access to that page."
         redirect_to root_path
       end

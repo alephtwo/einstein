@@ -7,20 +7,18 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
         <Row>
-          <Cell><Data ss:Type="String">Client Name</Data></Cell>
           <Cell><Data ss:Type="String">Client ID</Data></Cell>
-          <Cell><Data ss:Type="String">Behavior</Data></Cell>
-          <Cell><Data ss:Type="String">Occurrences</Data></Cell>
-          <Cell><Data ss:Type="String">Reported On</Data></Cell>
+          <Cell><Data ss:Type="String">Client Name</Data></Cell>
+          <Cell><Data ss:Type="String">Behaviors</Data></Cell>
+          <Cell><Data ss:Type="String">Created At</Data></Cell>
         </Row>
       
-        <% @behavior_reports.each do | report | %>
+        <% @clients.each do | client | %>
           <Row>
-            <Cell><Data ss:Type="String"><%= report.behavior.client.last_name %></Data></Cell>
-            <Cell><Data ss:Type="Number"><%= report.behavior.client.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= report.behavior.description %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= report.timestamp %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= client.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= client.last_name %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= client.behaviors.size %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= client.created_at %></Data></Cell>
           </Row>
         <% end %>
     </Table>

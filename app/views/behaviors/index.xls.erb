@@ -13,6 +13,7 @@
           <Cell><Data ss:Type="String">Client Last Name</Data></Cell>
           <Cell><Data ss:Type="String">Times Reported</Data></Cell>
           <Cell><Data ss:Type="String">Occurrences</Data></Cell>
+          <Cell><Data ss:Type="String">Created At</Data></Cell>
         </Row>
       
         <% @behaviors.each do | behavior | %>
@@ -23,6 +24,7 @@
             <Cell><Data ss:Type="String"><%= behavior.client.last_name %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= behavior.report_count %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= behavior.occurrence_count %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= behavior.created_at %></Data></Cell>
           </Row>
         <% end %>
     </Table>

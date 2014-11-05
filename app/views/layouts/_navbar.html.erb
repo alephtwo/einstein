@@ -28,12 +28,17 @@
           <ul class="dropdown">
             <li>
               <%= link_to behavior_reports_path(format: "xls") do %>
-                <i class="fa fa-file-excel-o"></i>&emsp;All Behavior Reports
+                <i class="fa fa-file-excel-o"></i>&emsp;Behavior Reports
               <% end %>
             </li>
             <li>
               <%= link_to behaviors_path(format: "xls") do %>
-                <i class="fa fa-file-excel-o"></i>&emsp;All Behaviors
+                <i class="fa fa-file-excel-o"></i>&emsp;Behaviors
+              <% end %>
+            </li>            
+            <li>
+              <%= link_to clients_path(format: "xls") do %>
+                <i class="fa fa-file-excel-o"></i>&emsp;Clients
               <% end %>
             </li>
           </ul>

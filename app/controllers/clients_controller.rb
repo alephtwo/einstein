@@ -14,7 +14,7 @@ class ClientsController < ApplicationController
   def show
     respond_to do | format | 
       format.html
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"client_#{@client.id}_#{params[:export] == "behaviors" ? 'behaviors' : 'reports'}_#{Time.now.to_i}.xls\""  }
+      format.xlsx { render xlsx: "show", filename: "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx" }
     end
   end
 

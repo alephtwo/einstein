@@ -1,0 +1,19 @@
+wb = xlsx_package.workbook
+
+if params[:export] == "behaviors"
+  wb.add_worksheet(name: "Client Behaviors") do |sheet|
+    sheet.add_row ["Behavior ID", "Description", "Times Reported", "Occurrences", "Removed?", "Updated On"]
+    @client.behaviors.each do | behavior |
+      removed = behavior.removed ? "Yes" : "No"
+      sheet.add_row [behavior.id, behavior.description, behavior.report_count, behavior.occurrence_count, removed, behavior.updated_timestamp]
+    end
+  end
+elsif params[:export] == "reports"
+  wb.add_worksheet(name: "Client Behavior Reports") do |sheet|
+    sheet.add_row ["Behavior", "Occurrences", "Reported On", "Removed?", "Updated On"]
+    @client.behavior_reports.each do | report | 
+      removed = report.removed ? "Yes" : "No"
+      sheet.add_row [report.behavior.description, report.occurrences, report.timestamp, removed, report.updated_timestamp]
+    end
+  end
+end

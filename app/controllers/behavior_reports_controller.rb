@@ -7,7 +7,7 @@ class BehaviorReportsController < ApplicationController
   def index
     @behavior_reports = BehaviorReport.all
     respond_to do |format|
-      format.xlsx { render xlsx: "index", filename: "behavior_reports_#{Time.now.to_i}.xls"  }
+      format.xlsx { render xlsx: "index", filename: "behavior_reports_#{Time.now.to_i}.xlsx"  }
     end
   end
 

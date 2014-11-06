@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Behavior Reports") do |sheet|
+    sheet.add_row ["Client ID", "Client Name", "Current Behaviors", "All Behaviors", "Created On", "Removed?", "Updated On"]
+    @clients.each do |client|
+        removed = client.removed ? "Yes" : "No"
+        sheet.add_row [client.id, client.last_name, client.behaviors.active.size, client.behaviors.size, client.timestamp, removed, client.updated_timestamp]
+    end
+end

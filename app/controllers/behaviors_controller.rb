@@ -6,7 +6,7 @@ class BehaviorsController < ApplicationController
   def index
     @behaviors = Behavior.all
     respond_to do |format|
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"behaviors_#{Time.now.to_i}.xls\"" }
+      format.xlsx { render xlsx: "index", filename: "behaviors_#{Time.now.to_i}.xlsx"  }
     end
   end
 

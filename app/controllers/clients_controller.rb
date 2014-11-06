@@ -6,8 +6,8 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.all
     respond_to do | format |
-      format.html { @clients = Client.all }
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"clients_#{Time.now.to_i}.xls\""  }
+      format.html
+      format.xlsx { render xlsx: "index", filename: "clients_#{Time.now.to_i}.xlsx"  }
     end
   end
 

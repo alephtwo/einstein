@@ -33,6 +33,9 @@ class BehaviorsController < ApplicationController
 
   def remove
     @behavior.update(:removed => "true")
+    @behavior.behavior_reports.each do | report |
+      report.update(:removed => "true")
+    end
     redirect_to @behavior.client
   end
 

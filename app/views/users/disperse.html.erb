@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center">Migrate Clients</h1>
+    <h3 class="text-center">Deleting <%= @user.email %></h3>
+    <hr />
+    <p>You have requested to delete <b><%= @user.email %></b> from the system. In order to protect stored data, you must first migrate all of this user's clients to other users prior to deletion.</p>
+    <p>The last user cannot be deleted; please contact your system administrator if such a drastic measure is required.</p>
+    <hr />
+  </div>
+</div>
+
+<% if User.all.size > 1 %>
+<div class="row text-center">
+  <div class="small-12 columns">
+    <%= form_for :clients do | f | %>
+    <table>
+      <thead>
+        <tr>
+          <th width="150">Client ID</th>
+          <th>Last Name</th>
+          <th>New Assigned User</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.clients.each do | client | %>
+        <tr>
+          <td><%= client.id %></td>
+          <td><%= client.last_name %></td>
+          <td><%= select_tag "users[]", options_from_collection_for_select(User.where.not(id: @user.id), :id, :email)%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= f.submit "Delete User", class: "button alert" %>
+    <% end %>
+  </div>
+</div>
+<% else %>
+<h1>Cannot delete the last user. Contact your system administrator.</h1>
+<% end %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :disperse, :migrate]
   before_filter :check_user
 
   def index
@@ -8,6 +8,26 @@ class UsersController < ApplicationController
   end
 
   def show 
+  end
+
+  def disperse
+    if User.all.size == 1
+      flash[:warning] = "Cannot delete the last user. Please contact your system administrator."
+      redirect_to users_path
+    end
+  end
+
+  def migrate
+    if User.all.size == 1
+      flash[:warning] = "The last user can't be deleted. Please contact your system administrator."
+    else 
+      @user.clients.each_with_index do | client, i | 
+        client.update(user_id: user_users[i])
+      end
+      @user.destroy
+      flash[:succes] = "User deleted and clients moved successfully."
+    end
+    redirect_to users_path
   end
 
   def new
@@ -56,6 +76,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :email, :first_name, :middle_name, :last_name)
+    end
+
+    def user_users
+      params.require(:users)
     end
 
 end

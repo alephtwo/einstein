@@ -14,6 +14,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th width="100">Clients</th>
+            <th width="120">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,11 @@
             <td><%= user.first_name %></td>
             <td><%= user.last_name %></td>
             <td><%= user.clients.size %></td>
+            <td>
+              <%= link_to disperse_path user do %>
+                <i class="fa fa-trash"></i>&emsp;Delete
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>

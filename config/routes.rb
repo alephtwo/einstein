@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
   
+  match '/users/disperse/:id', to: 'users#disperse', via: 'get', as: 'disperse'
+  match '/users/disperse/:id', to: 'users#migrate', via: 'post', as: 'migrate'
+
   resources :users
 
   match '/login', to: 'client_sessions#new', via: 'get' 

@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = current_user.clients.build(client_params)
+    @client = Client.new(client_params)
     if @client.save
       flash[:success] = "Client created successfully."
       redirect_to @client
@@ -77,7 +77,7 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:last_name, :password, :password_confirmation)
+      params.require(:client).permit(:last_name, :password, :password_confirmation, :user_id)
     end
 
 end

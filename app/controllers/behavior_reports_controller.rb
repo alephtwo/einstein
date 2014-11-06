@@ -7,7 +7,7 @@ class BehaviorReportsController < ApplicationController
   def index
     @behavior_reports = BehaviorReport.all
     respond_to do |format|
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"behavior_reports_#{Time.now.to_i}.xml\""  }
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"behavior_reports_#{Time.now.to_i}.xls\""  }
     end
   end
 

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :behaviors, only: [:create, :edit, :update, :destroy, :index]
 
   match '/submit', to: 'behavior_reports#new', via: 'get'
+  match '/remove_report/:id', to: 'behavior_reports#remove', via: 'get'
   resources :behavior_reports
 
 end

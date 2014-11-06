@@ -1,8 +1,8 @@
 class BehaviorReportsController < ApplicationController
 
   before_filter :check_client_login, only: [:new, :create]
-  before_filter :check_user, only: [:destroy, :edit, :update]
-  before_action :set_report, only: [:destroy, :edit, :update]
+  before_filter :check_user, only: [:destroy, :edit, :update, :remove]
+  before_action :set_report, only: [:destroy, :edit, :update, :remove]
 
   def index
     @behavior_reports = BehaviorReport.all
@@ -35,6 +35,11 @@ class BehaviorReportsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def remove
+    @behavior_report.update(:removed => "true")
+    redirect_to @behavior_report.behavior.client
   end
 
   def destroy

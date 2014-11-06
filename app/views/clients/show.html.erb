@@ -68,9 +68,10 @@
             <th width="135">Occurrences</th>
             <th>Reported On</th>
             <th width="100">Edit</th>
+            <th width="120">Remove</th>
           </tr>
         </thead>
-          <% @client.behavior_reports.each do | report | %>
+          <% @client.behavior_reports.active.each do | report | %>
             <tr>
               <td><%= report.behavior.description %></td>
               <td><%= report.occurrences %></td>
@@ -78,6 +79,11 @@
               <td>
                 <%= link_to edit_behavior_report_path report do %>
                   <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to controller: "behavior_reports", action: "remove", id: report do %>
+                  <i class="fa fa-times"></i>&emsp;Remove
                 <% end %>
               </td>
             </tr>

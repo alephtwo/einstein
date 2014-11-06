@@ -29,13 +29,17 @@
           <Cell><Data ss:Type="String">Behavior</Data></Cell>
           <Cell><Data ss:Type="String">Occurrences</Data></Cell>
           <Cell><Data ss:Type="String">Reported On</Data></Cell>
+          <Cell><Data ss:Type="String">Removed?</Data></Cell>
+          <Cell><Data ss:Type="String">Updated On</Data></Cell>
         </Row>
       
         <% @client.behavior_reports.each do | report | %>
-          <Row>
+          <Row>            
             <Cell><Data ss:Type="String"><%= report.behavior.description %></Data></Cell>
             <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
-            <Cell><Data ss:Type="String`"><%= report.timestamp %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.timestamp %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.removed ? "Yes" : "No" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= report.updated_timestamp %></Data></Cell>
           </Row>
         <% end %>
 

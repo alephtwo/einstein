@@ -38,9 +38,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to controller: "clients", action: "remove", id: client do %>
-                  <i class="fa fa-times"></i>&emsp;Remove
-                <% end %>
+                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."} %>
               </td>
             </tr>
           <% end %>

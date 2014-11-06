@@ -3,7 +3,8 @@ class MaintenancesController < ApplicationController
   before_filter :check_user
 
   def index
-    @maintenances = Maintenance.all
+    @maintenances = Maintenance.where(:deleted_user => nil)
+    @users = Maintenance.where.not(:deleted_user => nil)
   end
 
   def disclaimer

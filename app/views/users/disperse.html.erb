@@ -1,3 +1,5 @@
+<% content_for :title, "Migrating Clients" %>
+
 <div class="row">
   <div class="small-12 columns">
     <h1 class="text-center">Migrate Clients</h1>
@@ -26,7 +28,7 @@
         <tr>
           <td><%= client.id %></td>
           <td><%= client.last_name %></td>
-          <td><%= select_tag "users[]", options_from_collection_for_select(User.where.not(id: @user.id), :id, :email)%></td>
+          <td><%= select_tag "users[]", options_from_collection_for_select(@migratables, :id, :email)%></td>
         </tr>
         <% end %>
       </tbody>

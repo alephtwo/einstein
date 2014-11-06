@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     if User.all.size == 1
       flash[:warning] = "Cannot delete the last user. Please contact your system administrator."
       redirect_to users_path
+    else 
+      @migratables = User.where.not(id: @user.id)
     end
   end
 
@@ -24,6 +26,11 @@ class UsersController < ApplicationController
       @user.clients.each_with_index do | client, i | 
         client.update(user_id: user_users[i])
       end
+
+      maint = current_user.maintenances.build
+      maint.deleted_user = @user.email
+      maint.save
+
       @user.destroy
       flash[:succes] = "User deleted and clients moved successfully."
     end

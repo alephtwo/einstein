@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106041911) do
+ActiveRecord::Schema.define(version: 20141106063049) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141106041911) do
     t.integer  "total_deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "deleted_user"
   end
 
   create_table "users", force: true do |t|

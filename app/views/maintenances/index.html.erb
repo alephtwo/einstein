@@ -1,6 +1,8 @@
+<% content_for :title, "Deletion History" %>
+
 <div class="row">
   <div class="small-12 columns">
-    <h1 class="text-center">Maintenances</h1>
+    <h1 class="text-center">Database Cleanups</h1>
     <p class="text-center">Below is a list of all previous database cleanings and how much data was deleted during each cleanup.</p>
     <hr />
     <div class="panel">
@@ -24,6 +26,34 @@
               <td><%= maint.clients_deleted %></td>
               <td><%= maint.total_deleted %></td>
               <td><%= maint.timestamp %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center">User Deletes</h1>
+    <p class="text-center">This is a list of all users that have been deleted and which users invoked the delete.</p>
+    <hr />
+    <div class="panel">
+      <table id="maintenances">
+        <thead>
+          <tr>
+            <th>Invoking User</th>
+            <th>Deleted User</th>
+            <th>Date Performed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do | del | %>
+            <tr>
+              <td><%= del.user.email %></td>
+              <td><%= del.deleted_user %></td>
+              <td><%= del.timestamp %></td>
             </tr>
           <% end %>
         </tbody>

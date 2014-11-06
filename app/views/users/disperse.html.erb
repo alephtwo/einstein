@@ -7,6 +7,7 @@
     <hr />
     <p>You have requested to delete <b><%= @user.email %></b> from the system. In order to protect stored data, you must first migrate all of this user's clients to other users prior to deletion.</p>
     <p>The last user cannot be deleted; please contact your system administrator if such a drastic measure is required.</p>
+    <p>Please note that electing to delete this user will remove them from the system. A new user account will need to be created in the event that the user needs to be allowed into the system once more. Records of the deletion will be kept and visible to all users via the <%= link_to "maintenances page", maintenances_path %>.</p>
     <hr />
   </div>
 </div>
@@ -34,7 +35,7 @@
       </tbody>
     </table>
 
-    <%= f.submit "Delete User", class: "button alert" %>
+    <%= f.submit "Delete User", class: "button alert", data: {confirm: "Are you sure you want to delete #{@user.email} and migrate their clients to the selected users?"} %>
     <% end %>
   </div>
 </div>

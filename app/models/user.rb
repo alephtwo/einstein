@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   attr_encryptor :last_name, key: Rails.application.secrets.user_last_key
 
   has_many :clients
+  has_many :maintenances
 
 end

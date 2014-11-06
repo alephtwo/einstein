@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105233848) do
+ActiveRecord::Schema.define(version: 20141106041911) do
 
   create_table "behavior_reports", force: true do |t|
     t.integer  "behavior_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20141105233848) do
   end
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
+
+  create_table "maintenances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "reports_deleted"
+    t.integer  "behaviors_deleted"
+    t.integer  "clients_deleted"
+    t.integer  "total_deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

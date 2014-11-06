@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center">Maintenances</h1>
+    <p class="text-center">Below is a list of all previous database cleanings and how much data was deleted during each cleanup.</p>
+    <hr />
+    <div class="panel">
+      <table id="maintenances">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th width="100">Reports</th>
+            <th width="100">Behaviors</th>
+            <th width="100">Clients</th>
+            <th width="120">Total Deleted</th>
+            <th>Date Performed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @maintenances.each do | maint | %>
+            <tr>
+              <td><%= maint.user.email %></td>
+              <td><%= maint.reports_deleted %></td>
+              <td><%= maint.behaviors_deleted %></td>
+              <td><%= maint.clients_deleted %></td>
+              <td><%= maint.total_deleted %></td>
+              <td><%= maint.timestamp %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

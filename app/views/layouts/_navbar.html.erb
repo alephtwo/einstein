@@ -23,7 +23,7 @@
       </li>
 
       <li class="has-dropdown">
-        <a href="#"><i class="fa fa-database"></i>&emsp;Database</a>
+        <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
         <ul class="dropdown">
           <li>
             <%= link_to behavior_reports_path(format: "xls") do %>
@@ -38,6 +38,18 @@
           <li>
             <%= link_to clients_path(format: "xls") do %>
               <i class="fa fa-file-excel-o"></i>&emsp;Export Clients
+            <% end %>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#"><i class="fa fa-database"></i>&emsp;Database</a>
+        <ul class="dropdown">
+          <li>
+            <%= link_to maintenances_path do %>
+              <i class="fa fa-warning"></i>&emsp;Past Cleanings
             <% end %>
           </li>
           <li>

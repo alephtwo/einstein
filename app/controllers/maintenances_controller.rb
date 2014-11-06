@@ -3,6 +3,7 @@ class MaintenancesController < ApplicationController
   before_filter :check_user
 
   def index
+    @maintenances = Maintenance.all
   end
 
   def disclaimer
@@ -26,6 +27,14 @@ class MaintenancesController < ApplicationController
     clients.each do | client |
       client.destroy
     end
+
+    maint = current_user.maintenances.build
+    maint.reports_deleted = br_size
+    maint.behaviors_deleted = b_size
+    maint.clients_deleted = c_size
+    maint.total_deleted = br_size + b_size + c_size
+    maint.save
+
     flash[:success] = "The database has been cleaned. #{br_size} reports, #{b_size} behaviors, and #{c_size} clients were removed."
     redirect_to clients_path
   end

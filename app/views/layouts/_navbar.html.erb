@@ -23,21 +23,26 @@
       </li>
 
       <li class="has-dropdown">
-        <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
+        <a href="#"><i class="fa fa-database"></i>&emsp;Database</a>
         <ul class="dropdown">
           <li>
             <%= link_to behavior_reports_path(format: "xls") do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Behavior Reports
+              <i class="fa fa-file-excel-o"></i>&emsp;Export Behavior Reports
             <% end %>
           </li>
           <li>
             <%= link_to behaviors_path(format: "xls") do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Behaviors
+              <i class="fa fa-file-excel-o"></i>&emsp;Export Behaviors
             <% end %>
           </li>            
           <li>
             <%= link_to clients_path(format: "xls") do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Clients
+              <i class="fa fa-file-excel-o"></i>&emsp;Export Clients
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "http://google.com" do %>
+              <i class="fa fa-warning"></i>&emsp;Clean Database
             <% end %>
           </li>
         </ul>

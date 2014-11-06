@@ -8,7 +8,7 @@ class ClientSessionsController < ApplicationController
 
   def create
     client = Client.find_by_id(params[:client_session][:id])
-    if client && client.authenticate(params[:client_session][:password])
+    if client && !client.removed && client.authenticate(params[:client_session][:password])
       flash[:success] = "Logged in successfully."
       client_sign_in client, params[:client_session][:remember] == '1'
       redirect_to submit_path
@@ -32,8 +32,8 @@ class ClientSessionsController < ApplicationController
 
     def check_user
       if user_signed_in?
-        flash[:alert] = "You have been signed out."
-        sign_out current_user
+        flash[:alert] = "You must log out before you can access that page."
+        redirect_to clients_path
       end
     end
   

@@ -22,7 +22,7 @@
         <%= f.label :occurrences, "Number of Occurrences" %>
         <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1 %>
 
-        <%= f.submit "Submit Report", class: "button expand" %>
+        <%= f.submit "Submit Report", id: "submit-report", class: "button expand" %>
 
       <% end %>
 

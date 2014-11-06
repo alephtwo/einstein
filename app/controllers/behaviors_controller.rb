@@ -1,6 +1,6 @@
 class BehaviorsController < ApplicationController
 
-  before_action :set_behavior, only: [:edit, :update, :destroy]
+  before_action :set_behavior, only: [:edit, :update, :destroy, :remove]
   before_filter :check_user
 
   def index
@@ -29,6 +29,11 @@ class BehaviorsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def remove
+    @behavior.update(:removed => "true")
+    redirect_to @behavior.client
   end
 
   def destroy

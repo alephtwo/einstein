@@ -13,6 +13,8 @@
           <Cell><Data ss:Type="String">Description</Data></Cell>
           <Cell><Data ss:Type="String">Times Reported</Data></Cell>
           <Cell><Data ss:Type="String">Occurrences</Data></Cell>
+          <Cell><Data ss:Type="String">Removed?</Data></Cell>
+          <Cell><Data ss:Type="String">Updated On</Data></Cell>
         </Row>
         <% @client.behaviors.each do | behavior | %>
           <Row>
@@ -20,6 +22,8 @@
             <Cell><Data ss:Type="String"><%= behavior.description %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= behavior.report_count %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= behavior.occurrence_count %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= behavior.removed ? "Yes" : "No" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= behavior.updated_timestamp %></Data></Cell>
           </Row>
         <% end %>
 
@@ -36,7 +40,7 @@
         <% @client.behavior_reports.each do | report | %>
           <Row>            
             <Cell><Data ss:Type="String"><%= report.behavior.description %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= report.occurrences %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= report.occurrences %></Data></Cell>
             <Cell><Data ss:Type="String"><%= report.timestamp %></Data></Cell>
             <Cell><Data ss:Type="String"><%= report.removed ? "Yes" : "No" %></Data></Cell>
             <Cell><Data ss:Type="String"><%= report.updated_timestamp %></Data></Cell>

@@ -20,10 +20,11 @@
             <th>Behavior</th>
             <th>Times Reported</th>
             <th>Occurrences</th>
-            <th width="125">Edit</th>
+            <th width="100">Edit</th>
+            <th width="120">Remove</th>
           </tr>
         </thead>
-          <% @client.behaviors.each do | behavior | %>
+          <% @client.behaviors.active.each do | behavior | %>
             <tr>
               <td><%= behavior.description %></td>
               <td><%= behavior.report_count %></td>
@@ -31,6 +32,11 @@
               <td>
                 <%= link_to edit_behavior_path behavior do %>
                   <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to controller: "behaviors", action: "remove", id: behavior do %>
+                  <i class="fa fa-times"></i>&emsp;Remove
                 <% end %>
               </td>
             </tr>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :client_sessions, only: [:new, :create, :destroy]
 
   resources :employees
+  match '/remove_client/:id', to: 'clients#remove', via: 'get'
   resources :clients
   match '/remove_behavior/:id', to: 'behaviors#remove', via: 'get'
   resources :behaviors, only: [:create, :edit, :update, :destroy, :index, :remove]

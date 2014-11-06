@@ -9,16 +9,22 @@
         <Row>
           <Cell><Data ss:Type="String">Client ID</Data></Cell>
           <Cell><Data ss:Type="String">Client Name</Data></Cell>
-          <Cell><Data ss:Type="String">Behaviors</Data></Cell>
-          <Cell><Data ss:Type="String">Created At</Data></Cell>
+          <Cell><Data ss:Type="String">Current Behaviors</Data></Cell>
+          <Cell><Data ss:Type="String">All Behaviors</Data></Cell>
+          <Cell><Data ss:Type="String">Created On</Data></Cell>
+          <Cell><Data ss:Type="String">Removed?</Data></Cell>
+          <Cell><Data ss:Type="String">Updated On</Data></Cell>
         </Row>
       
         <% @clients.each do | client | %>
           <Row>
             <Cell><Data ss:Type="Number"><%= client.id %></Data></Cell>
             <Cell><Data ss:Type="String"><%= client.last_name %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= client.behaviors.active.size %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= client.behaviors.size %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= client.created_at %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= client.timestamp %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= client.removed ? "Yes" : "No" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= client.updated_timestamp %></Data></Cell>
           </Row>
         <% end %>
     </Table>

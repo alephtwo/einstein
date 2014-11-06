@@ -16,11 +16,12 @@
             <th width="125">Client ID</th>
             <th>Last Name</th>
             <th>Managed By</th>
-            <th width="125">Edit</th>
+            <th width="100">Edit</th>
+            <th width="120">Remove</th>
           </tr>
         </thead>
         <tbody>
-          <% @clients.each do | client | %>
+          <% @clients.active.each do | client | %>
             <tr>
               <td><%= client.id %></td>
               <td>
@@ -34,6 +35,11 @@
               <td>
                 <%= link_to edit_client_path client do %>
                   <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to controller: "clients", action: "remove", id: client do %>
+                  <i class="fa fa-times"></i>&emsp;Remove
                 <% end %>
               </td>
             </tr>

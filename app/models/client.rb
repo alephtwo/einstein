@@ -8,9 +8,11 @@ class Client < ActiveRecord::Base
 
   validates :last_name, presence: true
   has_secure_password
-  validates :password_confirmation, presence: true
+  validates :password_digest, presence: true
 
   before_create :create_remember_token
+
+  scope :active, -> { where(:removed => false) }
   
   def Client.new_remember_token
     SecureRandom.urlsafe_base64
@@ -18,6 +20,14 @@ class Client < ActiveRecord::Base
 
   def Client.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def timestamp
+    self.created_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long)
+  end
+
+  def updated_timestamp
+    self.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long)
   end
 
   private

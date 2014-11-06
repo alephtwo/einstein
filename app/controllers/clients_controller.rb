@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :destroy, :remove]
   before_filter :check_user
 
   def index
@@ -41,6 +41,19 @@ class ClientsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def remove
+    @client.update(:removed => true)
+
+    @client.behaviors.each do | behavior |
+      behavior.update(:removed => true)
+
+      behavior.behavior_reports.each do | report | 
+        report.update(:removed => true)
+      end
+    end
+    redirect_to clients_path
   end
 
   def destroy

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'maintenances/index'
+
   root 'behavior_reports#new'
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}, :skip => [:registrations] 
@@ -23,5 +25,9 @@ Rails.application.routes.draw do
   match '/submit', to: 'behavior_reports#new', via: 'get'
   match '/remove_report/:id', to: 'behavior_reports#remove', via: 'get'
   resources :behavior_reports
+
+  match '/clean_db', to: 'maintenances#clean', via: 'delete'
+  match '/maintenances/disclaimer', to: 'maintenances#disclaimer', via: 'get'
+  resources :maintenances, only: [:index]
 
 end

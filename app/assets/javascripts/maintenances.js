@@ -3,3 +3,9 @@ $(document).ready(function() {
 		"order": [[ 5, "desc" ]],
     } );
 } );
+
+$(document).ready(function() {
+    $('#userdeletes').dataTable( {
+		"order": [[ 2, "desc" ]],
+    } );
+} );

@@ -16,19 +16,7 @@
  *= require dataTables/jquery.dataTables.foundation
  */
 
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url('/assets/Roboto-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url('/assets/Roboto-Bold.ttf') format('truetype');;
-}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 /* Override default foundation colors */
 $primary-color: #336699; /* Darker Blue */

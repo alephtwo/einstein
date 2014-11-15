@@ -39,16 +39,13 @@
         <div class="small-12 columns">
           <div class="panel callout">
             <i class="fa fa-key"></i>&emsp;Signed in as <strong><%= current_user.email %></strong>
-            <br />
-            <%= link_to "https://bitbucket.org/alephtwo/einstein/issues" do %>
-              <i class="fa fa-bitbucket"></i>&emsp; Report Issue
-            <% end %>
           </div>
+          <%= link_to "https://bitbucket.org/alephtwo/einstein/issues", class: "button" do %>
+            <i class="fa fa-bitbucket"></i>&emsp; Report Issue
+          <% end %>
         </div>
       </div> 
     <% end %>
-
-    <br />
 
     <div class="row text-center">
       <div class="small-4 columns small-centered">

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? "#{yield(:title)} | Einstein" : "foundation-rails" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -34,34 +34,7 @@
       </div>
     </div>
 
-    <% if user_signed_in? %>
-      <div class="row text-center">
-        <div class="small-12 columns">
-          <div class="panel callout">
-            <i class="fa fa-key"></i>&emsp;Signed in as <strong><%= current_user.email %></strong>
-          </div>
-          <%= link_to "https://bitbucket.org/alephtwo/einstein/issues", class: "button" do %>
-            <i class="fa fa-bitbucket"></i>&emsp; Report Issue
-          <% end %>
-        </div>
-      </div> 
-    <% end %>
+    <%= render 'layouts/footer' %>
 
-    <div class="row text-center">
-      <div class="small-4 columns small-centered">
-          <%= image_tag "https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.png" %>
-      </div>
-    </div>
-
-    <% if Rails.env.development? %>
-      <div class="row">
-        <div class="small-12 columns">
-          <hr />
-          <div class="panel callout">
-            <%= debug(params) %>
-          </div>
-        </div>
-      </div>
-      <% end %>
   </body>
 </html>

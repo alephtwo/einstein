@@ -32,7 +32,7 @@ class ClientSessionsController < ApplicationController
 
     def check_user
       if user_signed_in?
-        flash[:alert] = "You must log out before you can access that page."
+        flash[:alert] = "Staff must first log out before visiting the client login page."
         redirect_to clients_path
       end
     end

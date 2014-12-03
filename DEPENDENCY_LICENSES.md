@@ -1,4 +1,4 @@
-## Ruby ##
+# Ruby #
 Ruby is copyrighted free software by Yukihiro Matsumoto <matz@netlab.jp>.
 You can redistribute it and/or modify it under either the terms of the
 2-clause BSDL (see the file BSDL), or the conditions below:
@@ -56,7 +56,7 @@ You can redistribute it and/or modify it under either the terms of the
      WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
      PURPOSE.
 
-## rubygems.org ##
+# rubygems.org #
 Copyright (c) 2009-2013, Nick Quaranto
 
 Permission is hereby granted, free of charge, to any person
@@ -80,10 +80,10 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-## Ruby on Rails ##
+# Ruby on Rails #
 Rails is released under the MIT license, which can be found at http://opensource.org/licenses/mit-license.php.
 
-## Foundation ##
+# Foundation #
 Copyright (c) 2013-2014 ZURB, inc.
 
 MIT License
@@ -107,10 +107,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Font Awesome ##
+# Font Awesome #
 Font Awesome is released under a few different licenses. The most recent version of Font Awesome's licenses can be found at http://fontawesome.io/license/. 
 
-## mysql2 ##
+# mysql2 #
 The MIT License (MIT)
 
 Copyright (c) 2014 Brian Lopez
@@ -133,7 +133,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## sass-rails ##
+# sass-rails #
 Copyright (c) 2011 Christopher Eppstein
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -155,7 +155,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## uglifier ##
+# uglifier #
 Copyright (c) 2011 Ville Lautanala
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -177,7 +177,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## coffee-rails ##
+# coffee-rails #
 Copyright (c) 2011 Santiago Pastorino
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -199,7 +199,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## jquery-rails ##
+# jquery-rails #
 The MIT License
 
 Copyright (c) 2010 Andre Arko
@@ -222,7 +222,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## Turbolinks ##
+# Turbolinks #
 Copyright (c) 2014 Carl Alexander
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -243,7 +243,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## jbuilder ##
+# jbuilder #
 Copyright (c) 2011-2014 David Heinemeier Hansson, 37signals
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -265,7 +265,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## sdoc ##
+# sdoc #
 Copyright (c) 2014 Zachary Scott, Vladimir Kolesnikov, and Nathan Broadbent
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -377,7 +377,7 @@ version 2 (see the file GPL), or the conditions below:
      WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
      PURPOSE.
 
-## spring ##
+# spring #
 Copyright (c) 2012 Jon Leighton
 
 MIT License
@@ -401,7 +401,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## bcrypt ##
+# bcrypt #
 (The MIT License)
 
 Copyright 2007-2011:
@@ -431,7 +431,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## attr_encrypted ##
+# attr_encrypted #
 Copyright (c) 2008 Sean Huber - shuber@huberry.com
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -453,7 +453,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Devise ##
+# Devise #
 Copyright 2009-2014 Plataformatec. http://plataformatec.com.br
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -475,7 +475,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## jquery-datatables-rails ##
+# jquery-datatables-rails #
 Copyright (c) 2012 Robin Wenglewski, Sébastien Grosjean, ed al
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -497,7 +497,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## axlsx_rails ##
+# axlsx_rails #
 Copyright 2012 YOURNAME
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -519,7 +519,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Unicorn ##
+# Unicorn #
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
@@ -1195,7 +1195,7 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
 
-## nginx ##
+# nginx #
 Copyright (C) 2002-2014 Igor Sysoev
 Copyright (C) 2011-2014 Nginx, Inc.
 

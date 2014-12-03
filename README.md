@@ -2,7 +2,7 @@
 This application is intended to streamline the behavior reporting process for both clients and staff. It is a database driven application that relies on the assumption that clients are assigned behaviors that they then report on. Behaviors are not shared between clients, and a report can only be made for one behavior at a time. 
 
 # Licenses #
-Please refer to LICENSES.md.
+Please refer to DEPENDENCY_LICENSES.md for an enumeration of the licenses used by plugins and libaries referenced by this software. 
 
 # Why? #
 Ostensibly, this backend is a fancy way to track timestamps on behavior reports. Since each report is timestamped, staff members can ensure that clients are actually following the program (and not just ignoring it until data needs to be collected). 

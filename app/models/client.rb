@@ -13,7 +13,7 @@ class Client < ActiveRecord::Base
   before_create :create_remember_token
 
   scope :active, -> { where(:removed => false) }
-
+  
   def Client.new_remember_token
     SecureRandom.urlsafe_base64
   end

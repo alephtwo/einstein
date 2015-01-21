@@ -8,6 +8,9 @@ class MaintenancesController < ApplicationController
   end
 
   def disclaimer
+    @hidden_clients = Client.where(:removed => true).size
+    @hidden_behaviors = Behavior.where(:removed => true).size
+    @hidden_reports = BehaviorReport.where(:removed => true).size
   end
 
   def clean

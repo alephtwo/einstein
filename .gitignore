@@ -23,3 +23,6 @@
 
 # Ignore certs
 /cert
+
+# Ignore Gemfile.lock
+Gemfile.lock

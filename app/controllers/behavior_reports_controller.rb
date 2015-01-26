@@ -51,12 +51,8 @@ class BehaviorReportsController < ApplicationController
   private
 
     def check_client_login
-      if !client_signed_in?
-        if user_signed_in?
-          redirect_to users_path
-        else
-          redirect_to login_path
-        end
+      unless client_signed_in?
+        redirect_to login_path
       end
     end
 

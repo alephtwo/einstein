@@ -5,22 +5,9 @@
 
       <%= form_for @behavior_report do | f | %>
 
-        <% if @behavior_report.errors.any? %>
-          <div class="alert-box warning text-center">
-            <h5><%= pluralize(@behavior_report.errors.count, "error") %> prohibited this report from being submitted:</h5>
-            <ul>
-              <% @behavior_report.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <%= f.collection_select :behavior_id, current_client.behaviors.active, :id, :description, label: "Behavior" %>
 
-        <%= f.label :behavior_id, "Behavior" %>
-        <%= f.collection_select :behavior_id, current_client.behaviors.active, :id, :description %>
-
-        <%= f.label :occurrences, "Number of Occurrences" %>
-        <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1 %>
+        <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1, label: "Number of Occurrences" %>
 
         <%= f.submit "Submit Report", id: "submit-report", class: "button expand" %>
 

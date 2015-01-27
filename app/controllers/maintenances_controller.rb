@@ -47,7 +47,7 @@ class MaintenancesController < ApplicationController
 
     def check_user
       unless user_signed_in?
-        flash[:alert] = "You do not have access to that action."
+        flash[:error] = "You do not have access to that action."
         redirect_to root_path
       end
     end

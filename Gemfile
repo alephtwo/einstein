@@ -17,6 +17,7 @@ gem 'foundation-rails', '5.4.3.0'
 gem 'font-awesome-rails', '~> 4.2.0'
 gem 'attr_encrypted'
 gem 'jquery-datatables-rails', '~> 2.2.3'
+gem 'foundation_rails_helper'
 gem 'devise'
 gem 'axlsx_rails'
 

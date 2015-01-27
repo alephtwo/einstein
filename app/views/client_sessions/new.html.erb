@@ -8,17 +8,11 @@
         <h1>Client Login</h1>
         <hr />
 
-        <%= f.label :id, "ID Number" %>
-        <%= f.text_field :id, placeholder: "Identification Number" %>
+        <%= f.text_field :id, placeholder: "Identification Number", label: "ID Number" %>
 
-        <%= f.label :password, "Password" %>
         <%= f.password_field :password, placeholder: "Password" %>
 
-        <%= label_tag "Remember Me" %>
-        <div class="switch">
-          <%= f.check_box :remember %>
-          <%= f.label :remember, " " %>
-        </div>
+        <%= f.check_box :remember, label: "Remember Me" %>
 
         <hr />
         

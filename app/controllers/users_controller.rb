@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def disperse
     if User.all.size == 1
-      flash[:warning] = "Cannot delete the last user. Please contact your system administrator."
+      flash[:error] = "Cannot delete the last user. Please contact your system administrator."
       redirect_to users_path
     else 
       @migratables = User.where.not(id: @user.id)
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def migrate
     if User.all.size == 1
-      flash[:warning] = "The last user can't be deleted. Please contact your system administrator."
+      flash[:error] = "The last user can't be deleted. Please contact your system administrator."
     else 
       @user.clients.each_with_index do | client, i | 
         client.update(user_id: user_users[i])
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
     def check_user
       unless user_signed_in?
-        flash[:alert] = "You do not have access to that page."
+        flash[:error] = "You do not have access to that page."
         redirect_to root_path
       end
     end

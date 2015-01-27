@@ -8,34 +8,15 @@
     <div class="panel">
       <%= form_for @user do | f | %>
 
-        <% if @user.errors.any? %>
-          <div class="alert-box warning text-center">
-            <h5><%= pluralize(@user.errors.count, "error") %> prohibited this user from being submitted:</h5>
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <% if user_signed_in? && @user == current_user %>
           <%= link_to edit_user_registration_path, class: "button" do %>
             <i class="fa fa-key"></i>&emsp;Change Password
           <% end %>
         <% end %>
 
-        <%= f.label :email %>
         <%= f.text_field :email %>
-
-        <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
-
-        <%= f.label :middle_name, "Middle Name" %>
-        <%= f.text_field :middle_name %>
-
-        <%= f.label :last_name, "Last Name" %>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :first_name, label: "First Name" %>
+        <%= f.text_field :last_name, label: "Last Name" %>
 
         <%= f.submit class: "button expand" %>
 

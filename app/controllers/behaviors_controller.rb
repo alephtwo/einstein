@@ -16,7 +16,8 @@ class BehaviorsController < ApplicationController
       flash[:success] = "Behavior created successfully."
       redirect_to @behavior.client
     else
-      render 'new'
+      flash[:error] = "Behaviors must have a description!"
+      redirect_to @behavior.client
     end
   end
 
@@ -52,7 +53,7 @@ class BehaviorsController < ApplicationController
 
     def check_user
       unless user_signed_in?
-        flash[:alert] = "You do not have access to that page."
+        flash[:error] = "You do not have access to that page."
         redirect_to root_path
       end
     end

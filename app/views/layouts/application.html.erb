@@ -23,9 +23,9 @@
       <div class="row">
         <div class="small-12 columns">
 
-          <% flash.each do |type, message| %>
-            <div class="alert-box <%= type %> text-center flash"><%= message %></div>
-          <% end %>
+          <div class="text-center">
+            <%= display_flash_messages %>
+          </div>
 
           <%= yield %>
           <%= javascript_include_tag "application" %>

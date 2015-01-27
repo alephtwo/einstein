@@ -13,7 +13,7 @@ class ClientSessionsController < ApplicationController
       client_sign_in client, params[:client_session][:remember] == '1'
       redirect_to submit_path
     else
-      flash[:alert] = "Invalid id or password. Please try again."
+      flash[:error] = "Invalid id or password. Please try again."
       redirect_to login_path
     end
   end
@@ -32,7 +32,7 @@ class ClientSessionsController < ApplicationController
 
     def check_user
       if user_signed_in?
-        flash[:alert] = "Staff must first log out before visiting the client login page."
+        flash[:error] = "Staff must first log out before visiting the client login page."
         redirect_to clients_path
       end
     end

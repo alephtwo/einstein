@@ -5,42 +5,93 @@
 
     <h1>All Users</h1>
     <hr />
-    <div class="panel">
 
-      <table id="users-table">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th width="100">Clients</th>
-            <th width="120">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @users.each do | user | %>
-          <tr>
-            <td>
-              <%= link_to user do %>
-                <%= user.email %>
-              <% end %>
-            </td>
-            <td><%= user.first_name %></td>
-            <td><%= user.last_name %></td>
-            <td><%= user.clients.active.size %></td>
-            <td>
-              <%= link_to disperse_path user do %>
-                <i class="fa fa-trash"></i>&emsp;Delete
-              <% end %>
-            </td>
-          </tr>
+    <div class="show-for-large-up">
+      <div class="panel">
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th width="100">Clients</th>
+              <th width="120">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @users.each do | user | %>
+            <tr>
+              <td>
+                <%= link_to user do %>
+                  <%= user.email %>
+                <% end %>
+              </td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.clients.active.size %></td>
+              <td>
+                <%= link_to disperse_path user do %>
+                  <i class="fa fa-trash"></i>&emsp;Delete
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <%= link_to new_user_path, class: "button" do %>
+          <i class="fa fa-plus"></i>&emsp;New User
         <% end %>
-        </tbody>
-      </table>
 
-      <%= link_to new_user_path, class: "button" do %>
-        <i class="fa fa-plus"></i>&emsp;New User
-      <% end %>
+      </div>
+    </div>
+
+    <div class="show-for-medium-down">
+
+      <div class="row">
+        <div class="small-12 columns">
+          <%= link_to new_user_path, class: "button expand" do %>
+            <i class="fa fa-plus"></i>&emsp;New User
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="small-12 columns">
+          <%= page_entries_info @mobile_users %>
+          <br /><br />
+          <%= paginate @mobile_users %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <ul class="small-block-grid-1 medium-block-grid-2">
+            <% @users.each do | user | %>
+              <li>
+                <ul class="pricing-table">
+                  <li class="title"><%= user.email %></li>
+                  <li class="bullet-item"><%= user.first_name %>&nbsp;<%= user.last_name %></li>
+                  <li class="bullet-item"><%= user.clients.active.size %> clients</li>
+                  <li class="cta-button">
+                    <%= link_to disperse_path(user), class: "button expand alert" do %>
+                      <i class="fa fa-trash"></i>&emsp;Delete
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="small-12 columns">
+          <%= paginate @mobile_users %>
+          <%= page_entries_info @mobile_users %>
+          <hr />
+        </div>
+      </div>
 
     </div>
   </div>

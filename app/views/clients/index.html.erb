@@ -7,49 +7,103 @@
   </div>
 </div>
 
-<div class="row text-center">
-  <div class="small-12 columns">
-    <div class="panel">
-      <table id="clients">
-        <thead>
-          <tr>
-            <th width="125">Client ID</th>
-            <th>Last Name</th>
-            <th>Managed By</th>
-            <th width="100">Edit</th>
-            <th width="120">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @clients.active.each do | client | %>
+<div class="show-for-large-up">
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="panel">
+        <table id="clients">
+          <thead>
             <tr>
-              <td><%= client.id %></td>
-              <td>
-                <%= link_to client do %>
-                  <%= client.last_name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to client.user.email, client.user %>
-              </td>
-              <td>
-                <%= link_to edit_client_path client do %>
-                  <i class="fa fa-edit"></i>&emsp;Edit
-                <% end %>
-              </td>
-              <td>
-                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."} %>
-              </td>
+              <th width="125">Client ID</th>
+              <th>Last Name</th>
+              <th>Managed By</th>
+              <th width="100">Edit</th>
+              <th width="120">Remove</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @clients.each do | client | %>
+              <tr>
+                <td><%= client.id %></td>
+                <td>
+                  <%= link_to client do %>
+                    <%= client.last_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to client.user.email, client.user %>
+                </td>
+                <td>
+                  <%= link_to edit_client_path client do %>
+                    <i class="fa fa-edit"></i>&emsp;Edit
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."} %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-      <%= link_to new_client_path, class: "button" do %>
+        <%= link_to new_client_path, class: "button" do %>
+          <i class="fa fa-plus"></i>&emsp;New Client
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="show-for-medium-down">
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <%= link_to new_client_path, class: "button expand" do %>
         <i class="fa fa-plus"></i>&emsp;New Client
       <% end %>
 
+      <%= page_entries_info @mobile_clients %>
+      <br /><br />
+      <%= paginate @mobile_clients %>
+      <hr />
     </div>
-
   </div>
+
+  <div class="row" data-equalizer>
+    <div class="small-12 columns text-center">
+      <ul class="small-block-grid-1 medium-block-grid-2">
+        <% @mobile_clients.each do | client | %>
+          <li>
+            <div class="panel" data-equalizer-watch>
+              <h2><%= client.last_name %></h2>
+              <hr />
+              <p>Client ID: <%= client.id %></p>
+              <p>Managed By: <%= link_to client.user.email, client.user %></p>
+              <hr />
+              <div class="row">
+                <div class="small-6 columns">
+                  <%= link_to edit_client_path(client), class: "button expand" do %>
+                    <i class="fa fa-edit"></i>&emsp;Edit
+                  <% end %>
+                </div>
+                <div class="small-6 columns">
+                  <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."}, class: "button alert expand" %>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= paginate @mobile_clients %>
+      <%= page_entries_info @mobile_clients %>
+      <hr />
+    </div>
+  </div>
+
 </div>

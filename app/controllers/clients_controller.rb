@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
   before_filter :check_user
 
   def index
-    @clients = Client.all
+    @mobile_clients = Client.all.active.page params[:page]
+    @clients = Client.all.active
     respond_to do | format |
       format.html
       format.xlsx { render xlsx: "index", filename: "clients_#{Time.now.to_i}.xlsx"  }

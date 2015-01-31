@@ -19,6 +19,7 @@ gem 'attr_encrypted'
 gem 'jquery-datatables-rails', '~> 2.2.3'
 gem 'foundation_rails_helper'
 gem 'devise'
+gem 'kaminari'
 gem 'axlsx_rails'
 
 group :development, :test do

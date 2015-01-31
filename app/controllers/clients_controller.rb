@@ -13,6 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @mobile_reports = @client.behavior_reports.active.page params[:page] 
     respond_to do | format | 
       format.html
       format.xlsx { render xlsx: "show", filename: "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx" }

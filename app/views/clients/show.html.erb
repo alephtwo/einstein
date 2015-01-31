@@ -154,7 +154,7 @@
     <% @mobile_reports.each do | report | %>
       <ul class="pricing-table">
         <li class="title"><%= report.behavior.description %></li>
-        <li class="bullet-item"><%= pluralize(report.occurences, "occurrences") %></li>
+        <li class="bullet-item"><%= pluralize(report.occurrences, "occurrences") %></li>
         <li class="bullet-item">Reported on <%= report.timestamp %></li>
       </ul>
     <% end %>

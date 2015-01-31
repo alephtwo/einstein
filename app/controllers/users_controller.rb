@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show 
+    @clients = @user.clients.active
+    @mobile_clients = @user.clients.active.page params[:page]
   end
 
   def disperse

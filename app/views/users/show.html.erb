@@ -11,35 +11,76 @@
 <div class="row text-center">
   <div class="small-12 columns">
     <h1>Clients</h1>
-    <div class="panel">
-      <table id="clients">
-        <thead>
-          <tr>
-            <th width="125">Client ID</th>
-            <th>Last Name</th>
-            <th width="125">Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.clients.active.each do | client | %>
-            <tr>
-              <td><%= client.id %></td>
-              <td>
-                <%= link_to client do %>
-                  <%= client.last_name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to edit_client_path client do %>
-                  <i class="fa fa-edit"></i>&emsp;Edit
-                <% end %>
-              </td>           
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
 
+    <div class="show-for-large-up">
+      <div class="panel">
+        <table id="clients">
+          <thead>
+            <tr>
+              <th width="125">Client ID</th>
+              <th>Last Name</th>
+              <th width="125">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @clients.each do | client | %>
+              <tr>
+                <td><%= client.id %></td>
+                <td>
+                  <%= link_to client do %>
+                    <%= client.last_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_client_path client do %>
+                    <i class="fa fa-edit"></i>&emsp;Edit
+                  <% end %>
+                </td>           
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
     </div>
 
+    <div class="show-for-medium-down">
+
+      <div class="row text-center">
+        <div class="small-12 columns">
+          <%= page_entries_info @mobile_clients %>
+          <br /><br />
+          <%= paginate @mobile_clients %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <ul class="small-block-grid-1 medium-block-grid-2">
+            <% @mobile_clients.each do | client | %>
+              <li>
+                <ul class="pricing-table">
+                  <li class="title"><%= client.last_name %></li>
+                  <li class="bullet-item">Client ID: <%= client.id %></li>
+                  <li class="cta-button">
+                    <%= link_to client, class: "button expand" do %>
+                      <i class="fa fa-search"></i>&emsp;View
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="small-12 medium-12 large-12 columns">
+        <%= paginate @mobile_clients %>
+        <%= page_entries_info @mobile_clients %>
+        <hr />
+      </div>
+    </div>
   </div>
 </div>

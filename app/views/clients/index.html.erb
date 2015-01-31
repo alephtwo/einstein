@@ -78,6 +78,9 @@
               <li class="bullet-item">Client ID: <%= client.id %></li>
               <li class="bullet-item"><%= link_to client.user.email, client.user %></li>
               <li class="cta-button">
+                <%= link_to client, class: "button expand" do %>
+                  <i class="fa fa-search"></i>&emsp;View
+                <% end %>
                 <div class="row">
                   <div class="small-12 medium-6 columns">
                     <%= link_to edit_client_path(client), class: "button expand" do %>

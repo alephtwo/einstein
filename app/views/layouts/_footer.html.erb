@@ -9,9 +9,11 @@
 <% end %>
 
 <div class="row text-center">
-<div class="small-4 columns small-centered">
+  <div class="small-4 columns small-centered">
     <%= image_tag "https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.png" %>
-</div>
+    <br />
+    <small><i class="fa fa-check-circle"></i>&emsp;<%= `git describe --always` %></small>
+  </div>
 </div>
 
 <% if Rails.env.development? %>

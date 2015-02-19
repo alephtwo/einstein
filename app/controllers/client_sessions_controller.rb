@@ -13,7 +13,7 @@ class ClientSessionsController < ApplicationController
       client_sign_in client, params[:client_session][:remember] == '1'
       redirect_to submit_path
     else
-      flash[:error] = "Invalid id or password. Please try again."
+      flash[:error] = "Invalid Client ID or password. Please try again."
       redirect_to login_path
     end
   end

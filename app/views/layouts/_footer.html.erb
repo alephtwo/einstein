@@ -3,6 +3,8 @@
   <div class="small-12 columns">
     <div class="panel callout">
       <i class="fa fa-key"></i>&emsp;Signed in as <strong><%= current_user.email %></strong>
+      <br />
+      Last sign in: on <strong><%= current_user.last_sign_in_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></strong> by IP Address <strong><%= current_user.last_sign_in_ip %></strong>. 
     </div>
   </div>
 </div> 

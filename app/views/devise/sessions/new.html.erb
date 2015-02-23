@@ -1,5 +1,4 @@
 <% content_for :title, "Staff Login" %>
-<% Rails.logger.info("[BROWSER]  #{request.env['HTTP_USER_AGENT']}") %>
 <% client_sign_out if client_signed_in? %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

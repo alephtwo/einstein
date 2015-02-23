@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   get 'maintenances/index'
 
-  root 'behavior_reports#new'
+  #root 'behavior_reports#new'
+  root 'filter#index'  
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}, :skip => [:registrations] 
   as :user do
@@ -32,5 +33,7 @@ Rails.application.routes.draw do
   match '/clean_db', to: 'maintenances#clean', via: 'delete'
   match '/maintenances/disclaimer', to: 'maintenances#disclaimer', via: 'get'
   resources :maintenances, only: [:index]
+
+  match '/filter', to: 'filter#index', via: 'get'
 
 end

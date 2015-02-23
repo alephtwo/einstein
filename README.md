@@ -28,5 +28,5 @@ Each staff member can create clients. Clients are given a password at the time o
 Most information in the database is encrypted using 256-bit AES encryption, as is suggested by HIPAA. Encryption keys must be generated and placed in secrets.yml. It is highly suggested (and the default behavior) that different keys are used for each column that is to be encrypted. 
 
 ## Server ##
-This is a Ruby on Rails app, specifically developed with Rails 4.1.6 and Ruby 2.1.0; it may support lower versions, but these haven't been tested. 
+This is a Ruby on Rails app, specifically developed with Rails 4.2.0 and Ruby 2.1.0; it may support lower versions, but these haven't been tested. 
 The database can be whatever type you wish, but the default is MySQL. If you wish to change the database, just modify database.yml to reflect your changes.

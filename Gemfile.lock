@@ -93,8 +93,10 @@ GEM
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-datatables-rails (2.2.3)
+    jquery-datatables-rails (3.1.1)
+      actionpack (>= 3.1)
       jquery-rails
+      railties (>= 3.1)
       sass-rails
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
@@ -201,11 +203,11 @@ DEPENDENCIES
   foundation-rails (= 5.4.3.0)
   foundation_rails_helper
   jbuilder (~> 2.0)
-  jquery-datatables-rails (~> 2.2.3)
+  jquery-datatables-rails (~> 3.1.1)
   jquery-rails
   kaminari
   mysql2
-  rails
+  rails (~> 4.2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

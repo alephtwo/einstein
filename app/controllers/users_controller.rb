@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     if User.all.size == 1
       flash[:error] = "Cannot delete the last user. Please contact your system administrator."
       redirect_to users_path
+    elsif @user == current_user 
+      flash[:error] = "You can't delete yourself. Please contact your system administrator."
+      redirect_to users_path
     else 
       @migratables = User.where.not(id: @user.id)
     end

@@ -29,8 +29,10 @@
             <td><%= user.last_name %></td>
             <td><%= user.clients.active.size %></td>
             <td>
-              <%= link_to disperse_path user do %>
-                <i class="fa fa-trash"></i>&emsp;Delete
+              <% unless user == current_user %>
+                <%= link_to disperse_path user do %>
+                  <i class="fa fa-trash"></i>&emsp;Delete
+                <% end %>
               <% end %>
             </td>
           </tr>

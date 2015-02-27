@@ -13,7 +13,10 @@ class ClientsController < ApplicationController
 
   def show
     respond_to do | format | 
-      format.html
+      format.html do
+        @active_behaviors = @client.behaviors.active
+        @active_reports = @client.behavior_reports.active
+      end
       format.xlsx { render xlsx: "show", filename: "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx" }
     end
   end

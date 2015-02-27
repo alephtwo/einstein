@@ -24,7 +24,7 @@
             <th class="min-tablet-l">Remove</th>
           </tr>
         </thead>
-          <% @client.behaviors.active.each do | behavior | %>
+          <% @active_behaviors.each do | behavior | %>
             <tr>
               <td><%= behavior.description %></td>
               <td><%= behavior.report_count %></td>
@@ -75,7 +75,7 @@
             <th class="min-tablet-l">Remove</th>
           </tr>
         </thead>
-          <% @client.behavior_reports.active.each do | report | %>
+          <% @active_reports.each do | report | %>
             <tr>
               <td><%= report.behavior.description %></td>
               <td><%= report.occurrences %></td>

@@ -8,169 +8,98 @@
   </div>
 </div>
 
-<div class="show-for-large-up">
-  <div class="row text-center">
-    <div class="small-12 columns">
+<div class="row text-center">
+  <div class="small-12 columns">
 
-      <div class="panel">
+    <div class="panel">
 
-        <h3>Assigned Behaviors</h3>
-        <table id="behaviors">
-          <thead>
+      <h3>Assigned Behaviors</h3>
+      <table id="behaviors" class="responsive no-wrap">
+        <thead>
+          <tr>
+            <th class="all">Behavior</th>
+            <th class="min-tablet-p">Times Reported</th>
+            <th class="all">Occurrences</th>
+            <th class="min-tablet-l">Edit</th>
+            <th class="min-tablet-l">Remove</th>
+          </tr>
+        </thead>
+          <% @client.behaviors.active.each do | behavior | %>
             <tr>
-              <th>Behavior</th>
-              <th>Times Reported</th>
-              <th>Occurrences</th>
-              <th width="100">Edit</th>
-              <th width="120">Remove</th>
+              <td><%= behavior.description %></td>
+              <td><%= behavior.report_count %></td>
+              <td><%= behavior.occurrence_count %></td>
+              <td>
+                <%= link_to edit_behavior_path behavior do %>
+                  <i class="fa fa-edit"></i>&emsp;Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behaviors", action: "remove", id: behavior}, data: {confirm: "Are you sure you would like to remove this behavior?\nThis will also remove all reports related to this behavior."} %>
+              </td>
             </tr>
-          </thead>
-            <% @client.behaviors.active.each do | behavior | %>
-              <tr>
-                <td><%= behavior.description %></td>
-                <td><%= behavior.report_count %></td>
-                <td><%= behavior.occurrence_count %></td>
-                <td>
-                  <%= link_to edit_behavior_path behavior do %>
-                    <i class="fa fa-edit"></i>&emsp;Edit
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behaviors", action: "remove", id: behavior}, data: {confirm: "Are you sure you would like to remove this behavior?\nThis will also remove all reports related to this behavior."} %>
-                </td>
-              </tr>
-            <% end %>
-        </table>
+          <% end %>
+      </table>
 
-        <ul class="button-group">
-          <li>
-            <a href="#" data-reveal-id="new-behavior" class="button">
-              <i class="fa fa-plus"></i>&emsp;Add Behavior
-            </a>
-          </li>
-          <li>
-            <%= link_to client_path(format: "xlsx", export: "behaviors"), class: "button success" do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Export
-            <% end %>
-          </li>
-        </ul>
-
-      </div>
+      <ul class="button-group">
+        <li>
+          <a href="#" data-reveal-id="new-behavior" class="button">
+            <i class="fa fa-plus"></i>&emsp;Add Behavior
+          </a>
+        </li>
+        <li>
+          <%= link_to client_path(format: "xlsx", export: "behaviors"), class: "button success" do %>
+            <i class="fa fa-file-excel-o"></i>&emsp;Export
+          <% end %>
+        </li>
+      </ul>
 
     </div>
-  </div>
 
-  <div class="row text-center">
-    <div class="small-12 columns">
-
-      <div class="panel">
-
-        <h3>Behavior Reports</h3>
-        <table id="reports">
-          <thead>
-            <tr>
-              <th>Behavior</th>
-              <th width="135">Occurrences</th>
-              <th>Reported On</th>
-              <th width="100">Edit</th>
-              <th width="120">Remove</th>
-            </tr>
-          </thead>
-            <% @client.behavior_reports.active.each do | report | %>
-              <tr>
-                <td><%= report.behavior.description %></td>
-                <td><%= report.occurrences %></td>
-                <td><%= report.timestamp %></td>
-                <td>
-                  <%= link_to edit_behavior_report_path report do %>
-                    <i class="fa fa-edit"></i>&emsp;Edit
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behavior_reports", action: "remove", id: report}, data: {confirm: 'Are you sure you would like to remove this report?'} %>
-                </td>
-              </tr>
-            <% end %>
-        </table>
-
-        <%= link_to client_path(format: "xlsx", export: "reports"), class: "button success" do %>
-          <i class="fa fa-file-excel-o"></i>&emsp;Export
-        <% end %>
-
-      </div>
-
-    </div>
   </div>
 </div>
 
-<div class="show-for-medium-down">
-  <a href="#" data-reveal-id="new-behavior" class="button expand">
-    <i class="fa fa-plus"></i>&emsp;Add Behavior
-  </a>
+<div class="row text-center">
+  <div class="small-12 columns">
 
-  <div class="row text-center">
-    <div class="small-12 medium-8 medium-centered columns">
-      <h1>Assigned Behaviors</h1>
-      <%= link_to client_path(format: "xlsx", export: "behaviors"), class: "button success expand" do %>
-        <i class="fa fa-file-excel-o"></i>&emsp;Export Behaviors
-      <% end %>
-      <% @client.behaviors.active.each do | behavior | %>
-        <ul class="pricing-table">
-          <li class="title"><strong><%= behavior.description %></strong></li>
-          <li class="bullet-item">Reported <%= pluralize(behavior.report_count, "times") %> across <%= pluralize(behavior.occurrence_count, "occurrences") %></li>
-          <li class="cta-button">
-            <div class="row">
-              <div class="small-12 medium-6 columns">
-                <%= link_to edit_behavior_path(behavior), class: "button expand" do %>
+    <div class="panel">
+
+      <h3>Behavior Reports</h3>
+      <table id="reports" class="responsive no-wrap">
+        <thead>
+          <tr>
+            <th class="all">Behavior</th>
+            <th class="all">Occurrences</th>
+            <th class="all">Reported On</th>
+            <th class="min-tablet-l">Edit</th>
+            <th class="min-tablet-l">Remove</th>
+          </tr>
+        </thead>
+          <% @client.behavior_reports.active.each do | report | %>
+            <tr>
+              <td><%= report.behavior.description %></td>
+              <td><%= report.occurrences %></td>
+              <td><%= report.timestamp %></td>
+              <td>
+                <%= link_to edit_behavior_report_path report do %>
                   <i class="fa fa-edit"></i>&emsp;Edit
                 <% end %>
-              </div>
-              <div class="small-12 medium-6 columns">
-                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behaviors", action: "remove", id: behavior}, data: {confirm: "Are you sure you would like to remove this behavior?\nThis will also remove all reports related to this behavior."}, class: "button expand alert" %>
-              </div>
-            </div>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
+              </td>
+              <td>
+                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behavior_reports", action: "remove", id: report}, data: {confirm: 'Are you sure you would like to remove this report?'} %>
+              </td>
+            </tr>
+          <% end %>
+      </table>
 
-  <hr />
-  <div class="row">
-    <div class="small-12 medium-8 medium-centered columns text-center">
-      <h1>Behavior Reports</h1>
-      <%= link_to client_path(format: "xlsx", export: "reports"), class: "button success expand" do %>
-        <i class="fa fa-file-excel-o"></i>&emsp;Export Reports
-      <% end %>
-
-      <div class="row text-center">
-        <div class="small-12 columns">
-          <%= page_entries_info @mobile_reports %>
-          <br /><br />
-          <%= paginate @mobile_reports %>
-        </div>
-      </div>
-
-      <% @mobile_reports.each do | report | %>
-        <ul class="pricing-table">
-          <li class="title"><%= report.behavior.description %></li>
-          <li class="bullet-item"><%= pluralize(report.occurrences, "occurrences") %></li>
-          <li class="bullet-item">Reported on <%= report.timestamp %></li>
-        </ul>
-      <% end %>
-
-      <% if @mobile_reports.size > 0 %>
-        <div class="row text-center">
-          <div class="small-12 medium-12 large-12 columns">
-            <%= paginate @mobile_reports %>
-            <%= page_entries_info @mobile_reports %>
-            <hr />
-          </div>
-        </div>
+      <%= link_to client_path(format: "xlsx", export: "reports"), class: "button success" do %>
+        <i class="fa fa-file-excel-o"></i>&emsp;Export
       <% end %>
 
     </div>
+
   </div>
+</div>
 
 <div class="reveal-modal" id="new-behavior" data-reveal>
   <div class="row text-center">

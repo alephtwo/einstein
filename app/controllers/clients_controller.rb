@@ -4,7 +4,6 @@ class ClientsController < ApplicationController
   before_filter :check_user
 
   def index
-    @mobile_clients = Client.all.active.page params[:page]
     @clients = Client.all.active
     respond_to do | format |
       format.html

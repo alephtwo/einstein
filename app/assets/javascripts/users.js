@@ -6,3 +6,12 @@ $(document).ready(function() {
 	responsive: true
     } );
 } );
+
+$(document).ready(function() {
+    $('#per-user-clients').dataTable( {
+	"paging": true, 
+	"info": true,
+	"autoWidth": false,
+	responsive: true
+    } );
+} );

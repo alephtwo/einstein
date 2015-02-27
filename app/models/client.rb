@@ -1,7 +1,5 @@
 class Client < ActiveRecord::Base
 
-  paginates_per 10
-
   has_many :behaviors
   has_many :behavior_reports, :through => :behaviors
   belongs_to :user

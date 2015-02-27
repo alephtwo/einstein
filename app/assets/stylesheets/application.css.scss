@@ -17,7 +17,19 @@
  *= require dataTables/extras/dataTables.responsive
  */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@font-face {
+  font-family: 'Open Sans';    
+  src: url('/assets/OpenSans-Regular.ttf') format('truetype');  
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';    
+  src: url('/assets/OpenSans-Bold.ttf') format('truetype');  
+  font-weight: bold;
+  font-style: normal;
+}
 
 /* Override default foundation colors */
 $primary-color: #336699; /* Darker Blue */
@@ -28,7 +40,7 @@ $warning-color: #dd7500; /* Orange */
 $info-color: #e7e7e7; /* Lilac White */
 
 // Override fonts
-$body-font-family: "Roboto", Helvetica, Arial, sans-serif;
+$body-font-family: "Open Sans", Helvetica, Arial, sans-serif;
 $header-font-weight: bold;
 $alert-font-size: 1.25rem;
 $alert-font-weight: bold;

@@ -5,12 +5,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @mobile_users = User.all.page params[:page]
   end
 
   def show 
     @clients = @user.clients.active
-    @mobile_clients = @user.clients.active.page params[:page]
   end
 
   def disperse

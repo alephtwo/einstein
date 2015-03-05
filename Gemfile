@@ -21,6 +21,7 @@ gem 'foundation_rails_helper'
 gem 'devise'
 gem 'kaminari'
 gem 'axlsx_rails'
+gem 'browser'
 
 group :development, :test do
   gem 'byebug'

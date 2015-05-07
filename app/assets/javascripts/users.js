@@ -3,15 +3,17 @@ $(document).ready(function() {
 	"paging": true, 
 	"info": true,
 	"autoWidth": false,
-	responsive: true
+	responsive: true,
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 4 ] } ]
     } );
 } );
 
 $(document).ready(function() {
     $('#per-user-clients').dataTable( {
-	"paging": true, 
-	"info": true,
-	"autoWidth": false,
-	responsive: true
+        "paging": true, 
+        "info": true,
+        "autoWidth": false,
+        responsive: true,
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 2 ] } ]
     } );
 } );

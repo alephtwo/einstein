@@ -1,23 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+# rails
+gem 'rails'
 gem 'mysql2'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
-gem 'bcrypt', '~> 3.1.7'
+gem 'jbuilder'
+gem 'sdoc', group: :doc
+gem 'spring', group: :development
+gem 'bcrypt'
 
 # Custom gems
-gem 'foundation-rails', '5.4.3.0'
-gem 'font-awesome-rails', '~> 4.2.0'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 gem 'attr_encrypted'
-gem 'jquery-datatables-rails', '~> 3.1.1'
-gem 'foundation_rails_helper'
+gem 'jquery-datatables-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'axlsx_rails'
@@ -25,5 +25,5 @@ gem 'browser'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 end

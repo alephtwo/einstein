@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
  *= require_tree .
  *= require_self
  *= require font-awesome
@@ -18,15 +7,15 @@
  */
 
 @font-face {
-  font-family: 'Open Sans';    
-  src: font_url('OpenSans-Regular.ttf') format('truetype');  
+  font-family: 'Open Sans';
+  src: font_url('OpenSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans';    
-  src: font_url('OpenSans-Bold.ttf') format('truetype');  
+  font-family: 'Open Sans';
+  src: font_url('OpenSans-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -48,5 +37,3 @@ $alert-font-weight: bold;
 // Override bg
 $body-bg: #FEFEFE;
 $panel-bg: #EFEFEF;
-
-@import "foundation_and_overrides";

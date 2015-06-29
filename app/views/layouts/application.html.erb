@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? "#{yield(:title)} | Einstein" : "foundation-rails" %></title>
-
+    <title><%= content_for?(:title) ? "#{yield(:title)} | Einstein" : "Einstein" %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -13,28 +11,17 @@
 
   <body>
     <div class="container">
-
       <% if user_signed_in? %>
         <%= render 'layouts/navbar' %>
       <% end %>
-
       <br />
-      
       <div class="row">
         <div class="small-12 columns">
-
-          <div class="text-center">
-            <%= display_flash_messages %>
-          </div>
-
           <%= yield %>
           <%= javascript_include_tag "application" %>
-
         </div>
       </div>
     </div>
-
     <%= render 'layouts/footer' %>
-
   </body>
 </html>

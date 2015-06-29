@@ -1,25 +1,11 @@
-<% if user_signed_in? %>
 <div class="row text-center">
-  <div class="small-12 columns">
-    <div class="panel callout">
-      <i class="fa fa-key"></i>&emsp;Signed in as <strong><%= current_user.email %></strong>
+  <div class="small-12 columns small-centered">
+    <hr />
+    <% if user_signed_in? %>
+      <span>Your last sign in was at <strong><%= current_user.last_sign_in_central %></strong> by <strong><%= current_user.last_sign_in_ip %></strong></span>
       <br />
-      Last sign in: on <strong><%= current_user.last_sign_in_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></strong> by IP Address <strong><%= current_user.last_sign_in_ip %></strong>. 
-    </div>
-  </div>
-</div> 
-<% end %>
-
-<div class="row text-center">
-  <div class="small-4 columns small-centered">
-    <%= image_tag "https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.png" %>
-    <br />
-  </div>
-</div>
-
-<div class="row text-center">
-  <div class="small-12 columns">
-    <small><i class="fa fa-check-circle"></i>&emsp;<%= `git describe --always` %></small>
+    <% end %>
+    <small><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Einstein <%= `git describe --always` %></small>
   </div>
 </div>
 

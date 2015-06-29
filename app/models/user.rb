@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_many :clients
   has_many :maintenances
 
+  def last_sign_in_central
+    last_sign_in_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long)
+  end
+
 end

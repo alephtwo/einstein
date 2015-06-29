@@ -8,21 +8,17 @@
   </ul>
 
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-
+    <ul class="left">
       <li>
         <%= link_to users_path do %>
           <i class="fa fa-group"></i>&emsp;Users
         <% end %>
       </li>
-    
       <li>
         <%= link_to clients_path do %>
           <i class="fa fa-medkit"></i>&emsp;Clients
         <% end %>
       </li>
-
       <li class="has-dropdown">
         <a href="#"><i class="fa fa-file-o"></i>&emsp;Reports</a>
         <ul class="dropdown">
@@ -35,16 +31,14 @@
             <%= link_to behaviors_path(format: "xlsx") do %>
               <i class="fa fa-file-excel-o"></i>&emsp;Export Behaviors
             <% end %>
-          </li>            
+          </li>
           <li>
             <%= link_to clients_path(format: "xlsx") do %>
               <i class="fa fa-file-excel-o"></i>&emsp;Export Clients
             <% end %>
           </li>
-
         </ul>
       </li>
-
       <li class="has-dropdown">
         <a href="#"><i class="fa fa-database"></i>&emsp;Data</a>
         <ul class="dropdown">
@@ -60,18 +54,24 @@
           </li>
         </ul>
       </li>
+    </ul>
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#"><i class="fa fa-user"></i>&emsp;<%= current_user.email %></a>
+        <ul class="dropdown">
+          <li>
+            <%= link_to edit_user_path current_user do %>
+              <i class="fa fa-gear"></i>&emsp; Edit Profile
+            <% end %>
+          </li>
 
-      <li>
-        <%= link_to edit_user_path current_user do %>
-          <i class="fa fa-gear"></i>&emsp; Edit Profile
-        <% end %>
-      </li>
-
-      <li>
-        <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
-          <i class="fa fa-sign-out"></i>&emsp;Log Out
-        <% end %>
-      </li>
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do %>
+              <i class="fa fa-sign-out"></i>&emsp;Log Out
+            <% end %>
+          </li>
+        </li>
+      </ul>
     </ul>
   </section>
 

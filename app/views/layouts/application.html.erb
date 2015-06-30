@@ -14,14 +14,16 @@
       <% if user_signed_in? %>
         <%= render 'layouts/navbar' %>
       <% end %>
-      <br />
+      <% flash.each do |type, msg| %>
+        <%= alert_box msg, context: type, dismissible: true %>
+      <% end %>
       <div class="row">
-        <div class="small-12 columns">
+        <div class="col-xs-12">
           <%= yield %>
           <%= javascript_include_tag "application" %>
+          <%= render 'layouts/footer' %>
         </div>
       </div>
     </div>
-    <%= render 'layouts/footer' %>
   </body>
 </html>

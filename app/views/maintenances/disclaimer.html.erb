@@ -1,88 +1,86 @@
 <% content_for :title, "Disclaimer: Cleaning Database" %>
 
-<div class="row text-center">
-  <div class="small-12 columns">
+<div class="row ">
+  <div class="col-xs-12">
     <h1>Clean Database</h1>
     <hr />
   </div>
 </div>
 
 <div class="row">
-  <div class="small-12 columns">
-    <h3 class="text-center"><em>Disclaimer</em></h3>
-    <div class="panel">
-      <p>Due to the nature of the data stored by this application, no data is actually <em>removed</em> from the database; rather, it is politely hidden. To meet health data storage standards, this hidden data will still be exported when data is requested from the system.</p>
-
-      <p>Because of this, there will be times when the database is full of items that are marked as "removed," but still show up in exported spreadsheets. In order to maintain ease-of-use, the option to remove all of these hidden records from the database has been provided.</p>
-
-      <p>If you wish to proceed with removing all hidden records, please be aware that the data will be <b>deleted</b> and will no longer be accessible by <b>any means</b>. Please ensure that you have exported all meaningful data before cleaning the database. 
-      </p>
+  <div class="col-xs-12">
+    <h3 class=""><em>Disclaimer</em></h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>Due to the nature of the data stored by this application, no data is actually <em>removed</em> from the database; rather, it is politely hidden. To meet health data storage standards, this hidden data will still be exported when data is requested from the system.</p>
+        <p>Because of this, there will be times when the database is full of items that are marked as "removed," but still show up in exported spreadsheets. In order to maintain ease-of-use, the option to remove all of these hidden records from the database has been provided.</p>
+        <p>If you wish to proceed with removing all hidden records, please be aware that the data will be <b>deleted</b> and will no longer be accessible by <b>any means</b>. Please ensure that you have exported all meaningful data before cleaning the database.</p>
+      </div>
     </div>
-
     <hr />
-
     <div class="row">
-      <h3 class="text-center">Total Data Hidden</h3>
-      <div class="small-4 columns">
-        <div class="panel text-center">
-          <h1 style="font-size: 5em;"><%= @hidden_clients %></h1>
-          <h5>Hidden <%= "Client".pluralize(@hidden_clients) %></h5>
+      <h3 class="">Total Data Hidden</h3>
+      <div class="col-xs-4">
+        <div class="panel panel-default ">
+          <div class="panel-body">
+            <h1 style="font-size: 5em;"><%= @hidden_clients %></h1>
+            <h5>Hidden <%= "Client".pluralize(@hidden_clients) %></h5>
+          </div>
         </div>
       </div>
-      <div class="small-4 columns">
-        <div class="panel text-center">
-          <h1 style="font-size: 5em;"><%= @hidden_behaviors %></h1>
-          <h5>Hidden <%= "Behavior".pluralize(@hidden_behaviors) %></h5>
+      <div class="col-xs-4">
+        <div class="panel panel-default ">
+          <div class="panel-body">
+            <h1 style="font-size: 5em;"><%= @hidden_behaviors %></h1>
+            <h5>Hidden <%= "Behavior".pluralize(@hidden_behaviors) %></h5>
+          </div>
         </div>
       </div>
-      <div class="small-4 columns">
-        <div class="panel text-center">
-          <h1 style="font-size: 5em;"><%= @hidden_reports %></h1>
-          <h5>Hidden <%= "Report".pluralize(@hidden_reports) %></h5>
+      <div class="col-xs-4">
+        <div class="panel panel-default ">
+          <div class="panel-body">
+            <h1 style="font-size: 5em;"><%= @hidden_reports %></h1>
+            <h5>Hidden <%= "Report".pluralize(@hidden_reports) %></h5>
+          </div>
         </div>
       </div>
     </div>
-  
     <hr />
-
-    <h3 class="text-center">Make sure the data about to be removed has been exported!</h3>
-    <div class="panel">
-      <p class="text-center">Exporting using the following options will create Excel spreadsheets containing all data in the system for the relevant data, including both hidden and active records. After cleaning the database, only active records will exist.</p> 
-      <div class="row">
-        <div class="small-12 medium-6 medium-centered columns">
-          <div class="row text-center">
-            <%= link_to clients_path(format: "xlsx"), class: "button success expand" do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Export All Clients
-            <% end %> 
+    <h3 class="">Make sure the data about to be removed has been exported!</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="">Exporting using the following options will create Excel spreadsheets containing all data in the system for the relevant data, including both hidden and active records. After cleaning the database, only active records will exist.</p>
+        <div class="row ">
+          <div class="col-xs-12">
+            <div class="btn-group">
+              <%= link_to clients_path(format: "xlsx"), class: "btn btn-success" do %>
+                <i class="fa fa-file-excel-o"></i>&emsp;Export All Clients
+              <% end %>
+              <%= link_to behaviors_path(format: "xlsx"), class: "btn btn-success" do %>
+                <i class="fa fa-file-excel-o"></i>&emsp;Export All Behaviors
+              <% end %>
+              <%= link_to behavior_reports_path(format: "xlsx"), class: "btn btn-success" do %>
+                <i class="fa fa-file-excel-o"></i>&emsp;Export All Behavior Reports
+              <% end %>
+            </div>
           </div>
-
-          <div class="row text-center">
-            <%= link_to behaviors_path(format: "xlsx"), class: "button success expand" do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Export All Behaviors
-            <% end %> 
-          </div>
-
-          <div class="row text-center">
-            <%= link_to behavior_reports_path(format: "xlsx"), class: "button success expand" do %>
-              <i class="fa fa-file-excel-o"></i>&emsp;Export All Behavior Reports
-            <% end %> 
-          </div>
-        </div> 
+        </div>
       </div>
     </div>
 
     <hr />
 
-    <div class="row text-center">
-      <div class="small-12 columns">
+    <div class="row ">
+      <div class="col-xs-12">
         <h3>Danger Zone</h3>
-        <div class="panel">
-          <p>By clicking "Clean Database," you agree that you have read the above and understand that doing so will <b>permanently remove</b> all hidden data from the database.</p>
-          <%= link_to '<i class="fa fa-warning"></i>&emsp;Clean Database'.html_safe, {controller: "maintenances", action: "clean"}, method: "delete", data: {confirm: 'Are you sure you would like to permanently remove all hidden data from the database?'}, class: "button large alert" %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p>By clicking "Clean Database," you agree that you have read the above and understand that doing so will <b>permanently remove</b> all hidden data from the database.</p>
+            <%= link_to '<i class="fa fa-warning"></i>&emsp;Clean Database'.html_safe, {controller: "maintenances", action: "clean"}, method: "delete", data: {confirm: 'Are you sure you would like to permanently remove all hidden data from the database?'}, class: "btn btn-danger btn-lg" %>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-

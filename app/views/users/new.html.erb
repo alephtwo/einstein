@@ -1,49 +1,37 @@
 <% content_for :title, "New User" %>
 
-<div class="row text-center">
-  <div class="small-12 medium-8 medium-centered columns">
-
-    <h1>New User</h1>
-
-    <div class="panel">
-      <%= form_for @user do | f | %>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <%= f.text_field :email %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 medium-6 columns">
-            <%= f.password_field :password %>
-          </div>
-
-          <div class="small-12 medium-6 columns">
-            <%= f.password_field :password_confirmation, label: "Confirm Password" %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <%= f.text_field :first_name, label: "First Name" %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <%= f.text_field :last_name, label: "Last Name" %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <%= f.submit class: "button expand" %>
-          </div>
-        </div>
-
-      <% end %>
+<%= form_for @user, layout: :basic do | f | %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>New User</h1>
     </div>
-
-  </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <%= f.password_field :password %>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.text_field :first_name, label: "First Name" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.text_field :last_name, label: "Last Name" %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <%= f.submit class: "btn btn-primary " %>
+    </div>
 </div>
+<% end %>

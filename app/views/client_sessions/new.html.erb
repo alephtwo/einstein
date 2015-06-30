@@ -1,26 +1,19 @@
 <% content_for :title, "Client Login" %>
 
-<%= form_for(:client_session, url: client_sessions_path) do |f| %>
-  <div class="row text-center">
-    <div class="small-12 medium-8 medium-centered columns">
-      <div class="panel">
-
-        <h1>Client Login</h1>
-        <hr />
-
-        <%= f.text_field :id, placeholder: "Identification Number", label: "ID Number" %>
-
-        <%= f.password_field :password, placeholder: "Password" %>
-
-        <%= f.check_box :remember, label: "Remember Me" %>
-
-        <hr />
-        
-        <%= button_tag type: "submit", class: "button expand" do %>
-          <i class="fa fa-sign-in"></i>&emsp;Log In
-        <% end %>
-      </div>
+<%= form_for(:client_session, url: client_sessions_path, layout: :basic) do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>Client Login</h1>
+    </div>
+    <div class="panel-body">
+      <%= f.text_field :id, placeholder: "Identification Number", label: "ID Number" %>
+      <%= f.password_field :password, placeholder: "Password" %>
+      <%= f.check_box :remember, label: "Remember Me" %>
+    </div>
+    <div class="panel-footer">
+      <%= button_tag type: "submit", class: "btn btn-primary " do %>
+        <i class="fa fa-sign-in"></i>&emsp;Log In
+      <% end %>
     </div>
   </div>
-
 <% end %>

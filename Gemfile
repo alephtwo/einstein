@@ -15,6 +15,7 @@ gem 'bcrypt'
 
 # Custom gems
 gem 'bootstrap-sass'
+gem 'bh'
 gem 'font-awesome-rails'
 gem 'attr_encrypted'
 gem 'jquery-datatables-rails'

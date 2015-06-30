@@ -1,17 +1,15 @@
 <% content_for :title, "New Behavior Report" %>
 
-<div class="row text-center">
-  <div class="small-12 columns">
+<div class="row ">
+  <div class="col-xs-12">
     <h1>Edit Behavior Report</h1>
   </div>
 </div>
-
-<div class="row text-center">
-  <div class="small-12 medium-8 medium-centered columns">
-    <%= form_for @behavior_report do | f | %>
+<div class="row ">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <%= form_for @behavior_report, layout: :basic do | f | %>
       <%= f.number_field :occurrences, :in => 0..100, :step => 1 %>
-
-      <%= f.submit "Update Report", class: "button expand" %>
+      <%= f.submit "Update Report", class: "btn btn-primary " %>
     <% end %>
   </div>
 </div>

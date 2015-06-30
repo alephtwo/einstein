@@ -20,20 +20,16 @@
   font-style: normal;
 }
 
-/* Override default foundation colors */
-$primary-color: #336699; /* Darker Blue */
-$secondary-color: #6441A5; /* Twitch Purple */
-$alert-color: #c33333; /* Brick Red */
-$success-color: #006400; /* Vibrant Green */
-$warning-color: #dd7500; /* Orange */
-$info-color: #e7e7e7; /* Lilac White */
-
 // Override fonts
-$body-font-family: "Open Sans", Helvetica, Arial, sans-serif;
-$header-font-weight: bold;
-$alert-font-size: 1.25rem;
-$alert-font-weight: bold;
+$font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
 
-// Override bg
-$body-bg: #FEFEFE;
-$panel-bg: #EFEFEF;
+body {
+  padding-top: 1em;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+a {
+  text-decoration: none !important; 
+}

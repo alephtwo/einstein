@@ -1,19 +1,19 @@
 <% content_for :title, "Edit Behavior" %>
 
-<div class="row text-center">
-  <div class="small-12 columns">
+<div class="row ">
+  <div class="col-xs-12">
     <h1>Edit Behavior</h1>
   </div>
 </div>
 
-<%= form_for @behavior do | f | %>
-  <div class="row text-center">
-    <div class="small-12 medium-8 small-centered columns">
-      <div class="panel">
-
-        <%= f.text_field :description %>
-
-        <%= f.submit class: "button expand" %>
+<%= form_for @behavior, layout: :basic do | f | %>
+  <div class="row ">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= f.text_field :description %>
+          <%= f.submit class: "btn btn-primary " %>
+        </div>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to new_password_path(resource_name), class: "button expand secondary" do %>
+  <%= link_to new_password_path(resource_name), class: "btn btn-default " do %>
     <i class="fa fa-life-ring"></i>&emsp;Forgot your password?
   <% end %>
   <br />

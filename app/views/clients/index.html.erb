@@ -1,55 +1,48 @@
 <% content_for :title, "Clients" %>
 
-<div class="row text-center">
-  <div class="small-12 columns">
+<div class="panel panel-default">
+  <div class="panel-heading">
     <h1>Clients</h1>
-    <hr />
   </div>
-</div>
-
-<div class="row text-center">
-  <div class="small-12 columns">
-    <div class="panel">
-      <table id="clients" class="responsive no-wrap">
-        <thead>
+  <div class="panel-body">
+    <table id="clients" class="table table-striped table-hover responsive no-wrap">
+      <thead>
+        <tr>
+          <th width="125" class="min-tablet-l">Client ID</th>
+          <th class="all">Last Name</th>
+          <th class="min-tablet-l">Managed By</th>
+          <th width="100" class="min-tablet-p">Edit</th>
+          <th width="120" class="min-tablet-p">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do | client | %>
           <tr>
-            <th width="125" class="min-tablet-l">Client ID</th>
-            <th class="all">Last Name</th>
-            <th class="min-tablet-l">Managed By</th>
-            <th width="100" class="min-tablet-p">Edit</th>
-            <th width="120" class="min-tablet-p">Remove</th>
+            <td><%= client.id %></td>
+            <td>
+              <%= link_to client do %>
+                <%= client.last_name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to client.user.email, client.user %>
+            </td>
+            <td>
+              <%= link_to edit_client_path client do %>
+                <i class="fa fa-edit"></i>&emsp;Edit
+              <% end %>
+            </td>
+            <td>
+              <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."}, class: "text-danger" %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @clients.each do | client | %>
-            <tr>
-              <td><%= client.id %></td>
-              <td>
-                <%= link_to client do %>
-                  <%= client.last_name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to client.user.email, client.user %>
-              </td>
-              <td>
-                <%= link_to edit_client_path client do %>
-                  <i class="fa fa-edit"></i>&emsp;Edit
-                <% end %>
-              </td>
-              <td>
-                <%= link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."} %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <%= link_to new_client_path, class: "button" do %>
-        <i class="fa fa-plus"></i>&emsp;New Client
-      <% end %>
-
-    </div>
-
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <%= link_to new_client_path, class: "btn btn-primary" do %>
+      <i class="fa fa-plus"></i>&emsp;New Client
+    <% end %>
   </div>
 </div>

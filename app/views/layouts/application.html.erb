@@ -14,7 +14,7 @@
         <%= render 'layouts/navbar' %>
       <% end %>
       <% flash.each do |type, msg| %>
-        <%= alert_box msg, context: type, dismissible: true %>
+        <%= alert_box msg, context: bootstrap_flash_class(type), dismissible: true %>
       <% end %>
       <div class="row">
         <div class="col-xs-12">

@@ -36,5 +36,5 @@ class ClientSessionsController < ApplicationController
         redirect_to clients_path
       end
     end
-  
+
 end

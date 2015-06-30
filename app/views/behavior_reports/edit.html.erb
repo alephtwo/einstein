@@ -1,15 +1,15 @@
 <% content_for :title, "New Behavior Report" %>
 
-<div class="row ">
-  <div class="col-xs-12">
-    <h1>Edit Behavior Report</h1>
-  </div>
-</div>
-<div class="row ">
-  <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <%= form_for @behavior_report, layout: :basic do | f | %>
+<%= form_for @behavior_report, layout: :basic do | f | %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>Edit Behavior Report</h1>
+    </div>
+    <div class="panel-body">
       <%= f.number_field :occurrences, :in => 0..100, :step => 1 %>
+    </div>
+    <div class="panel-footer">
       <%= f.submit "Update Report", class: "btn btn-primary " %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

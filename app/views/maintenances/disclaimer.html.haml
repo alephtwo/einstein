@@ -1,13 +1,12 @@
 - content_for :title, "Disclaimer: Cleaning Database"
-.row
-  .col-xs-12
+.panel.panel-default
+  .panel-heading
     %h1 Clean Database
-    %hr/
-.row
-  .col-xs-12
-    %h3
-      %em Disclaimer
+  .panel-body
     .panel.panel-default
+      .panel-heading
+        %h3
+          %em Disclaimer
       .panel-body
         %p
           Due to the nature of the data stored by this application, no data is actually
@@ -20,52 +19,54 @@
           and will no longer be accessible by
           = succeed "." do
             %b any means
-    %hr/
-    .row
-      %h3 Total Data Hidden
-      .col-xs-4
-        .panel.panel-default
-          .panel-body
-            %h1{:style => "font-size: 5em;"}= @hidden_clients
-            %h5
-              Hidden #{"Client".pluralize(@hidden_clients)}
-      .col-xs-4
-        .panel.panel-default
-          .panel-body
-            %h1{:style => "font-size: 5em;"}= @hidden_behaviors
-            %h5
-              Hidden #{"Behavior".pluralize(@hidden_behaviors)}
-      .col-xs-4
-        .panel.panel-default
-          .panel-body
-            %h1{:style => "font-size: 5em;"}= @hidden_reports
-            %h5
-              Hidden #{"Report".pluralize(@hidden_reports)}
-    %hr/
-    %h3 Make sure the data about to be removed has been exported!
     .panel.panel-default
+      .panel-heading
+        %h3 Total Data Hidden
+      .panel-body
+        .row
+          .col-xs-4
+            .panel.panel-default
+              .panel-body.text-center
+                %h1{:style => "font-size: 5em;"}= @hidden_clients
+                %h5
+                  Hidden #{"Client".pluralize(@hidden_clients)}
+          .col-xs-4
+            .panel.panel-default
+              .panel-body.text-center
+                %h1{:style => "font-size: 5em;"}= @hidden_behaviors
+                %h5
+                  Hidden #{"Behavior".pluralize(@hidden_behaviors)}
+          .col-xs-4
+            .panel.panel-default
+              .panel-body.text-center
+                %h1{:style => "font-size: 5em;"}= @hidden_reports
+                %h5
+                  Hidden #{"Report".pluralize(@hidden_reports)}
+
+    .panel.panel-default
+      .panel-heading
+        %h3 Make sure the data about to be removed has been exported!
       .panel-body
         %p Exporting using the following options will create Excel spreadsheets containing all data in the system for the relevant data, including both hidden and active records. After cleaning the database, only active records will exist.
-        .row
-          .col-xs-12
-            .btn-group
-              = link_to clients_path(format: "xlsx"), class: "btn btn-success" do
-                %i.fa.fa-file-excel-o>
-                 Export All Clients
-              = link_to behaviors_path(format: "xlsx"), class: "btn btn-success" do
-                %i.fa.fa-file-excel-o>
-                 Export All Behaviors
-              = link_to behavior_reports_path(format: "xlsx"), class: "btn btn-success" do
-                %i.fa.fa-file-excel-o>
-                 Export All Behavior Reports
-    %hr/
-    .row
-      .col-xs-12
+        .text-center
+          .btn-group
+            = link_to clients_path(format: "xlsx"), class: "btn btn-success" do
+              %i.fa.fa-file-excel-o>
+               Export All Clients
+            = link_to behaviors_path(format: "xlsx"), class: "btn btn-success" do
+              %i.fa.fa-file-excel-o>
+               Export All Behaviors
+            = link_to behavior_reports_path(format: "xlsx"), class: "btn btn-success" do
+              %i.fa.fa-file-excel-o>
+               Export All Behavior Reports
+
+    .panel.panel-default
+      .panel-heading
         %h3 Danger Zone
-        .panel.panel-default
-          .panel-body
-            %p
-              By clicking "Clean Database," you agree that you have read the above and understand that doing so will
-              %b permanently remove
-              all hidden data from the database.
-            = link_to '<i class="fa fa-warning"></i>&emsp;Clean Database'.html_safe, {controller: "maintenances", action: "clean"}, method: "delete", data: {confirm: 'Are you sure you would like to permanently remove all hidden data from the database?'}, class: "btn btn-danger btn-lg"
+      .panel-body
+        %p
+          By clicking "Clean Database," you agree that you have read the above and understand that doing so will
+          %b permanently remove
+          all hidden data from the database.
+        .text-center
+          = link_to '<i class="fa fa-warning"></i>&emsp;Clean Database'.html_safe, {controller: "maintenances", action: "clean"}, method: "delete", data: {confirm: 'Are you sure you would like to permanently remove all hidden data from the database?'}, class: "btn btn-danger btn-lg"

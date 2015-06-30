@@ -1,31 +1,26 @@
 <% content_for :title, "New Behavior Report" %>
 
-<div class="row ">
-  <div class="col-xs-12">
+<div class="panel panel-default">
+  <div class="panel-heading">
     <h1>Submit Behavior Report</h1>
   </div>
-</div>
 
-<% if current_client.behaviors.active.size > 0 %>
-  <%= render 'form' %>
-<% else %>
-  <div class="row ">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-body">You do not have any assigned behaviors.</div>
-      </div>
-    </div>
+  <div class="panel-body">
+    <% if current_client.behaviors.active.size > 0 %>
+      <%= form_for @behavior_report, layout: :basic do | f | %>
+        <%= f.label "Behavior" %><br />
+        <%= f.collection_select :behavior_id, current_client.behaviors.active, :id, :description %>
+        <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1, label: "Number of Occurrences" %>
+        <%= f.submit "Submit Report", id: "submit-report", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      You do not have any assigned behaviors.
+    <% end %>
   </div>
-<% end %>
 
-<div class="row ">
-  <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= link_to logout_path, method: "delete", class: "btn btn-danger " do %>
-          <i class="fa fa-sign-out"></i>&emsp;Log Out
-        <% end %>
-      </div>
-    </div>
+  <div class="panel-footer">
+    <%= link_to logout_path, method: "delete", class: "btn btn-danger " do %>
+      <i class="fa fa-sign-out"></i>&emsp;Log Out
+    <% end %>
   </div>
 </div>

@@ -1,13 +1,1 @@
-<div class="row ">
-  <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= form_for @behavior_report, layout: :basic do | f | %>
-          <%= f.collection_select :behavior_id, current_client.behaviors.active, :id, :description, label: "Behavior" %>
-          <%= f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1, label: "Number of Occurrences" %>
-          <%= f.submit "Submit Report", id: "submit-report", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+

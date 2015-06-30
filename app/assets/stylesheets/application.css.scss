@@ -2,7 +2,7 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- *= require dataTables/jquery.dataTables.foundation
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require dataTables/extras/dataTables.responsive
  */
 
@@ -31,5 +31,5 @@ body {
 @import "bootstrap";
 
 a {
-  text-decoration: none !important; 
+  text-decoration: none !important;
 }

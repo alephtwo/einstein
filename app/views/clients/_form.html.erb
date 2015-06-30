@@ -22,7 +22,7 @@
         <div class="col-xs-12">
           <%= f.label "Assigned To" %>
           <br />
-          <%= f.collection_select :user_id, User.all, :id, :email %>
+          <%= f.collection_select :user_id, User.all, :id, :email, {}, {class: ""} %>
         </div>
       </div>
     </div>

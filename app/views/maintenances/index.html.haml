@@ -1,0 +1,41 @@
+- content_for :title, "Deletion History"
+.panel.panel-default
+  .panel-heading
+    %h1 Database Cleanups
+    %p Below is a list of all previous database cleanings and how much data was deleted during each cleanup.
+  .panel-body
+    %table#maintenances.table.table-striped.table-hover
+      %thead
+        %tr
+          %th.all{:width => "200"} User
+          %th.min-tablet-l Reports
+          %th.min-tablet-l Behaviors
+          %th.min-tablet-l Clients
+          %th.all Total Deleted
+          %th.desktop Date Performed
+      %tbody
+        - @maintenances.each do | maint |
+          %tr
+            %td= maint.user.email
+            %td= maint.reports_deleted
+            %td= maint.behaviors_deleted
+            %td= maint.clients_deleted
+            %td= maint.total_deleted
+            %td= maint.timestamp
+.panel.panel-default
+  .panel-heading
+    %h1 User Deletes
+    %p This is a list of all users that have been deleted and which users invoked the delete.
+  .panel-body
+    %table#userdeletes.table.table-striped.table-hover.responsive.no-wrap
+      %thead
+        %tr
+          %th.min-tablet-p Invoking User
+          %th.all Deleted User
+          %th.min-tablet-l Date Performed
+      %tbody
+        - @users.each do | del |
+          %tr
+            %td= del.user.email
+            %td= del.deleted_user
+            %td= del.timestamp

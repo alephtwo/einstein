@@ -1,0 +1,15 @@
+- content_for :title, "Editing User"
+.panel.panel-default
+  .panel-heading
+    %h1 Edit User
+  = form_for @user, layout: :basic do | f |
+    .panel-body
+      = f.text_field :email
+      = f.text_field :first_name, label: "First Name"
+      = f.text_field :last_name, label: "Last Name"
+    .panel-footer
+      = f.submit class: "btn btn-primary"
+      - if user_signed_in? && @user == current_user
+        = link_to edit_user_registration_path, class: "btn btn-info" do
+          %i.fa.fa-key>
+           Change Password

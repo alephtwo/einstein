@@ -1,0 +1,32 @@
+- content_for :title, "Clients"
+.panel.panel-default
+  .panel-heading
+    %h1 Clients
+  .panel-body
+    %table#clients.table.table-striped.table-hover.responsive.no-wrap
+      %thead
+        %tr
+          %th.min-tablet-l{:width => "125"} Client ID
+          %th.all Last Name
+          %th.min-tablet-l Managed By
+          %th.min-tablet-p{:width => "100"} Edit
+          %th.min-tablet-p{:width => "120"} Remove
+      %tbody
+        - @clients.each do | client |
+          %tr
+            %td= client.id
+            %td
+              = link_to client do
+                = client.last_name
+            %td
+              = link_to client.user.email, client.user
+            %td
+              = link_to edit_client_path client do
+                %i.fa.fa-edit>
+                 Edit
+            %td
+              = link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "clients", action: "remove", id: client}, data: {confirm: "Are you sure you would like to remove this client?\nThis will also remove all of this client\'s behaviors and all reports related to those behaviors."}, class: "text-danger"
+  .panel-footer
+    = link_to new_client_path, class: "btn btn-primary" do
+      %i.fa.fa-plus>
+       New Client

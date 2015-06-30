@@ -1,0 +1,20 @@
+.row
+  .col-xs-12
+    %hr/
+    - if user_signed_in?
+      %span
+        Your last sign in was at
+        %strong= current_user.last_sign_in_central
+        by
+        %strong= current_user.last_sign_in_ip
+      %br/
+    %small
+      %i.fa.fa-check-circle>
+      Einstein #{`git describe --always`}
+- if Rails.env.development?
+  .row
+    .col-xs-12
+      %hr/
+      .panel.panel-default
+        .panel-body
+        = debug(params)

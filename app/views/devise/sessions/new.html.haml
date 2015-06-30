@@ -1,0 +1,17 @@
+- content_for :title, "Staff Login"
+- client_sign_out if client_signed_in?
+= form_for(resource, as: resource_name, url: session_path(resource_name), layout: :basic) do |f|
+  .panel.panel-default
+    .panel-heading
+      %h1 Staff Login
+    .panel-body
+      = f.email_field :email, autofocus: true, placeholder: "Email Address"
+      = f.password_field :password, autocomplete: "off", placeholder: "Password"
+      - if devise_mapping.rememberable?
+        = f.check_box :remember_me
+    .panel-footer
+      = button_tag type: "submit", class: "btn btn-primary " do
+        %i.fa.fa-sign-in>
+         Log In
+      = render "devise/shared/links"
+= link_to "Client Login", login_path, class: "btn btn-success"

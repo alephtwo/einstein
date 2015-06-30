@@ -1,0 +1,78 @@
+- content_for :title, "View Client #{@client.id}"
+.panel.panel-default
+  .panel-heading
+    %h1
+      = @client.last_name
+       
+      %small
+        Client ID: #{@client.id}
+  .panel-body
+    .panel.panel-default
+      .panel-heading
+        %h3 Assigned Behaviors
+      .panel-body
+        %table#behaviors.table.table-striped.table-hover.responsive.no-wrap
+          %thead
+            %tr
+              %th.all{:width => "200"} Behavior
+              %th.min-tablet-p Times Reported
+              %th.all Occurrences
+              %th.min-tablet-l Edit
+              %th.min-tablet-l Remove
+          - @active_behaviors.each do | behavior |
+            %tr
+              %td= behavior.description
+              %td= behavior.report_count
+              %td= behavior.occurrence_count
+              %td
+                = link_to edit_behavior_path behavior do
+                  %i.fa.fa-edit>
+                   Edit
+              %td
+                = link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behaviors", action: "remove", id: behavior}, data: {confirm: "Are you sure you would like to remove this behavior?\nThis will also remove all reports related to this behavior."}, class: "text-danger"
+      .panel-footer
+        .button-group
+          %a.btn.btn-primary{"data-target" => "#new-behavior", "data-toggle" => "modal", :href => "#"}
+            %i.fa.fa-plus>
+             Add Behavior
+          = link_to client_path(format: "xlsx", export: "behaviors"), class: "btn btn-success" do
+            %i.fa.fa-file-excel-o>
+             Export
+    .panel.panel-default
+      .panel-heading
+        %h3 Behavior Reports
+      .panel-body
+        %table#reports.table.table-striped.table-hover.responsive.no-wrap
+          %thead
+            %tr
+              %th.all{:width => "200"} Behavior
+              %th.all Occurrences
+              %th.min-tablet-p Reported On
+              %th.min-tablet-l Edit
+              %th.min-tablet-l Remove
+          - @active_reports.each do | report |
+            %tr
+              %td= report.behavior.description
+              %td= report.occurrences
+              %td= report.timestamp
+              %td
+                = link_to edit_behavior_report_path report do
+                  %i.fa.fa-edit>
+                   Edit
+              %td
+                = link_to '<i class="fa fa-times"></i>&emsp;Remove'.html_safe, {controller: "behavior_reports", action: "remove", id: report}, data: {confirm: 'Are you sure you would like to remove this report?'}, class: "text-danger"
+      .panel-footer
+        = link_to client_path(format: "xlsx", export: "reports"), class: "btn btn-success" do
+          %i.fa.fa-file-excel-o>
+           Export
+#new-behavior.modal
+  = form_for Behavior.new, layout: :basic do | f |
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %h1 Add a Behavior
+          = f.text_field :description
+          = f.hidden_field :client_id, :value => @client.id
+        .modal-footer
+          = f.submit class: "btn btn-primary"
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

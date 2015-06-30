@@ -1,0 +1,27 @@
+- content_for :title, "Change Password"
+.row
+  .col-xs-12
+    %h2
+      Change #{resource_name.to_s.humanize} Password
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, layout: :basic) do |f|
+  .row
+    .col-xs-12.col-md-8.col-md-offset-2
+      - devise_error_messages!
+  .row
+    .col-xs-12.col-md-8.col-md-offset-2
+      %hr/
+      .panel.panel-default
+        .panel-body
+          = f.email_field :email, autofocus: true
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .row
+            .col-xs-12.col-md-6
+              = f.password_field :password, autocomplete: "off", label: "New Password"
+            .col-xs-12.col-md-6
+              = f.password_field :password_confirmation, autocomplete: "off", label: "Confirm New Password"
+          %hr/
+          %em Please enter your current password to confirm your changes.
+          = f.password_field :current_password, autocomplete: "off"
+          = f.submit "Update", class: "btn btn-primary "

@@ -1,0 +1,20 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? "#{yield(:title)} | Einstein" : "Einstein"
+    = stylesheet_link_tag "application"
+    = csrf_meta_tags
+  %body
+    .container
+      - if user_signed_in?
+        = render 'layouts/navbar'
+      - flash.each do |type, msg|
+        = alert_box msg, context: bootstrap_flash_class(type), dismissible: true
+      .row
+        .col-xs-12
+          = yield
+          = javascript_include_tag "application"
+          = render 'layouts/footer'

@@ -14,7 +14,9 @@ gem 'spring', group: :development
 gem 'bcrypt'
 
 # Custom gems
+gem 'haml'
 gem 'bootstrap-sass'
+gem "erb2haml", :group => :development
 gem 'bh'
 gem 'font-awesome-rails'
 gem 'attr_encrypted'

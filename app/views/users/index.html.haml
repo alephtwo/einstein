@@ -1,0 +1,31 @@
+- content_for :title, "Users"
+.panel.panel-default
+  .panel-heading
+    %h1 Users
+  .panel-body
+    %table#users-table.table.table-striped.table-hover.responsive.no-wrap
+      %thead
+        %tr
+          %th.all Email
+          %th.desktop First Name
+          %th.desktop Last Name
+          %th.min-tablet-p{:width => "100"} Clients
+          %th.min-tablet-l{:width => "120"} Remove
+      %tbody
+        - @users.each do | user |
+          %tr
+            %td
+              = link_to user do
+                = user.email
+            %td= user.first_name
+            %td= user.last_name
+            %td= user.clients.active.size
+            %td
+              - unless user == current_user
+                = link_to disperse_path(user), class: "text-danger" do
+                  %i.fa.fa-remove>
+                   Remove
+  .panel-footer
+    = link_to new_user_path, class: "btn btn-primary" do
+      %i.fa.fa-plus>
+       New User

@@ -23,7 +23,7 @@
             <tr>
               <td><%= client.id %></td>
               <td><%= client.last_name %></td>
-              <td><%= select_tag "users[]", options_from_collection_for_select(@migratables, :id, :email)%></td>
+              <td><%= select_tag "users[]", options_from_collection_for_select(@migratables, :id, :email), class: "selectpicker" %></td>
             </tr>
             <% end %>
           </tbody>

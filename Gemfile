@@ -25,6 +25,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'axlsx_rails'
 gem 'browser'
+gem 'activerecord-session_store'
 
 group :development, :test do
   gem 'byebug'

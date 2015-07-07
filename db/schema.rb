@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127030753) do
+ActiveRecord::Schema.define(version: 20150707013501) do
 
   create_table "behavior_reports", force: :cascade do |t|
     t.integer  "behavior_id", limit: 4
     t.integer  "occurrences", limit: 4,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "removed",     limit: 1, default: false, null: false
+    t.boolean  "removed",               default: false, null: false
   end
 
   create_table "behaviors", force: :cascade do |t|
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150127030753) do
     t.string   "encrypted_description", limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "removed",               limit: 1,   default: false, null: false
+    t.boolean  "removed",                           default: false, null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150127030753) do
     t.string   "password_digest",     limit: 255,                 null: false
     t.string   "remember_token",      limit: 255
     t.integer  "user_id",             limit: 4
-    t.boolean  "removed",             limit: 1,   default: false, null: false
+    t.boolean  "removed",                         default: false, null: false
   end
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20150127030753) do
     t.datetime "updated_at"
     t.string   "deleted_user",      limit: 255
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", limit: 255,   null: false
+    t.text     "data",       limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

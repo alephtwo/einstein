@@ -23,12 +23,23 @@
 // Override fonts
 $font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
 
-body {
-  padding-top: 1em;
-}
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  padding-top: 1em;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.production {
+  @include gradient-radial(white, #87CEFA);
+}
+
+body.development {
+  @include gradient-radial(white, #B22222);
+}
 
 a {
   text-decoration: none !important;

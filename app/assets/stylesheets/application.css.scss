@@ -33,12 +33,8 @@ body {
   background-attachment: fixed;
 }
 
-body.production {
-  @include gradient-radial(white, #87CEFA);
-}
-
-body.development {
-  @include gradient-radial(white, #B22222);
+body {
+  @include gradient-radial(white, #9EBEEE);
 }
 
 a {

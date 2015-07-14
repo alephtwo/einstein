@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    respond_to do | format | 
+    respond_to do | format |
       format.html do
         @active_behaviors = @client.behaviors.active
         @active_reports = @client.behavior_reports.active
@@ -52,7 +52,7 @@ class ClientsController < ApplicationController
     @client.behaviors.each do | behavior |
       behavior.update(:removed => true)
 
-      behavior.behavior_reports.each do | report | 
+      behavior.behavior_reports.each do | report |
         report.update(:removed => true)
       end
     end
@@ -60,7 +60,7 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client.behaviors.each do | behavior | 
+    @client.behaviors.each do | behavior |
       behavior.destroy
     end
     @client.destroy
@@ -70,13 +70,6 @@ class ClientsController < ApplicationController
   private
     def set_client
       @client = Client.find(params[:id])
-    end
-
-    def check_user
-      unless user_signed_in?
-        flash[:error] = "You do not have access to that page."
-        redirect_to root_path
-      end
     end
 
     def client_params

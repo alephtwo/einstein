@@ -51,13 +51,6 @@ class BehaviorsController < ApplicationController
       @behavior = Behavior.find(params[:id])
     end
 
-    def check_user
-      unless user_signed_in?
-        flash[:error] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
-
     def behavior_params
       params.require(:behavior).permit(:description, :client_id)
     end

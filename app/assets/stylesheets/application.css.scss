@@ -31,10 +31,11 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  @include gradient-radial(white, #87CEFA);
 }
 
-body {
-  @include gradient-radial(white, #9EBEEE);
+.btn {
+  margin-right: 4px;
 }
 
 a {

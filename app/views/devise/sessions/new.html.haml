@@ -13,9 +13,7 @@
       = button_tag type: "submit", class: "btn btn-primary" do
         %i.fa.fa-sign-in>
          Log In
-      #{"&nbsp;".html_safe}
       = link_to new_password_path(resource_name), class: "btn btn-default " do
         %i.fa.fa-life-ring>
          Forgot your password?
-      #{"&nbsp;".html_safe}
       = link_to "Client Login", login_path, class: "btn btn-success"

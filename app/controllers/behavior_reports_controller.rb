@@ -13,6 +13,7 @@ class BehaviorReportsController < ApplicationController
 
   def new
     @behavior_report = BehaviorReport.new
+    @behaviors = current_client.behaviors.active
   end
 
   def create

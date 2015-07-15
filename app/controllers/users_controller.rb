@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
+  def show 
     @clients = @user.clients.active
   end
 
@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     if User.all.size == 1
       flash[:error] = "Cannot delete the last user. Please contact your system administrator."
       redirect_to users_path
-    elsif @user == current_user
+    elsif @user == current_user 
       flash[:error] = "You can't delete yourself. Please contact your system administrator."
       redirect_to users_path
-    else
+    else 
       @migratables = User.where.not(id: @user.id)
     end
   end
@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   def migrate
     if User.all.size == 1
       flash[:error] = "The last user can't be deleted. Please contact your system administrator."
-    else
-      @user.clients.each_with_index do | client, i |
+    else 
+      @user.clients.each_with_index do | client, i | 
         client.update(user_id: user_users[i])
       end
 
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy 
     @user.destroy
     redirect_to users_path
   end
@@ -76,6 +76,13 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def check_user
+      unless user_signed_in?
+        flash[:error] = "You do not have access to that page."
+        redirect_to root_path
+      end
     end
 
     def user_params

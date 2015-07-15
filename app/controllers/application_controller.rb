@@ -12,11 +12,4 @@ class ApplicationController < ActionController::Base
     logger.info("  [BROWSER]  #{browser.name} #{browser.full_version}")
     logger.info("  [PLATFORM] #{browser.platform} #{browser.user_agent}")
   end
-
-  protected
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that action.'
-    redirect_to root_path
-  end
 end

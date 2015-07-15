@@ -57,6 +57,13 @@ class BehaviorReportsController < ApplicationController
       end
     end
 
+    def check_user
+      unless user_signed_in?
+        flash[:error] = "You do not have access to that page."
+        redirect_to root_path
+      end
+    end
+
     def set_report
       @behavior_report = BehaviorReport.find(params[:id])
     end

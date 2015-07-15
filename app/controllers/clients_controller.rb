@@ -1,23 +1,31 @@
+# Clients Controller
 class ClientsController < ApplicationController
-
   before_action :set_client, only: [:show, :edit, :update, :destroy, :remove]
   before_filter :check_user
 
   def index
     @clients = Client.all.active
-    respond_to do | format |
+    respond_to do |format|
       format.html
-      format.xlsx { render xlsx: "index", filename: "clients_#{Time.now.to_i}.xlsx"  }
+      format.xlsx do
+        render xlsx: 'index', filename: "clients_#{Time.now.to_i}.xlsx"
+      end
     end
   end
 
   def show
-    respond_to do | format | 
+    respond_to do |format|
       format.html do
         @active_behaviors = @client.behaviors.active
         @active_reports = @client.behavior_reports.active
       end
-      format.xlsx { render xlsx: "show", filename: "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx" }
+      format.xlsx do
+        render(
+          xlsx: 'show',
+          filename:
+            "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx"
+        )
+      end
     end
   end
 
@@ -28,7 +36,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      flash[:success] = "Client created successfully."
+      flash[:success] = 'Client created successfully.'
       redirect_to @client
     else
       render 'new'
@@ -40,47 +48,52 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: "Client ##{@client.id} was successfully updated."
+      redirect_to(
+        @client,
+        notice: "Client ##{@client.id} was successfully updated."
+      )
     else
       render :edit
     end
   end
 
   def remove
-    @client.update(:removed => true)
+    @client.update(removed: true)
 
-    @client.behaviors.each do | behavior |
-      behavior.update(:removed => true)
+    @client.behaviors.each do |behavior|
+      behavior.update(removed: true)
 
-      behavior.behavior_reports.each do | report | 
-        report.update(:removed => true)
+      behavior.behavior_reports.each do |report|
+        report.update(removed: true)
       end
     end
     redirect_to clients_path
   end
 
   def destroy
-    @client.behaviors.each do | behavior | 
-      behavior.destroy
-    end
+    @client.behaviors.each(&:destroy)
     @client.destroy
-      redirect_to clients_path, notice: "Client ##{@client.id} was successfully deleted."
+    redirect_to(
+      clients_path,
+      notice: "Client ##{@client.id} was successfully deleted."
+    )
   end
 
   private
-    def set_client
-      @client = Client.find(params[:id])
-    end
 
-    def check_user
-      unless user_signed_in?
-        flash[:error] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
+  def set_client
+    @client = Client.find(params[:id])
+  end
 
-    def client_params
-      params.require(:client).permit(:last_name, :password, :password_confirmation, :user_id)
-    end
+  def check_user
+    return if user_signed_in?
+    flash[:error] = 'You do not have access to that page.'
+    redirect_to root_path
+  end
 
+  def client_params
+    params
+      .require(:client)
+      .permit(:last_name, :password, :password_confirmation, :user_id)
+  end
 end

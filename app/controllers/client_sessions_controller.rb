@@ -1,5 +1,5 @@
+# Client Sessions Controller
 class ClientSessionsController < ApplicationController
-
   before_action :check_sign_out, only: [:new]
   before_filter :check_user
 
@@ -8,12 +8,13 @@ class ClientSessionsController < ApplicationController
 
   def create
     client = Client.find_by_id(params[:client_session][:id])
-    if client && !client.removed && client.authenticate(params[:client_session][:password])
-      flash[:success] = "Logged in successfully."
+    password = params[:client_session][:password]
+    if client && !client.removed && client.authenticate(password)
+      flash[:success] = 'Logged in successfully.'
       client_sign_in client, params[:client_session][:remember] == '1'
       redirect_to submit_path
     else
-      flash[:error] = "Invalid Client ID or password. Please try again."
+      flash[:error] = 'Invalid Client ID or password. Please try again.'
       redirect_to login_path
     end
   end
@@ -24,17 +25,14 @@ class ClientSessionsController < ApplicationController
   end
 
   private
-    def check_sign_out
-      if client_signed_in?
-        client_sign_out
-      end
-    end
 
-    def check_user
-      if user_signed_in?
-        flash[:error] = "Staff must first log out before visiting the client login page."
-        redirect_to clients_path
-      end
-    end
+  def check_sign_out
+    client_sign_out if client_signed_in?
+  end
 
+  def check_user
+    return unless user_signed_in?
+    flash[:error] = 'Staff must log out before visiting the client login page.'
+    redirect_to clients_path
+  end
 end

@@ -1,33 +1,33 @@
+# Users Controller
 class UsersController < ApplicationController
-
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :disperse, :migrate]
+  before_action :set_user, except: [:index, :new, :create]
   before_filter :check_user
 
   def index
     @users = User.all
   end
 
-  def show 
+  def show
     @clients = @user.clients.active
   end
 
   def disperse
     if User.all.size == 1
-      flash[:error] = "Cannot delete the last user. Please contact your system administrator."
+      flash[:error] = 'Cannot delete the last user.'
       redirect_to users_path
-    elsif @user == current_user 
-      flash[:error] = "You can't delete yourself. Please contact your system administrator."
+    elsif @user == current_user
+      flash[:error] = 'You can\'t delete yourself.'
       redirect_to users_path
-    else 
+    else
       @migratables = User.where.not(id: @user.id)
     end
   end
 
   def migrate
     if User.all.size == 1
-      flash[:error] = "The last user can't be deleted. Please contact your system administrator."
-    else 
-      @user.clients.each_with_index do | client, i | 
+      flash[:error] = 'The last user can\'t be deleted.'
+    else
+      @user.clients.each_with_index do |client, i|
         client.update(user_id: user_users[i])
       end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       maint.save
 
       @user.destroy
-      flash[:succes] = "User deleted and clients moved successfully."
+      flash[:succes] = 'User deleted and clients moved successfully.'
     end
     redirect_to users_path
   end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "User created successfully."
+      flash[:success] = 'User created successfully.'
       redirect_to users_path
     else
       render 'new'
@@ -67,30 +67,37 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @user.destroy
     redirect_to users_path
   end
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def check_user
-      unless user_signed_in?
-        flash[:error] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
+  def check_user
+    return if user_signed_in?
+    flash[:error] = 'You do not have access to that page.'
+    redirect_to root_path
+  end
 
-    def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :email, :first_name, :last_name)
-    end
+  def user_params
+    params
+      .require(:user)
+      .permit(
+        :username,
+        :password,
+        :password_confirmation,
+        :email,
+        :first_name,
+        :last_name
+      )
+  end
 
-    def user_users
-      params.require(:users)
-    end
-
+  def user_users
+    params.require(:users)
+  end
 end

@@ -1,22 +1,24 @@
+# Behaviors Controller
 class BehaviorsController < ApplicationController
-
   before_action :set_behavior, only: [:edit, :update, :destroy, :remove]
   before_filter :check_user
 
   def index
     @behaviors = Behavior.all
     respond_to do |format|
-      format.xlsx { render xlsx: "index", filename: "behaviors_#{Time.now.to_i}.xlsx"  }
+      format.xlsx do
+        render xlsx: 'index', filename: "behaviors_#{Time.now.to_i}.xlsx"
+      end
     end
   end
 
   def create
     @behavior = Behavior.new(behavior_params)
     if @behavior.save
-      flash[:success] = "Behavior created successfully."
+      flash[:success] = 'Behavior created successfully.'
       redirect_to @behavior.client
     else
-      flash[:error] = "Behaviors must have a description!"
+      flash[:error] = 'Behaviors must have a description!'
       redirect_to @behavior.client
     end
   end
@@ -26,16 +28,16 @@ class BehaviorsController < ApplicationController
 
   def update
     if @behavior.update(behavior_params)
-      redirect_to @behavior.client, notice: "Behavior was successfully updated."
+      redirect_to @behavior.client, notice: 'Behavior was successfully updated.'
     else
       render :edit
     end
   end
 
   def remove
-    @behavior.update(:removed => "true")
-    @behavior.behavior_reports.each do | report |
-      report.update(:removed => "true")
+    @behavior.update(removed: true)
+    @behavior.behavior_reports.each do |report|
+      report.update(removed: true)
     end
     redirect_to @behavior.client
   end
@@ -47,19 +49,17 @@ class BehaviorsController < ApplicationController
 
   private
 
-    def set_behavior
-      @behavior = Behavior.find(params[:id])
-    end
+  def set_behavior
+    @behavior = Behavior.find(params[:id])
+  end
 
-    def check_user
-      unless user_signed_in?
-        flash[:error] = "You do not have access to that page."
-        redirect_to root_path
-      end
-    end
+  def check_user
+    return if user_signed_in?
+    flash[:error] = 'You do not have access to that page.'
+    redirect_to root_path
+  end
 
-    def behavior_params
-      params.require(:behavior).permit(:description, :client_id)
-    end
-
+  def behavior_params
+    params.require(:behavior).permit(:description, :client_id)
+  end
 end

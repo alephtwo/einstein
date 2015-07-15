@@ -30,7 +30,7 @@ class MaintenancesController < ApplicationController
     ).save
 
     flash[:success] = 'The database has been cleaned. This has been logged.'
-    redirect_to clients_path
+    redirect_to maintenances_path
   end
 
   private

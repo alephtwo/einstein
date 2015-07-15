@@ -7,7 +7,8 @@ class BehaviorsController < ApplicationController
     @behaviors = Behavior.all
     respond_to do |format|
       format.xlsx do
-        render xlsx: 'index', filename: "behaviors_#{Time.now.to_i}.xlsx"
+        time = Time.zone.now.to_i
+        render xlsx: 'index', filename: "behaviors_#{time}.xlsx"
       end
     end
   end

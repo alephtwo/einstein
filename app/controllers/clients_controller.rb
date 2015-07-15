@@ -8,7 +8,8 @@ class ClientsController < ApplicationController
     respond_to do |format|
       format.html
       format.xlsx do
-        render xlsx: 'index', filename: "clients_#{Time.now.to_i}.xlsx"
+        time = Time.zone.now.to_i
+        render xlsx: 'index', filename: "clients_#{time}.xlsx"
       end
     end
   end
@@ -20,10 +21,11 @@ class ClientsController < ApplicationController
         @active_reports = @client.behavior_reports.active
       end
       format.xlsx do
+        time = Time.zone.now.to_i
         render(
           xlsx: 'show',
           filename:
-            "client_#{@client.id}_#{params[:export]}_#{Time.now.to_i}.xlsx"
+            "client_#{@client.id}_#{params[:export]}_#{time}.xlsx"
         )
       end
     end

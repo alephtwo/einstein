@@ -23,11 +23,11 @@ class Client < ActiveRecord::Base
   end
 
   def timestamp
-    created_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:long)
+    created_at.to_formatted_s(:long)
   end
 
   def updated_timestamp
-    updated_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:long)
+    updated_at.to_formatted_s(:long)
   end
 
   private

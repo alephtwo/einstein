@@ -1,6 +1,6 @@
 # Behavior Reports Controller
 class BehaviorReportsController < ApplicationController
-  before_filter :restrict_to_cilents, only: [:new, :create]
+  before_filter :restrict_to_clients, only: [:new, :create]
   before_filter :restrict_to_users, only: [:destroy, :edit, :update, :remove]
   before_action :set_report, only: [:destroy, :edit, :update, :remove]
 
@@ -8,7 +8,8 @@ class BehaviorReportsController < ApplicationController
     @behavior_reports = BehaviorReport.all
     respond_to do |format|
       format.xlsx do
-        render xlsx: 'index', filename: "behavior_reports_#{Time.now.to_i}.xlsx"
+        time = Time.zone.now.to_i
+        render xlsx: 'index', filename: "behavior_reports_#{time}.xlsx"
       end
     end
   end

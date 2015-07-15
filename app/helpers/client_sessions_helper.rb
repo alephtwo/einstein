@@ -1,11 +1,13 @@
+# Client Sessions Helper
 module ClientSessionsHelper
+  attr_writer :current_client
 
   def client_sign_in(client, forever = true)
     remember_token = Client.new_remember_token
 
-    if forever 
+    if forever
       cookies.permanent[:remember_token] = remember_token
-    else 
+    else
       cookies[:remember_token] = remember_token
     end
     client.update_attribute(:remember_token, Client.digest(remember_token))
@@ -13,14 +15,12 @@ module ClientSessionsHelper
   end
 
   def client_sign_out
-    current_client.update_attribute(:remember_token,
-                                  Client.digest(Client.new_remember_token))
+    current_client.update_attribute(
+      :remember_token,
+      Client.digest(Client.new_remember_token)
+    )
     cookies.delete(:remember_token)
     self.current_client = nil
-  end
-
-  def current_client=(client)
-    @current_client = client
   end
 
   def current_client
@@ -31,6 +31,4 @@ module ClientSessionsHelper
   def client_signed_in?
     !current_client.nil?
   end
-
-
 end

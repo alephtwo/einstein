@@ -1,7 +1,7 @@
 # Behaviors Controller
 class BehaviorsController < ApplicationController
   before_action :set_behavior, only: [:edit, :update, :destroy, :remove]
-  before_filter :check_user
+  before_filter :restrict_to_users
 
   def index
     @behaviors = Behavior.all
@@ -51,12 +51,6 @@ class BehaviorsController < ApplicationController
 
   def set_behavior
     @behavior = Behavior.find(params[:id])
-  end
-
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that page.'
-    redirect_to root_path
   end
 
   def behavior_params

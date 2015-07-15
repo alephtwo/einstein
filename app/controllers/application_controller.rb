@@ -12,4 +12,16 @@ class ApplicationController < ActionController::Base
     logger.info("  [BROWSER]  #{browser.name} #{browser.full_version}")
     logger.info("  [PLATFORM] #{browser.platform} #{browser.user_agent}")
   end
+
+  private
+
+  def restrict_to_users
+    return if user_signed_in?
+    flash[:error] = 'You do not have access to that page.'
+    redirect_to root_path
+  end
+
+  def restrict_to_clients
+    redirect_to login_path unless client_signed_in?
+  end
 end

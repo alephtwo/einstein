@@ -1,7 +1,7 @@
 # Client Sessions Controller
 class ClientSessionsController < ApplicationController
   before_action :check_sign_out, only: [:new]
-  before_filter :check_user
+  before_filter :reject_users
 
   def new
   end
@@ -30,7 +30,7 @@ class ClientSessionsController < ApplicationController
     client_sign_out if client_signed_in?
   end
 
-  def check_user
+  def reject_users
     return unless user_signed_in?
     flash[:error] = 'Staff must log out before visiting the client login page.'
     redirect_to clients_path

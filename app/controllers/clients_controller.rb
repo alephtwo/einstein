@@ -1,7 +1,7 @@
 # Clients Controller
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy, :remove]
-  before_filter :check_user
+  before_filter :restrict_to_users
 
   def index
     @clients = Client.all.active
@@ -83,12 +83,6 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.find(params[:id])
-  end
-
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that page.'
-    redirect_to root_path
   end
 
   def client_params

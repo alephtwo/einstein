@@ -1,7 +1,7 @@
 # Behavior Reports Controller
 class BehaviorReportsController < ApplicationController
-  before_filter :check_client_login, only: [:new, :create]
-  before_filter :check_user, only: [:destroy, :edit, :update, :remove]
+  before_filter :restrict_to_cilents, only: [:new, :create]
+  before_filter :restrict_to_users, only: [:destroy, :edit, :update, :remove]
   before_action :set_report, only: [:destroy, :edit, :update, :remove]
 
   def index
@@ -55,16 +55,6 @@ class BehaviorReportsController < ApplicationController
   end
 
   private
-
-  def check_client_login
-    redirect_to login_path unless client_signed_in?
-  end
-
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that page.'
-    redirect_to root_path
-  end
 
   def set_report
     @behavior_report = BehaviorReport.find(params[:id])

@@ -1,7 +1,7 @@
 # Users Controller
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
-  before_filter :check_user
+  before_filter :restrict_to_users
 
   def index
     @users = User.all
@@ -76,12 +76,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that page.'
-    redirect_to root_path
   end
 
   def user_params

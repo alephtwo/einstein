@@ -1,6 +1,6 @@
 # Maintenances Controller
 class MaintenancesController < ApplicationController
-  before_filter :check_user
+  before_filter :restrict_to_users
 
   def index
     @maintenances = Maintenance.where(deleted_user: nil)
@@ -31,13 +31,5 @@ class MaintenancesController < ApplicationController
 
     flash[:success] = 'The database has been cleaned. This has been logged.'
     redirect_to maintenances_path
-  end
-
-  private
-
-  def check_user
-    return if user_signed_in?
-    flash[:error] = 'You do not have access to that action.'
-    redirect_to root_path
   end
 end

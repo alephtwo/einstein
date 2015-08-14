@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # rails
 gem 'rails'
-gem 'mysql2'
+gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'

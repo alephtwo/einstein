@@ -13,48 +13,51 @@
 
 ActiveRecord::Schema.define(version: 20150707013501) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "behavior_reports", force: :cascade do |t|
-    t.integer  "behavior_id", limit: 4
-    t.integer  "occurrences", limit: 4,                 null: false
+    t.integer  "behavior_id"
+    t.integer  "occurrences",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "removed",     default: false, null: false
+  end
+
+  create_table "behaviors", force: :cascade do |t|
+    t.integer  "client_id"
+    t.string   "encrypted_description",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "removed",               default: false, null: false
   end
 
-  create_table "behaviors", force: :cascade do |t|
-    t.integer  "client_id",             limit: 4
-    t.string   "encrypted_description", limit: 255,                 null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "removed",                           default: false, null: false
-  end
-
   create_table "clients", force: :cascade do |t|
-    t.string   "encrypted_last_name", limit: 255,                 null: false
+    t.string   "encrypted_last_name",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest",     limit: 255,                 null: false
-    t.string   "remember_token",      limit: 255
-    t.integer  "user_id",             limit: 4
-    t.boolean  "removed",                         default: false, null: false
+    t.string   "password_digest",                     null: false
+    t.string   "remember_token"
+    t.integer  "user_id"
+    t.boolean  "removed",             default: false, null: false
   end
 
   add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
 
   create_table "maintenances", force: :cascade do |t|
-    t.integer  "user_id",           limit: 4
-    t.integer  "reports_deleted",   limit: 4
-    t.integer  "behaviors_deleted", limit: 4
-    t.integer  "clients_deleted",   limit: 4
-    t.integer  "total_deleted",     limit: 4
+    t.integer  "user_id"
+    t.integer  "reports_deleted"
+    t.integer  "behaviors_deleted"
+    t.integer  "clients_deleted"
+    t.integer  "total_deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "deleted_user",      limit: 255
+    t.string   "deleted_user"
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.string   "session_id", limit: 255,   null: false
-    t.text     "data",       limit: 65535
+    t.string   "session_id", null: false
+    t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,20 +66,20 @@ ActiveRecord::Schema.define(version: 20150707013501) do
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_first_name",   limit: 255
-    t.string   "encrypted_last_name",    limit: 255
+    t.string   "encrypted_first_name"
+    t.string   "encrypted_last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -13,15 +13,7 @@ class Client < ActiveRecord::Base
   before_create :create_remember_token
 
   scope :active, -> { where(removed: false) }
-
-  def self.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def self.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
+  
   def timestamp
     created_at.to_formatted_s(:long)
   end
@@ -33,6 +25,6 @@ class Client < ActiveRecord::Base
   private
 
   def create_remember_token
-    digest(new_remember_token)
+    Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64.to_s)
   end
 end

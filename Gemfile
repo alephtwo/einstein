@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 # rails
 gem 'rails'
@@ -9,14 +10,11 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
-gem 'sdoc', group: :doc
-gem 'spring', group: :development
 gem 'bcrypt'
 
 # Custom gems
 gem 'haml'
 gem 'bootstrap-sass'
-gem "erb2haml", :group => :development
 gem 'bh'
 gem 'font-awesome-rails'
 gem 'attr_encrypted'
@@ -25,9 +23,17 @@ gem 'devise'
 gem 'kaminari'
 gem 'axlsx_rails'
 gem 'browser'
-gem 'activerecord-session_store'
+
+group :development do
+  gem 'spring'
+  gem 'erb2haml'
+end
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console'
+end
+
+group :doc do
+  gem 'sdoc'
 end

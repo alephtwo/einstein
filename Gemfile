@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+ruby '2.2.1'
 
 # rails
 gem 'rails'
@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'bcrypt'
+gem 'unicorn'
 
 # Custom gems
 gem 'haml'

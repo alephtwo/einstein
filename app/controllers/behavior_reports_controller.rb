@@ -35,10 +35,7 @@ class BehaviorReportsController < ApplicationController
 
   def update
     if @behavior_report.update(behavior_report_params)
-      redirect_to(
-        @behavior_report.behavior.client,
-        notice: 'Behavior report was successfully updated.'
-      )
+      redirect_to @client, notice: 'Behavior report was successfully updated.'
     else
       render :edit
     end
@@ -46,19 +43,19 @@ class BehaviorReportsController < ApplicationController
 
   def remove
     @behavior_report.update(removed: true)
-    redirect_to @behavior_report.behavior.client
+    redirect_to @client
   end
 
   def destroy
-    client = @behavior_report.behavior.client
     @behavior_report.destroy
-    redirect_to client
+    redirect_to @client
   end
 
   private
 
   def set_report
     @behavior_report = BehaviorReport.find(params[:id])
+    @client = Client.find(@behavior_report.behavior.client.id)
   end
 
   def behavior_report_params

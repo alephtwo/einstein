@@ -10,7 +10,10 @@ module ClientSessionsHelper
     else
       cookies[:remember_token] = remember_token
     end
-    client.update_attribute(:remember_token, Digest::SHA1.hexdigest(remember_token.to_s))
+    client.update_attribute(
+      :remember_token,
+      Digest::SHA1.hexdigest(remember_token.to_s)
+    )
     self.current_client = client
   end
 

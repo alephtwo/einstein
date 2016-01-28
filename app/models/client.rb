@@ -13,7 +13,7 @@ class Client < ActiveRecord::Base
   before_create :create_remember_token
 
   scope :active, -> { where(removed: false) }
-  
+
   def timestamp
     created_at.to_formatted_s(:long)
   end

@@ -3,20 +3,20 @@ Einstein is a web application that allows clients to report occurrences of
 behaviors, which can be read and analyzed by staff at a behavioral health
 institution.
 
-Einstein has been designed with minimalism and performance in mind. The goal 
-is to make the process of tracking client reporting easy and fast for all 
+Einstein has been designed with minimalism and performance in mind. The goal
+is to make the process of tracking client reporting easy and fast for all
 involved parties, which in turn makes it more likely that reports will both
-actually be filed and be filed correctly. 
+actually be filed and be filed correctly.
 
 ## Users
 "Users" are defined as individuals that have access to client reports. They are
 able to create client accounts, assign behaviors to clients, and view client
-reports. 
+reports.
 
 Users log in using `/staff`.
 
-There are no default users; any users must be created when bringing up an 
-instance. Thankfully, this is relatively simple to do from the rails console: 
+There are no default users; any users must be created when bringing up an
+instance. Thankfully, this is relatively simple to do from the rails console:
 
 ```
 $ rails c
@@ -42,7 +42,7 @@ reported, and a number of occurrences.
 
 ## Data Export
 Data that is collected by Einstein can be exported to Excel format for storage
-and ease of sharing. 
+and ease of sharing.
 
 ## HIPAA Compliance
 Einstein collects minimal information (usually just a last name), so there is
@@ -60,7 +60,7 @@ well.
 There are a few pieces of functionality on the roadmap:
 * Access roles
 * Comments in behavior reports
-* Configurability - change institution name, logo, etc. 
+* Configurability - change institution name, logo, etc.
 * Data visualization - charts to track the reporting process
 * ReCAPTCHA on client login
 * Dedicated Open Source licenses page

@@ -9,12 +9,6 @@ class ApplicationController < ActionController::Base
     clients_path
   end
 
-  def log_browser_agent
-    browser = Browser.new(ua: request.env['HTTP_USER_AGENT'])
-    logger.info("  [BROWSER]  #{browser.name} #{browser.full_version}")
-    logger.info("  [PLATFORM] #{browser.platform} #{browser.user_agent}")
-  end
-
   private
 
   def restrict_to_users

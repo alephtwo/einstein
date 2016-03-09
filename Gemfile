@@ -21,7 +21,6 @@ gem 'jquery-datatables-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'axlsx_rails'
-gem 'browser'
 
 group :development do
   gem 'spring'

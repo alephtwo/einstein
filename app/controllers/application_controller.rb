@@ -1,7 +1,7 @@
 # Application level controller
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_cond = -> { controller_name == 'sessions' && action_name == 'create' || controller_name == 'passwords' && action_name == 'update' }
+  skip_cond = -> { (controller_name == 'sessions' && action_name == 'create') || (controller_name == 'passwords' && action_name == 'update') }
   skip_before_filter :verify_authenticity_token, if: skip_cond
   include ClientSessionsHelper
 

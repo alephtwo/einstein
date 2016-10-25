@@ -1,5 +1,5 @@
 # Maintenance
-class Maintenance < ActiveRecord::Base
+class Maintenance < ApplicationRecord
   belongs_to :user
 
   def timestamp

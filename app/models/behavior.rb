@@ -1,5 +1,5 @@
 # Behaviors
-class Behavior < ActiveRecord::Base
+class Behavior < ApplicationRecord
   belongs_to :client
   has_many :behavior_reports
   validates :description, presence: true

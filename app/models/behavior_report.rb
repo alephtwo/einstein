@@ -1,5 +1,5 @@
 # Behavior Report
-class BehaviorReport < ActiveRecord::Base
+class BehaviorReport < ApplicationRecord
   belongs_to :behavior
 
   def timestamp

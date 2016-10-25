@@ -1,5 +1,5 @@
 # Client
-class Client < ActiveRecord::Base
+class Client < ApplicationRecord
   has_many :behaviors
   has_many :behavior_reports, through: :behaviors
   belongs_to :user

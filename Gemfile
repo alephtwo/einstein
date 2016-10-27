@@ -9,7 +9,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'bcrypt'
-gem 'unicorn'
+gem 'puma'
 
 # Custom gems
 gem 'haml'

@@ -26,6 +26,8 @@ group :development do
   gem 'spring'
   gem 'erb2haml'
   gem 'brakeman', require: false
+  gem 'rubocop', require: false
+  gem 'inch', require: false
 end
 
 group :development, :test do

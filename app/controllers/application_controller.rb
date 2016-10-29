@@ -1,8 +1,7 @@
 # Application level controller
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_cond = -> { (controller_name == 'sessions' && action_name == 'create') || (controller_name == 'passwords' && action_name == 'update') }
-  skip_before_filter :verify_authenticity_token, if: skip_cond
+  skip_before_filter :verify_authenticity_token, if: :skip_filter?
   include ClientSessionsHelper
 
   def after_sign_in_path_for(_resource)
@@ -19,5 +18,10 @@ class ApplicationController < ActionController::Base
 
   def restrict_to_clients
     redirect_to login_path unless client_signed_in?
+  end
+
+  def skip_filter?
+    controller_name == 'sessions' && action_name == 'create' ||
+      controller_name == 'passwords' && action_name == 'update'
   end
 end

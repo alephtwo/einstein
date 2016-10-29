@@ -17,11 +17,10 @@ class BehaviorsController < ApplicationController
     @behavior = Behavior.new(behavior_params)
     if @behavior.save
       flash[:success] = 'Behavior created successfully.'
-      redirect_to @behavior.client
     else
       flash[:error] = 'Behaviors must have a description!'
-      redirect_to @behavior.client
     end
+    redirect_to @behavior.client
   end
 
   def edit

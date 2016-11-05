@@ -1,4 +1,8 @@
-return unless Rails.env.production?
+# Default to production
+rails_env = ENV['RAILS_ENV'] || 'production'
+environment rails_env
+
+return unless rails_env == 'production'
 
 # Change to match your CPU core count
 workers 1
@@ -8,10 +12,6 @@ threads 1, 6
 
 app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "#{app_dir}/../puma"
-
-# Default to production
-rails_env = ENV['RAILS_ENV'] || "production"
-environment rails_env
 
 # Set up socket location
 bind "unix://#{shared_dir}/sockets/puma.sock"

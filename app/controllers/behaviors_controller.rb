@@ -1,7 +1,7 @@
 # Behaviors Controller
 class BehaviorsController < ApplicationController
   before_action :set_behavior, only: [:edit, :update, :destroy, :remove]
-  before_filter :restrict_to_users
+  before_action :restrict_to_users
 
   def index
     @behaviors = Behavior.all

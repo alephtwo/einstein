@@ -1,6 +1,6 @@
 # Maintenances Controller
 class MaintenancesController < ApplicationController
-  before_filter :restrict_to_users
+  before_action :restrict_to_users
 
   def index
     @maintenances = Maintenance.where(deleted_user: nil)

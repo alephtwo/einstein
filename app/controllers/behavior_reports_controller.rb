@@ -1,7 +1,7 @@
 # Behavior Reports Controller
 class BehaviorReportsController < ApplicationController
-  before_filter :restrict_to_clients, only: [:new, :create]
-  before_filter :restrict_to_users, only: [:destroy, :edit, :update, :remove]
+  before_action :restrict_to_clients, only: [:new, :create]
+  before_action :restrict_to_users, only: [:destroy, :edit, :update, :remove]
   before_action :set_report, only: [:destroy, :edit, :update, :remove]
 
   def index

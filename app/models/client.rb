@@ -4,10 +4,14 @@ class Client < ApplicationRecord
   has_many :behavior_reports, through: :behaviors
   belongs_to :user
 
-  attr_encryptor :last_name, key: Rails.application.secrets.client_last_name_key
-
-  validates :last_name, presence: true
+  attr_encryptor :last_name,
+    key: Rails.application.secrets.client_last_name_key,
+    algorithm: 'aes-256-cbc',
+    mode: :single_iv_and_salt,
+    insecure_mode: true
+    
   has_secure_password
+  validates :last_name, presence: true
   validates :password_digest, presence: true
 
   before_create :create_remember_token

@@ -1,7 +1,7 @@
 # Users Controller
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
-  before_filter :restrict_to_users
+  before_action :restrict_to_users
 
   def index
     @users = User.all

@@ -1,7 +1,7 @@
 # Clients Controller
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy, :remove]
-  before_filter :restrict_to_users
+  before_action :restrict_to_users
 
   def index
     @clients = Client.all.active

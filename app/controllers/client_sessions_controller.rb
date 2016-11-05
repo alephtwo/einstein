@@ -1,7 +1,7 @@
 # Client Sessions Controller
 class ClientSessionsController < ApplicationController
   before_action :check_sign_out, only: [:new]
-  before_filter :reject_users
+  before_action :reject_users
 
   def new
   end

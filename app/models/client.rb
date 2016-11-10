@@ -29,6 +29,6 @@ class Client < ApplicationRecord
   private
 
   def create_remember_token
-    Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64.to_s)
+    Digest::SHA256.hexdigest(SecureRandom.urlsafe_base64.to_s)
   end
 end

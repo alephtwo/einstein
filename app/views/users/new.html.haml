@@ -1,5 +1,5 @@
-- content_for :title, "New User"
-= form_for @user, layout: :basic do | f |
+- content_for :title, 'New User'
+= form_for @user, layout: :basic do |f1|
   .panel.panel-default
     .panel-heading
       %h1 New User
@@ -11,12 +11,12 @@
         .col-xs-12.col-md-6
           = f.password_field :password
         .col-xs-12.col-md-6
-          = f.password_field :password_confirmation, label: "Confirm Password"
+          = f.password_field :password_confirmation, label: 'Confirm Password'
       .row
         .col-xs-12
-          = f.text_field :first_name, label: "First Name"
+          = f.text_field :first_name, label: 'First Name'
       .row
         .col-xs-12
-          = f.text_field :last_name, label: "Last Name"
+          = f.text_field :last_name, label: 'Last Name'
     .panel-footer
-      = f.submit class: "btn btn-primary "
+      = f.submit class: 'btn btn-primary'

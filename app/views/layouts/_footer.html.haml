@@ -8,7 +8,7 @@
         %strong= current_user.last_sign_in_ip
   .panel-body
     %small
-      %i.fa.fa-check-circle>
+      = fa_icon 'check-circle'
       #{"&nbsp;".html_safe}Einstein #{`git describe --always`}
     - if Rails.env.development?
       %hr

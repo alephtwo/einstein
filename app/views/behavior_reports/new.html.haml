@@ -1,22 +1,35 @@
-- content_for :title, "New Behavior Report"
+- content_for :title, 'New Behavior Report'
 .panel.panel-default
   .panel-heading
     %h1 Submit Behavior Report
-  = form_for @behavior_report, layout: :basic do | f |
+  = form_for @behavior_report, layout: :basic do |f|
     .panel-body
       - if @behaviors.size > 0
-        = f.label "Behavior"
+        = f.label 'Behavior'
         %br/
-        = f.collection_select :behavior_id, @behaviors, :id, :description, {}, {class: "selectpicker form-control"}
+        = f.collection_select :behavior_id,
+          @behaviors,
+          :id,
+          :description,
+          {},
+          class: 'selectpicker form-control'
         %br/
         %br/
-        = f.number_field :occurrences, :in => 0..100, :step => 1, :value => 1, label: "Number of Occurrences"
+        = f.number_field :occurrences,
+          in: 0..100,
+          step: 1,
+          value: 1,
+          label: 'Number of Occurrences'
       - else
         You do not have any assigned behaviors.
     .panel-footer
-      = f.submit "Submit Report", id: "submit-report", class: "btn btn-primary btn-block btn-lg"
+      = f.submit 'Submit Report',
+        id: 'submit-report',
+        class: 'btn btn-primary btn-block btn-lg'
 .panel.panel-default
   .panel-body
-    = link_to logout_path, method: "delete", class: "btn btn-danger btn-block btn-lg" do
-      %i.fa.fa-sign-out>
-       Log Out
+    = link_to logout_path,
+      method: 'delete',
+      class: 'btn btn-danger btn-block btn-lg' do
+      = fa_icon 'sign-out'
+      Log Out

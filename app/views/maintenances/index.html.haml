@@ -7,14 +7,14 @@
     %table#maintenances.table.table-striped.table-hover
       %thead
         %tr
-          %th.all{:width => "200"} User
+          %th.all{width: 200} User
           %th.min-tablet-l Reports
           %th.min-tablet-l Behaviors
           %th.min-tablet-l Clients
           %th.all Total Deleted
           %th.desktop Date Performed
       %tbody
-        - @maintenances.each do | maint |
+        - @maintenances.each do |maint|
           %tr
             %td= maint.user.email
             %td= maint.reports_deleted
@@ -34,7 +34,7 @@
           %th.all Deleted User
           %th.min-tablet-l Date Performed
       %tbody
-        - @users.each do | del |
+        - @users.each do |del|
           %tr
             %td= del.user.email
             %td= del.deleted_user

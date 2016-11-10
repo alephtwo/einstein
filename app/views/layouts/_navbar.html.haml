@@ -2,67 +2,67 @@
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle.collapsed{'aria-expanded': 'false', 'data-target': '#bs-example-navbar-collapse-1', 'data-toggle': 'collapse', type: 'button'}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Einstein", root_path, class: "navbar-brand"
+      = link_to 'Einstein', root_path, class: 'navbar-brand'
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
           = link_to users_path do
-            %i.fa.fa-group>
-             Users
+            = fa_icon 'group'
+            Users
         %li
           = link_to clients_path do
-            %i.fa.fa-medkit>
-             Clients
+            = fa_icon 'medkit'
+            Clients
         %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            %i.fa.fa-book>
-             Reports
+          %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
+            = fa_icon 'book'
+            Reports
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to behavior_reports_path(format: "xlsx") do
-                %i.fa.fa-file-excel-o>
-                 Export Behavior Reports
+              = link_to behavior_reports_path(format: 'xlsx') do
+                = fa_icon 'file-excel-o'
+                Export Behavior Reports
             %li
-              = link_to behaviors_path(format: "xlsx") do
-                %i.fa.fa-file-excel-o>
-                 Export Behaviors
+              = link_to behaviors_path(format: 'xlsx') do
+                = fa_icon 'file-excel-o'
+                Export Behaviors
             %li
-              = link_to clients_path(format: "xlsx") do
-                %i.fa.fa-file-excel-o>
-                 Export Clients
+              = link_to clients_path(format: 'xlsx') do
+                = fa_icon 'file-excel-o'
+                Export Clients
         %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            %i.fa.fa-database>
-             Data
+          %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
+            = fa_icon 'database'
+            Data
             %span.caret
           %ul.dropdown-menu
             %li
               = link_to maintenances_path do
-                %i.fa.fa-history>
-                 Deletion History
+                = fa_icon 'history'
+                Deletion History
             %li
               = link_to maintenances_disclaimer_path do
-                %i.fa.fa-warning>
-                 Clean Database
+                = fa_icon 'warning'
+                Clean Database
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
-          %a.dropdown-toggle.text-condensed{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            %i.fa.fa-user>
-             #{current_user.email}
+          %a.dropdown-toggle.text-condensed{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
+            = fa_icon 'user'
+            #{current_user.email}
             %span.caret
           %ul.dropdown-menu
             %li
               = link_to edit_user_path current_user do
-                %i.fa.fa-gear>
-                  Edit Profile
+                = fa_icon 'gear'
+                Edit Profile
             %li
-              = link_to destroy_user_session_path, :method => :delete, class: "item", id: "logout" do
-                %i.fa.fa-sign-out>
-                 Log Out
+              = link_to destroy_user_session_path, method: :delete, class: 'item', id: 'logout' do
+                = fa_icon 'sign-out'
+                Log Out

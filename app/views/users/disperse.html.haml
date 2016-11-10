@@ -1,4 +1,4 @@
-- content_for :title, "Migrating Clients"
+- content_for :title, 'Migrating Clients'
 .panel.panel-default
   .panel-heading
     %h1
@@ -12,22 +12,26 @@
       from the system. In order to protect stored data, you must first migrate all of this user's clients to other users prior to deletion.
     %p The last user cannot be deleted; please contact your system administrator if such a drastic measure is required.
     %p
-      Please note that electing to delete this user will remove them from the system. A new user account will need to be created in the event that the user needs to be allowed into the system once more. Records of the deletion will be kept and visible to all users via the #{link_to "maintenances page", maintenances_path}.
+      Please note that electing to delete this user will remove them from the system. A new user account will need to be created in the event that the user needs to be allowed into the system once more. Records of the deletion will be kept and visible to all users via the #{link_to 'maintenances page', maintenances_path}.
     - if User.all.size > 1
-      = form_for :clients, layout: :basic do | f |
+      = form_for :clients, layout: :basic do |f|
         %table.table.table-striped.table-hover
           %thead
             %tr
-              %th{:width => "150"} Client ID
+              %th{width: 150} Client ID
               %th Last Name
               %th New Assigned User
           %tbody
-            - @user.clients.each do | client |
+            - @user.clients.each do |client|
               %tr
                 %td= client.id
                 %td= client.last_name
-                %td= select_tag "users[]", options_from_collection_for_select(@migratables, :id, :email), class: "selectpicker"
+                %td= select_tag 'users[]',
+                  options_from_collection_for_select(@migratables, :id, :email),
+                  class: 'selectpicker'
         .panel-footer
-          = f.submit "Delete User", class: "btn btn-danger", data: {confirm: "Are you sure you want to delete #{@user.email} and migrate their clients to the selected users?"}
+          = f.submit 'Delete User',
+          class: 'btn btn-danger',
+          data: {confirm: "Are you sure you want to delete #{@user.email} and migrate their clients to the selected users?"}
     - else
       %h1 Cannot delete the last user. Contact your system administrator.

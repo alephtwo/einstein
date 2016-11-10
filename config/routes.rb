@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
   root 'filter#index'
 
-  devise_for :users, :path => '', :path_names => {:sign_in => 'staff'}, :skip => [:registrations]
+  devise_for :users,
+             path: '',
+             path_names: {sign_in: 'staff'},
+             skip: [:registrations]
+
   as :user do
-    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+    get 'users/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    put 'users', to: 'devise/registrations#update', as: 'user_registration'
   end
+
   get '/users/disperse/:id', to: 'users#disperse', as: 'disperse'
   post '/users/disperse/:id', to: 'users#migrate', as: 'migrate'
   resources :users
 
   get '/login', to: 'client_sessions#new'
   delete '/logout',  to: 'client_sessions#destroy'
-  resources :client_sessions, only: [:new, :create, :destroy]
+  resources :client_sessions, only: %i(new create destroy)
 
   get '/remove_client/:id', to: 'clients#remove'
   resources :clients

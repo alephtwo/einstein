@@ -4,20 +4,26 @@
       %h1
         = heading
         - if @client.id
-           
           %small
             Client ID: #{@client.id}
     .panel-body
-      = f.text_field :last_name, label: "Last Name"
+      = f.text_field :last_name, label: 'Last Name'
       .row
         .col-xs-12.col-md-6
-          = f.password_field :password, label: "Password"
+          = f.password_field :password,
+            label: 'Password'
         .col-xs-12.col-md-6
-          = f.password_field :password_confirmation, label: "Confirm Password"
+          = f.password_field :password_confirmation,
+            label: 'Confirm Password'
       .row
         .col-xs-12
-          = f.label "Assigned To"
+          = f.label 'Assigned To'
           %br/
-          = f.collection_select :user_id, User.all, :id, :email, {}, {class: "selectpicker"}
+          = f.collection_select :user_id,
+            User.all,
+            :id,
+            :email,
+            {},
+            class: 'selectpicker'
     .panel-footer
-      = f.submit class: "btn btn-primary "
+      = f.submit class: 'btn btn-primary'

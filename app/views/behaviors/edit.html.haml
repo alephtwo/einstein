@@ -1,9 +1,9 @@
-- content_for :title, "Edit Behavior"
-= form_for @behavior, layout: :basic do | f |
+- content_for :title, 'Edit Behavior'
+= form_for @behavior, layout: :basic do |f|
   .panel.panel-default
     .panel-heading
       %h1 Edit Behavior
     .panel-body
       = f.text_field :description
     .panel-footer
-      = f.submit class: "btn btn-primary"
+      = f.submit class: 'btn btn-primary'

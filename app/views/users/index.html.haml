@@ -1,4 +1,4 @@
-- content_for :title, "Users"
+- content_for :title, 'Users'
 .panel.panel-default
   .panel-heading
     %h1 Users
@@ -9,10 +9,10 @@
           %th.all Email
           %th.desktop First Name
           %th.desktop Last Name
-          %th.min-tablet-p{:width => "100"} Clients
-          %th.min-tablet-l{:width => "120"} Remove
+          %th.min-tablet-p{width: 100} Clients
+          %th.min-tablet-l{width: 120} Remove
       %tbody
-        - @users.each do | user |
+        - @users.each do |user|
           %tr
             %td
               = link_to user do
@@ -22,10 +22,10 @@
             %td= user.clients.active.size
             %td
               - unless user == current_user
-                = link_to disperse_path(user), class: "text-danger" do
-                  %i.fa.fa-remove>
-                   Remove
+                = link_to disperse_path(user), class: 'text-danger' do
+                  = fa_icon 'remove'
+                  Remove
   .panel-footer
-    = link_to new_user_path, class: "btn btn-primary" do
-      %i.fa.fa-plus>
-       New User
+    = link_to new_user_path, class: 'btn btn-primary' do
+      = fa_icon 'plus'
+      New User

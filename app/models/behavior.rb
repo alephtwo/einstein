@@ -5,10 +5,10 @@ class Behavior < ApplicationRecord
   validates :description, presence: true
 
   attr_encryptor :description,
-    key: Rails.application.secrets.behavior_description_key,
-    algorithm: 'aes-256-cbc',
-    mode: :single_iv_and_salt,
-    insecure_mode: true
+                 key: Rails.application.secrets.behavior_description_key,
+                 algorithm: 'aes-256-cbc',
+                 mode: :single_iv_and_salt,
+                 insecure_mode: true
 
   def report_count
     behavior_reports.size

@@ -6,11 +6,11 @@
     %table#per-user-clients.table.table-striped.table-hover
       %thead
         %tr
-          %th.min-mobile-l{:width => "200"} Client ID
+          %th.min-mobile-l{width: 200} Client ID
           %th.all Last Name
           %th.min-tablet-l Edit
       %tbody
-        - @clients.each do | client |
+        - @clients.each do |client|
           %tr
             %td= client.id
             %td
@@ -18,5 +18,5 @@
                 = client.last_name
             %td
               = link_to edit_client_path client do
-                %i.fa.fa-edit>
-                 Edit
+                = fa_icon 'edit'
+                Edit

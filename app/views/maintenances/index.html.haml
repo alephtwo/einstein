@@ -36,6 +36,6 @@
       %tbody
         - @users.each do |del|
           %tr
-            %td= del.user.email
+            %td= del.safe_user_email
             %td= del.deleted_user
             %td= del.timestamp

@@ -16,7 +16,7 @@
       %tbody
         - @maintenances.each do |maint|
           %tr
-            %td= maint.safe_email
+            %td= maint.safe_user_email
             %td= maint.reports_deleted
             %td= maint.behaviors_deleted
             %td= maint.clients_deleted

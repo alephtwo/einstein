@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def last_sign_in_central
     last_sign_in_at.to_formatted_s(:long)
   end
+
+  def safe_user_email
+    user ? user.email : ''
+  end
 end
